@@ -8,17 +8,57 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-arimo);
   --font-serif: var(--font-cormorant);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto,
+  font-family: var(--font-arimo), system-ui, -apple-system, Segoe UI, Roboto,
     Arial, sans-serif;
 }
 
 ::selection {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- strict sizing to match Framer breakpoints --- */
+.site-width {
+  width: 1440px;
+}
+
+@media (min-width: 810px) and (max-width: 1439.98px) {
+  .site-width {
+    width: 810px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .site-width {
+    width: 390px;
+  }
+}
+
+.site-pad-x {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+@media (min-width: 810px) and (max-width: 1439.98px) {
+  .site-pad-x {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .site-pad-x {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.hero-height {
+  height: 768px;
 }

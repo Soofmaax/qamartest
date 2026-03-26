@@ -20,27 +20,29 @@ export function Testimonials() {
   const current = useMemo(() => testimonials[index], [index]);
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-4 md:px-8">
+    <div className="mx-auto flex w-full items-center justify-between gap-6">
       <button
         type="button"
         aria-label="Avis précédent"
-        className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white transition hover:bg-white/10"
-        onClick={() => setIndex((v) => (v - 1 + testimonials.length) % testimonials.length)}
+        className="grid h-[38px] w-[38px] place-items-center text-white"
+        onClick={() =>
+          setIndex((v) => (v - 1 + testimonials.length) % testimonials.length)
+        }
       >
-        <span className="text-xl">‹</span>
+        <span className="text-2xl leading-none">‹</span>
       </button>
 
-      <p className="w-full max-w-3xl text-center text-lg leading-relaxed text-zinc-200 md:text-xl">
+      <p className="w-full text-center text-[20px] leading-[23px] text-[#ededed] md:w-[75%]">
         {current.text}
       </p>
 
       <button
         type="button"
         aria-label="Avis suivant"
-        className="grid h-10 w-10 place-items-center rounded-full border border-white/20 text-white transition hover:bg-white/10"
+        className="grid h-[38px] w-[38px] place-items-center text-white"
         onClick={() => setIndex((v) => (v + 1) % testimonials.length)}
       >
-        <span className="text-xl">›</span>
+        <span className="text-2xl leading-none">›</span>
       </button>
     </div>
   );

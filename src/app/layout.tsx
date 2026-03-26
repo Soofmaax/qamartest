@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_SC, Inter } from "next/font/google";
+import { Arimo, Cormorant_SC } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_SC({
@@ -8,10 +8,10 @@ const cormorant = Cormorant_SC({
   weight: ["400", "600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const arimo = Arimo({
+  variable: "--font-arimo",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +28,9 @@ export const metadata: Metadata = {
     description:
       "Photographe et vidéaste professionnel pour projets corporate, mariages et contenus digitaux. Images fortes, storytelling et accompagnement sur mesure.",
     url: "https://www.directedbyqamar.com/",
-    images: ["https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png"],
+    images: [
+      "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    ],
   },
 };
 
@@ -39,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" dir="ltr">
-      <body className={`${cormorant.variable} ${inter.variable} antialiased`}>
+      <body className={`${cormorant.variable} ${arimo.variable} antialiased`}>
         {children}
       </body>
     </html>
