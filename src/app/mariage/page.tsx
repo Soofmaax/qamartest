@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+
 import Link from "next/link";
 import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -144,19 +145,19 @@ export default function MariagePage() {
             >
               <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/45 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black/90" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">
               <div className="flex flex-col items-center gap-3 px-4 text-center">
-                <h1 className="font-serif text-5xl text-white md:text-6xl">
+                <h1 className="font-serif text-5xl tracking-wide text-white md:text-6xl">
                   Mariage
                 </h1>
-                <p className="text-[18px] text-[#ededed] md:text-[20px]">
+                <p className="text-[18px] text-white/80 md:text-[20px]">
                   fiançailles - Mariage - Shooting
                 </p>
                 <Link
                   href="/contact/"
-                  className="mt-5 w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur md:text-[20px]"
+                  className="mt-5 w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                 >
                   reservations pour 2026 et 2027 ouvertes
                 </Link>
@@ -215,7 +216,7 @@ export default function MariagePage() {
             {formulas.map((f) => (
               <div
                 key={f.title}
-                className="rounded-lg border border-white/10 bg-black/40 p-6"
+                className="rounded-lg border border-white/10 bg-black/40 p-6 transition-colors duration-200 hover:border-white/20 hover:bg-black/60"
               >
                 <h3 className="font-serif text-3xl font-semibold text-white">
                   {f.title}
@@ -231,7 +232,7 @@ export default function MariagePage() {
 
                 <Link
                   href={f.href}
-                  className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+                  className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                 >
                   {f.cta}
                 </Link>
@@ -247,7 +248,7 @@ export default function MariagePage() {
             </h2>
             <Link
               href="/portfolio/"
-              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
@@ -268,7 +269,7 @@ export default function MariagePage() {
               (title, idx) => (
                 <div
                   key={title}
-                  className="rounded-lg border border-white/10 bg-black/40 p-6"
+                  className="rounded-lg border border-white/10 bg-black/40 p-6 transition-colors duration-200 hover:border-white/20 hover:bg-black/60"
                 >
                   <p className="font-serif text-4xl font-semibold text-white">
                     {idx + 1}
@@ -303,7 +304,7 @@ export default function MariagePage() {
             </p>
             <Link
               href="/contact/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
               Vérifier mes disponibiltés
             </Link>

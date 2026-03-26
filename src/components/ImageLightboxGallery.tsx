@@ -41,12 +41,20 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
               setOpenImageIndex(0);
             }}
           >
-            <Image src={item.cover} alt={item.title} fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />
-            <div className="absolute inset-0 flex flex-col justify-center gap-[22px] site-pad-x">
-              <h3 className="font-serif text-[40px] font-semibold text-white md:text-[64px]">
+            <Image
+              src={item.cover}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-black/0 transition-colors duration-300 group-hover:from-black/90" />
+            <div className="absolute inset-0 flex flex-col justify-center gap-3 site-pad-x">
+              <h3 className="font-serif text-[40px] font-semibold tracking-wide text-white md:text-[64px]">
                 {item.title}
               </h3>
+              <p className="text-[16px] text-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-[18px]">
+                Voir la galerie
+              </p>
             </div>
           </button>
         ))}
