@@ -135,10 +135,21 @@ export default function MariagePage() {
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
             <video
-              className="absolute inset-0 h-full w-full object-cover object-bottom"
+              className="absolute inset-0 hidden h-full w-full object-cover object-bottom md:block"
               autoPlay
               muted
               loop
+              playsInline
+              preload="metadata"
+              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+            >
+              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
+            </video>
+
+            <video
+              className="absolute inset-0 h-full w-full object-cover object-bottom md:hidden"
+              controls
+              muted
               playsInline
               preload="metadata"
               poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
