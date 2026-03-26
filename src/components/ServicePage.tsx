@@ -8,11 +8,19 @@ export function ServicePage({
   description,
   heroImage,
   gallery,
+  introTitle,
+  introParagraphs,
+  deliverables,
+  faq,
 }: {
   title: string;
   description: string;
   heroImage: string;
   gallery: string[];
+  introTitle: string;
+  introParagraphs: string[];
+  deliverables: string[];
+  faq: Array<{ q: string; a: string }>;
 }) {
   return (
     <div className="min-h-screen bg-black">
@@ -42,6 +50,37 @@ export function ServicePage({
           </div>
         </section>
 
+        <section className="bg-black px-4 pb-20 md:px-8">
+          <div className="mx-auto w-full max-w-6xl">
+            <h2 className="font-serif text-4xl font-semibold text-white">
+              {introTitle}
+            </h2>
+            <div className="mt-4 grid gap-4 text-lg leading-relaxed text-zinc-200 md:grid-cols-2">
+              {introParagraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+
+            <h3 className="mt-10 font-serif text-3xl font-semibold text-white">
+              Livrables
+            </h3>
+            <ul className="mt-4 grid list-disc gap-2 pl-5 text-lg text-zinc-200 md:grid-cols-2">
+              {deliverables.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="mt-10">
+              <Link
+                href="/contact/"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
+              >
+                Demander un devis
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="bg-black px-4 pb-24 md:px-8">
           <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
             {gallery.map((src, i) => (
@@ -49,14 +88,49 @@ export function ServicePage({
                 key={src}
                 className="relative aspect-[3/4] overflow-hidden rounded-lg"
               >
-                <Image
-                  src={src}
-                  alt={`${title} ${i + 1}`}
-                  fill
-                  className="object-cover"
-                />
+                <Image src={src} alt={`${title} ${i + 1}`} fill className="object-cover" />
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="bg-black px-4 pb-24 md:px-8">
+          <div className="mx-auto w-full max-w-6xl">
+            <h2 className="font-serif text-4xl font-semibold text-white">FAQ</h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {faq.map((item) => (
+                <div key={item.q} className="rounded-lg border border-white/10 p-5">
+                  <h3 className="text-lg font-semibold text-white">{item.q}</h3>
+                  <p className="mt-2 text-lg text-zinc-200">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-black px-4 pb-24 md:px-8">
+          <div className="mx-auto w-full max-w-6xl">
+            <h2 className="font-serif text-4xl font-semibold text-white">
+              Découvrir les autres prestations
+            </h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {[
+                { href: "/mariage/", label: "Mariage" },
+                { href: "/corporate/", label: "Corporate" },
+                { href: "/publicité-digitale/", label: "Publicité digitale" },
+                { href: "/événementiel/", label: "Événementiel" },
+              ]
+                .filter((l) => l.label !== title)
+                .map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="rounded-lg border border-white/15 bg-black px-5 py-2.5 text-lg text-zinc-200 hover:bg-white/5"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+            </div>
           </div>
         </section>
       </main>

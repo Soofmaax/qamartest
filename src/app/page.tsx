@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
@@ -68,6 +69,45 @@ const services = [
   },
 ];
 
+const projects = [
+  {
+    title: "Corporate",
+    cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+    images: [
+      "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+      "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+    ],
+  },
+  {
+    title: "Événementiel",
+    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    images: [
+      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+    ],
+  },
+  {
+    title: "Mariage",
+    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+    images: [
+      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    ],
+  },
+  {
+    title: "Publicté digitale",
+    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    images: [
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+      "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+    ],
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
@@ -86,10 +126,10 @@ export default function Home() {
 
           <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[34px] text-center">
             <div className="flex w-full flex-col items-center gap-[5px]">
-              <h1 className="font-serif text-[64px] leading-none text-white">
+              <h1 className="font-serif text-[42px] leading-none text-white sm:text-[54px] md:text-[64px]">
                 Directed by Qamar
               </h1>
-              <div className="mt-1 max-w-5xl text-[20px] leading-[23px] text-[#ededed]">
+              <div className="mt-1 max-w-5xl text-[18px] leading-[23px] text-[#ededed] md:text-[20px]">
                 <p>
                   Directed by Qamar est un studio de création visuelle basé à
                   Paris.
@@ -104,91 +144,124 @@ export default function Home() {
 
             <Link
               href="/portfolio/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
           </div>
         </section>
 
-        <section className="w-full bg-black py-20 site-pad-x">
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex w-full flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
-              <h2 className="font-serif text-[48px] font-semibold text-white">
+              <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
                 Nos références
               </h2>
-              <p className="text-[20px] text-[#ededed]">
+              <p className="text-[18px] text-[#ededed] md:text-[20px]">
                 Des collaborations qui parlent d’elles-mêmes.
               </p>
             </div>
 
-            <div className="relative w-full overflow-hidden md:w-[55%]">
-              <div className="flex items-center gap-[43px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {references.map((ref) => (
-                  <div
-                    key={ref.src}
-                    className="relative h-[35px] w-[200px] flex-none"
-                  >
-                    <Image src={ref.src} alt={ref.alt} fill className="object-contain" />
+            <div className="relative w-full md:w-[55%]">
+              <div className="ticker h-[91px]">
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[23%] bg-gradient-to-r from-black to-black/0" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[23%] bg-gradient-to-l from-black to-black/0" />
+
+                <div className="flex h-full items-center">
+                  <div className="ticker-track pr-[43px]">
+                    {references.map((ref) => (
+                      <div
+                        key={ref.src}
+                        className="relative h-[35px] w-[200px] flex-none"
+                      >
+                        <Image
+                          src={ref.src}
+                          alt={ref.alt}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+
+                  <div className="ticker-track pr-[43px]" aria-hidden="true">
+                    {references.map((ref) => (
+                      <div
+                        key={`${ref.src}-dup`}
+                        className="relative h-[35px] w-[200px] flex-none"
+                      >
+                        <Image
+                          src={ref.src}
+                          alt={ref.alt}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-[23%] bg-gradient-to-r from-black to-black/0" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[23%] bg-gradient-to-l from-black to-black/0" />
             </div>
           </div>
         </section>
 
-        <section className="w-full bg-black py-20 site-pad-x">
-          <div className="flex flex-wrap items-center justify-center gap-[35px]">
-            <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
-              <Image
-                src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
-                alt="Avis"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="flex flex-col items-start gap-2">
-              <div className="flex items-center gap-1 text-white">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} aria-hidden>
-                    ★
-                  </span>
-                ))}
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="flex flex-col items-start gap-8 md:items-center">
+            <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
+              <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
+                <Image
+                  src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
+                  alt="Avis"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <p className="text-[20px] text-[#ededed]">+150 entreprises accompagnées</p>
-              <a
-                href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[20px] text-[#ededed] underline"
-              >
-                +16 avis Google
-              </a>
+
+              <div className="flex flex-col items-start gap-2">
+                <div className="flex items-center gap-1 text-white">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i} aria-hidden>
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[18px] text-[#ededed] md:text-[20px]">
+                  +150 entreprises accompagnées
+                </p>
+                <a
+                  href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[18px] text-[#ededed] underline md:text-[20px]"
+                >
+                  +16 avis Google
+                </a>
+              </div>
             </div>
 
-            <div className="w-full pt-6">
+            <div className="w-full pt-2 md:pt-0">
               <Testimonials />
             </div>
           </div>
         </section>
 
-        <section id="services" className="w-full bg-black py-20">
+        <section id="services" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-10">
             <div className="text-center site-pad-x">
-              <h2 className="font-serif text-[48px] font-semibold text-white">
+              <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
                 Nos Prestations
               </h2>
-              <p className="mt-4 text-[20px] text-[#ededed]">
+              <p className="mt-4 text-[18px] text-[#ededed] md:text-[20px]">
                 Découvrez notre gamme de prestations.
               </p>
             </div>
 
             <div className="w-full">
               {services.map((s) => (
-                <div key={s.title} className="relative h-[367px] w-full overflow-hidden">
+                <div
+                  key={s.title}
+                  className="relative h-[300px] w-full overflow-hidden md:h-[367px]"
+                >
                   <Image
                     src={s.image}
                     alt={s.title}
@@ -198,15 +271,15 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />
 
                   <div className="absolute inset-0 flex flex-col justify-center gap-[22px] site-pad-x">
-                    <h3 className="font-serif text-[36px] font-semibold text-white">
+                    <h3 className="font-serif text-[28px] font-semibold text-white md:text-[36px]">
                       {s.title}
                     </h3>
-                    <p className="w-[38%] text-[20px] text-[#ededed]">
+                    <p className="w-full text-[18px] text-[#ededed] md:w-[60%] md:text-[20px] lg:w-[38%]">
                       {s.description}
                     </p>
                     <Link
                       href={s.href}
-                      className="w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+                      className="w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
                     >
                       Découvrir
                     </Link>
@@ -217,48 +290,32 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-20 site-pad-x">
-          <div className="flex items-center justify-between">
-            <h2 className="font-serif text-[48px] font-semibold text-white">
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
               Mon portfolio
             </h2>
             <Link
               href="/portfolio/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
           </div>
 
-          <div className="mt-10 flex gap-9 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {[
-              "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-              "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-              "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-              "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-              "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-              "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-              "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-            ].map((src, i) => (
-              <div
-                key={src}
-                className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
-              >
-                <Image src={src} alt={`Portfolio ${i + 1}`} fill className="object-cover" />
-                <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
-              </div>
-            ))}
+          <div className="mt-10">
+            <ProjectsCarousel projects={projects} />
           </div>
         </section>
 
-        <section className="w-full bg-black py-20">
-          <div className="flex flex-col items-center gap-[34px] text-center site-pad-x">
-            <h2 className="font-serif text-[64px] leading-none text-white">
+        <section className="w-full bg-black py-16 md:py-20">
+          <div className="flex flex-col items-center gap-[26px] text-center site-pad-x md:gap-[34px]">
+            <h2 className="font-serif text-[40px] leading-none text-white md:text-[64px]">
               Prêt à donner une nouvelle dimension à vos contenus ?
             </h2>
             <Link
               href="/contact/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Me contacter
             </Link>

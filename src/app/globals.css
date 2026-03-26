@@ -23,21 +23,10 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* --- strict sizing to match Framer breakpoints --- */
+/* --- site container --- */
 .site-width {
-  width: 1440px;
-}
-
-@media (min-width: 810px) and (max-width: 1439.98px) {
-  .site-width {
-    width: 810px;
-  }
-}
-
-@media (max-width: 809.98px) {
-  .site-width {
-    width: 390px;
-  }
+  width: 100%;
+  max-width: 1440px;
 }
 
 .site-pad-x {
@@ -60,5 +49,40 @@ body {
 }
 
 .hero-height {
-  height: 768px;
+  min-height: 768px;
+}
+
+@media (max-width: 809.98px) {
+  .hero-height {
+    min-height: 640px;
+  }
+}
+
+/* --- ticker (references) --- */
+@keyframes ticker-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.ticker {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 43px;
+  animation: ticker-left var(--ticker-duration, 25s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
 }
