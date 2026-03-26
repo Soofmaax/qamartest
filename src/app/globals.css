@@ -23,21 +23,10 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* --- strict sizing to match Framer breakpoints --- */
+/* --- site container --- */
 .site-width {
-  width: 1440px;
-}
-
-@media (min-width: 810px) and (max-width: 1439.98px) {
-  .site-width {
-    width: 810px;
-  }
-}
-
-@media (max-width: 809.98px) {
-  .site-width {
-    width: 390px;
-  }
+  width: 100%;
+  max-width: 1440px;
 }
 
 .site-pad-x {
@@ -60,7 +49,13 @@ body {
 }
 
 .hero-height {
-  height: 768px;
+  min-height: 768px;
+}
+
+@media (max-width: 809.98px) {
+  .hero-height {
+    min-height: 640px;
+  }
 }
 
 /* --- ticker (references) --- */

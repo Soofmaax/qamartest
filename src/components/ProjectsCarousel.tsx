@@ -50,7 +50,7 @@ export function ProjectsCarousel({
                 <button
                   key={`${p.cover}-${idx}`}
                   type="button"
-                  className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg text-left"
+                  className="relative h-[320px] w-[190px] flex-none overflow-hidden rounded-lg text-left md:h-[400px] md:w-[234px]"
                   onClick={() => {
                     setOpenProjectIndex(idx);
                     setOpenImageIndex(0);
@@ -73,7 +73,7 @@ export function ProjectsCarousel({
               {projects.map((p, idx) => (
                 <div
                   key={`${p.cover}-${idx}-dup`}
-                  className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
+                  className="relative h-[320px] w-[190px] flex-none overflow-hidden rounded-lg md:h-[400px] md:w-[234px]"
                 >
                   <Image src={p.cover} alt={p.title} fill className="object-cover" />
                   <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />

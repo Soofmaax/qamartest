@@ -272,7 +272,7 @@ export default function Home() {
                     <h3 className="font-serif text-[36px] font-semibold text-white">
                       {s.title}
                     </h3>
-                    <p className="w-[38%] text-[20px] text-[#ededed]">
+                    <p className="w-full text-[20px] text-[#ededed] md:w-[60%] lg:w-[38%]">
                       {s.description}
                     </p>
                     <Link
