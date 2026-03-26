@@ -257,6 +257,9 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
                 <p className="text-sm text-white/70">
                   {openImageIndex + 1}/{openItem.images.length}
                 </p>
+                <p className="text-sm text-white/50">
+                  Double tap / double clic pour zoomer · Pincer pour zoomer
+                </p>
               </div>
 
               <button
