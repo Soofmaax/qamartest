@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
@@ -16,18 +16,30 @@ export const metadata: Metadata = {
 const lastPrestations = [
   {
     title: "Ninon",
-    href: "/mariage/ninon/",
-    image: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+    images: [
+      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    ],
   },
   {
     title: "Sokona",
-    href: "/mariage/sokona/",
-    image: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    images: [
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+    ],
   },
   {
     title: "Mauricien",
-    href: "/mariage/mauricien/",
-    image: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    images: [
+      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+    ],
   },
 ];
 
@@ -176,21 +188,7 @@ export default function MariagePage() {
           </div>
 
           <div className="mt-10 w-full">
-            {lastPrestations.map((p) => (
-              <Link
-                key={p.title}
-                href={p.href}
-                className="group relative block h-[300px] w-full overflow-hidden md:h-[367px]"
-              >
-                <Image src={p.image} alt={p.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />
-                <div className="absolute inset-0 flex flex-col justify-center gap-[22px] site-pad-x">
-                  <h3 className="font-serif text-[40px] font-semibold text-white md:text-[64px]">
-                    {p.title}
-                  </h3>
-                </div>
-              </Link>
-            ))}
+            <ImageLightboxGallery items={lastPrestations} />
           </div>
         </section>
 
