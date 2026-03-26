@@ -1,8 +1,7 @@
-</old_ type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
-ImageLightboxGallery";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
