@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Arimo, Cormorant_SC } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/JsonLd";
@@ -68,12 +69,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA4_ID;
+
   return (
     <html lang="fr" dir="ltr">
       <head>
         <JsonLd id="jsonld-site" data={siteStructuredData} />
       </head>
       <body className={`${cormorant.variable} ${arimo.variable} antialiased`}>
+        {!isPreview && gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}', {
+                  anonymize_ip: true,
+                });
+              `}
+            </Script>
+          </>
+        ) : null}
+
         {children}
       </body>
     </html>
