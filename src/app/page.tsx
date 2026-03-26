@@ -126,10 +126,10 @@ export default function Home() {
 
           <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[34px] text-center">
             <div className="flex w-full flex-col items-center gap-[5px]">
-              <h1 className="font-serif text-[64px] leading-none text-white">
+              <h1 className="font-serif text-[42px] leading-none text-white sm:text-[54px] md:text-[64px]">
                 Directed by Qamar
               </h1>
-              <div className="mt-1 max-w-5xl text-[20px] leading-[23px] text-[#ededed]">
+              <div className="mt-1 max-w-5xl text-[18px] leading-[23px] text-[#ededed] md:text-[20px]">
                 <p>
                   Directed by Qamar est un studio de création visuelle basé à
                   Paris.
