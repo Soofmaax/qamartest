@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
@@ -65,6 +66,45 @@ const services = [
       "Des vidéos publicitaires stratégiques et créatives, conçues pour maximiser votre visibilité et booster vos conversions.",
     href: "/événementiel/",
     image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+  },
+];
+
+const projects = [
+  {
+    title: "Corporate",
+    cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+    images: [
+      "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+      "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+    ],
+  },
+  {
+    title: "Événementiel",
+    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    images: [
+      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+    ],
+  },
+  {
+    title: "Mariage",
+    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+    images: [
+      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    ],
+  },
+  {
+    title: "Publicté digitale",
+    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    images: [
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+      "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+    ],
   },
 ];
 
@@ -184,7 +224,9 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-              <p className="text-[20px] text-[#ededed]">+150 entreprises accompagnées</p>
+              <p className="text-[20px] text-[#ededed]">
+                +150 entreprises accompagnées
+              </p>
               <a
                 href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
                 target="_blank"
@@ -214,7 +256,10 @@ export default function Home() {
 
             <div className="w-full">
               {services.map((s) => (
-                <div key={s.title} className="relative h-[367px] w-full overflow-hidden">
+                <div
+                  key={s.title}
+                  className="relative h-[367px] w-full overflow-hidden"
+                >
                   <Image
                     src={s.image}
                     alt={s.title}
@@ -256,118 +301,8 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="relative mt-10 overflow-hidden">
-            <div
-              className="ticker"
-              style={{ ["--ticker-duration" as string]: "35s" }}
-            >
-              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[15%] bg-gradient-to-r from-black to-black/0" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[15%] bg-gradient-to-l from-black to-black/0" />
-
-              <div className="flex">
-                <div className="ticker-track pr-[36px]" style={{ gap: "36px" }}>
-                  {[
-                    {
-                      src: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-                      label: "Corporate",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-                      label: "Événementiel",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-                      label: "Mariage",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-                      label: "Publicté digitale",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-                      label: "Corporate",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-                      label: "Publicité digitale",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-                      label: "Corporate",
-                    },
-                  ].map((item, i) => (
-                    <div
-                      key={`${item.src}-${i}`}
-                      className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
-                    >
-                      <Image
-                        src={item.src}
-                        alt={item.label}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
-                      <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
-                        {item.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div
-                  className="ticker-track pr-[36px]"
-                  style={{ gap: "36px" }}
-                  aria-hidden="true"
-                >
-                  {[
-                    {
-                      src: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-                      label: "Corporate",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-                      label: "Événementiel",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-                      label: "Mariage",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-                      label: "Publicté digitale",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-                      label: "Corporate",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-                      label: "Publicité digitale",
-                    },
-                    {
-                      src: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-                      label: "Corporate",
-                    },
-                  ].map((item, i) => (
-                    <div
-                      key={`${item.src}-${i}-dup`}
-                      className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
-                    >
-                      <Image
-                        src={item.src}
-                        alt={item.label}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
-                      <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
-                        {item.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="mt-10">
+            <ProjectsCarousel projects={projects} />
           </div>
         </section>
 
