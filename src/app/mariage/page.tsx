@@ -14,32 +14,34 @@ export const metadata: Metadata = {
   alternates: { canonical: "/mariage/" },
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const lastPrestations = [
   {
     title: "Ninon",
-    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+    cover: "https://framerusercontent.com/images/aCW40boMagvmECJgfTGyeQNYAdk.jpg",
     images: [
+      "https://framerusercontent.com/images/aCW40boMagvmECJgfTGyeQNYAdk.jpg",
       "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
       "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
     ],
   },
   {
     title: "Sokona",
-    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    cover: "https://framerusercontent.com/images/CKNnTEwk1ePqVV3ppEpZJfaeY4.jpg",
     images: [
+      "https://framerusercontent.com/images/CKNnTEwk1ePqVV3ppEpZJfaeY4.jpg",
       "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
     ],
   },
   {
     title: "Mauricien",
-    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    cover: "https://framerusercontent.com/images/eLN6hbfMAa0S7m6HCAs4dE66c.jpg",
     images: [
-      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+      "https://framerusercontent.com/images/eLN6hbfMAa0S7m6HCAs4dE66c.jpg",
+      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
     ],
   },
 ];
@@ -130,31 +132,34 @@ export default function MariagePage() {
 
       <main className="mx-auto site-width">
         <section className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-center gap-3 text-center">
             <h1 className="font-serif text-5xl text-white md:text-6xl">
               Mariage
             </h1>
             <p className="text-[18px] text-[#ededed] md:text-[20px]">
               fiançailles - Mariage - Shooting
             </p>
-            <p className="text-[18px] text-[#ededed] md:text-[20px]">
+            <Link
+              href="/contact/"
+              className="mt-5 w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+            >
               reservations pour 2026 et 2027 ouvertes
-            </p>
+            </Link>
           </div>
         </section>
 
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
             <video
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-bottom"
               autoPlay
               muted
               loop
               playsInline
               preload="metadata"
-              poster="https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg"
+              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
             >
-              <source src="/videos/mariage.mp4" type="video/mp4" />
+              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/35 to-black" />
           </div>
