@@ -29,7 +29,7 @@ export default function PortraitsProfessionnelsPage() {
       structuredData={structuredData}
       title="Portraits professionnels"
       eyebrow="Corporate"
-      description="Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes."
+      description="Des portraits premium et cohérents pour dirigeants et équipes. Un rendu naturel, soigné et fidèle à votre image de marque — idéal pour votre site, LinkedIn, dossiers de presse et supports internes."
       heroImage={seo.image}
       gallery={[
         {

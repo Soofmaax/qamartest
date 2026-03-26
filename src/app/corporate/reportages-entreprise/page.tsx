@@ -29,7 +29,7 @@ export default function ReportagesEntreprisePage() {
       structuredData={structuredData}
       title="Reportages d’entreprise"
       eyebrow="Corporate"
-      description="Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes."
+      description="Montrez votre entreprise “en action” : équipes, locaux, savoir-faire, temps forts et événements internes. Un reportage authentique, esthétique et prêt à être utilisé sur votre site, vos réseaux et vos présentations."
       heroImage={seo.image}
       gallery={[
         {

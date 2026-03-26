@@ -29,7 +29,7 @@ export default function FilmsInstitutionnelsPage() {
       structuredData={structuredData}
       title="Films institutionnels"
       eyebrow="Corporate"
-      description="Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage.Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles."
+      description="Un film corporate clair et premium pour raconter votre entreprise : message, valeurs, équipes, produit/service. Conçu pour votre site, LinkedIn, salons, campagnes et communication interne."
       heroImage={seo.image}
       gallery={[
         {

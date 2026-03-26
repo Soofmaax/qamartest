@@ -29,7 +29,7 @@ export default function PresentationMarquePage() {
       structuredData={structuredData}
       title="Présentation de marque"
       eyebrow="Corporate"
-      description="Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage.Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles."
+      description="Présentez votre marque avec des contenus à forte valeur : direction artistique, storytelling, tournage et montage. Idéal pour vos campagnes, pages “À propos”, decks partenaires/investisseurs et prises de parole officielles."
       heroImage={seo.image}
       gallery={[
         {

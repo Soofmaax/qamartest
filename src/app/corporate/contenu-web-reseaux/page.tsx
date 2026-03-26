@@ -29,7 +29,7 @@ export default function ContenuWebReseauxPage() {
       structuredData={structuredData}
       title="Contenu pour site web & réseaux"
       eyebrow="Corporate"
-      description="Des productions régulières pour alimenter vos plateformes avec du contenu professionnel, dynamique et cohérent.Vous bénéficiez d’une stratégie visuelle complète, pensée pour renforcer votre présence digitale."
+      description="Produisez du contenu régulier, dynamique et cohérent : photos, vidéos, formats courts et déclinaisons. Objectif : alimenter votre site et vos réseaux avec une identité visuelle forte et constante."
       heroImage={seo.image}
       gallery={[
         {
