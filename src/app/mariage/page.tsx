@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/mariage/" },
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const lastPrestations = [
   {
     title: "Ninon",
@@ -26,20 +28,20 @@ const lastPrestations = [
   },
   {
     title: "Sokona",
-    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    cover: "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
     images: [
+      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
       "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
     ],
   },
   {
     title: "Mauricien",
-    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
     images: [
-      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
     ],
   },
 ];
@@ -154,7 +156,7 @@ export default function MariagePage() {
               preload="metadata"
               poster="https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg"
             >
-              <source src="/videos/mariage.mp4" type="video/mp4" />
+              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/35 to-black" />
           </div>
