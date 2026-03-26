@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/mariage/" },
 };
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const lastPrestations = [
   {
     title: "Ninon",
@@ -148,13 +150,17 @@ export default function MariagePage() {
 
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
-            <Image
-              src="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
-              alt="Mariage"
-              fill
-              priority
-              className="object-cover object-bottom"
-            />
+            <video
+              className="absolute inset-0 h-full w-full object-cover object-bottom"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+            >
+              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
+            </video>
             <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/35 to-black" />
           </div>
         </section>
