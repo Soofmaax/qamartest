@@ -43,6 +43,7 @@ export default function MariagePage() {
         },
       ]}
       heroImage="https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg"
+      heroVideoSrc="/videos/mariage.mp4"
       gallery={[
         "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
         "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
