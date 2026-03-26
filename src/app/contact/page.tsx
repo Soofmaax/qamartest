@@ -100,6 +100,9 @@ export default function ContactPage({
                 <button
                   type={isPreview ? "button" : "submit"}
                   disabled={isPreview}
+                  data-ga-event="contact_submit"
+                  data-ga-category="Lead"
+                  data-ga-label="contact_form"
                   className="w-full rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
                 >
                   Envoyer

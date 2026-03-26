@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Arimo, Cormorant_SC } from "next/font/google";
 import "./globals.css";
+import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 import { JsonLd } from "@/components/JsonLd";
 import {
   buildGraph,
@@ -93,6 +94,7 @@ export default function RootLayout({
                 });
               `}
             </Script>
+            <AnalyticsEvents />
           </>
         ) : null}
 

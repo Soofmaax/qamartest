@@ -106,6 +106,9 @@ export function ServicePage({
               <div className="pt-2">
                 <Link
                   href="/contact/"
+                  data-ga-event="cta_click"
+                  data-ga-category="Lead"
+                  data-ga-label={`${path}:hero_contact`}
                   className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
                 >
                   Me contacter
@@ -138,6 +141,9 @@ export function ServicePage({
             <div className="mt-10">
               <Link
                 href="/contact/"
+                data-ga-event="cta_click"
+                data-ga-category="Lead"
+                data-ga-label={`${path}:devis`}
                 className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
               >
                 Demander un devis

@@ -182,6 +182,9 @@ export default function MariagePage() {
                 </p>
                 <Link
                   href="/contact/"
+                  data-ga-event="cta_click"
+                  data-ga-category="Lead"
+                  data-ga-label="/mariage/:hero"
                   className="mt-5 w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                 >
                   reservations pour 2026 et 2027 ouvertes
@@ -257,6 +260,9 @@ export default function MariagePage() {
 
                 <Link
                   href={f.href}
+                  data-ga-event="cta_click"
+                  data-ga-category="Lead"
+                  data-ga-label={`/mariage/:formule:${f.title}`}
                   className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                 >
                   {f.cta}
@@ -273,6 +279,9 @@ export default function MariagePage() {
             </h2>
             <Link
               href="/portfolio/"
+              data-ga-event="cta_click"
+              data-ga-category="Navigation"
+              data-ga-label="/mariage/:portfolio"
               className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
               Découvrir mon travail
@@ -329,6 +338,9 @@ export default function MariagePage() {
             </p>
             <Link
               href="/contact/"
+              data-ga-event="cta_click"
+              data-ga-category="Lead"
+              data-ga-label="/mariage/:bottom"
               className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
               Vérifier mes disponibiltés
