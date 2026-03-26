@@ -31,15 +31,9 @@ npm run seo:qa
 
 Production (directedbyqamar.com) should build without this env var.
 
-## TODO (production domain)
-
-- `/corporate/`: replace the hero image with a background **video** (same approach as `/mariage/`).
-  - Do not commit large video files to GitHub.
-  - Host the `.mp4` on a CDN / Vercel Blob / Cloudinary and reference it from the page.
-
 ## TODO (corporate service detail pages)
 
-When clicking "En savoir plus" on `/corporate/`, each service should land on a dedicated SEO page with richer content:
+When clicking "En savoir plus" on `/corporate/`, each service should land on a dedicated SEO page with richer content (e.g. Portraits professionnels, Reportages d’entreprise):
 
 - Add a short section explaining the process (préparation, shooting, livraison, formats, délais).
 - Add/replace the gallery images (you will provide the final images).
