@@ -131,23 +131,6 @@ export default function MariagePage() {
       <SiteHeader />
 
       <main className="mx-auto site-width">
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col items-center gap-3 text-center">
-            <h1 className="font-serif text-5xl text-white md:text-6xl">
-              Mariage
-            </h1>
-            <p className="text-[18px] text-[#ededed] md:text-[20px]">
-              fiançailles - Mariage - Shooting
-            </p>
-            <Link
-              href="/contact/"
-              className="mt-5 w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
-            >
-              reservations pour 2026 et 2027 ouvertes
-            </Link>
-          </div>
-        </section>
-
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
             <video
@@ -161,7 +144,24 @@ export default function MariagePage() {
             >
               <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/35 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/45 to-black" />
+
+            <div className="relative z-[1] flex h-full w-full items-center justify-center">
+              <div className="flex flex-col items-center gap-3 px-4 text-center">
+                <h1 className="font-serif text-5xl text-white md:text-6xl">
+                  Mariage
+                </h1>
+                <p className="text-[18px] text-[#ededed] md:text-[20px]">
+                  fiançailles - Mariage - Shooting
+                </p>
+                <Link
+                  href="/contact/"
+                  className="mt-5 w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur md:text-[20px]"
+                >
+                  reservations pour 2026 et 2027 ouvertes
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
