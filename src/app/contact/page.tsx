@@ -29,6 +29,7 @@ export default function ContactPage({
   searchParams?: Record<string, string | string[] | undefined>;
 }) {
   const sent = searchParams?.sent === "1";
+  const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
 
   return (
     <div className="min-h-screen bg-black">
@@ -44,13 +45,17 @@ export default function ContactPage({
           </p>
 
           <div className="mt-10 rounded-lg border border-white/10 bg-black/40 p-6 md:p-8">
-            {sent ? (
+            {isPreview ? (
+              <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
+                Formulaire email disponible sur le site final (Vercel + Resend).
+              </p>
+            ) : sent ? (
               <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
                 Message envoyé. Je reviens vers vous rapidement.
               </p>
             ) : null}
 
-            <form action="/api/contact" method="POST" className="space-y-5">
+            <form action={isPreview ? "#" : "/api/contact"} method="POST" className="space-y-5">
 
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="space-y-2">
@@ -93,8 +98,9 @@ export default function ContactPage({
 
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <button
-                  type="submit"
-                  className="w-full rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5 md:w-auto"
+                  type={isPreview ? "button" : "submit"}
+                  disabled={isPreview}
+                  className="w-full rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
                 >
                   Envoyer
                 </button>
