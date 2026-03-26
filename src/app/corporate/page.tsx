@@ -26,8 +26,6 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
 });
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
 const services = [
   {
     title: "Portraits professionnels",
@@ -164,28 +162,7 @@ export default function CorporatePage() {
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative hero-height w-full">
-            <video
-              className="absolute inset-0 hidden h-full w-full object-cover md:block"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster={seo.image}
-            >
-              <source src={`${basePath}/videos/corporate.mp4`} type="video/mp4" />
-            </video>
-
-            <video
-              className="absolute inset-0 h-full w-full object-cover md:hidden"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              poster={seo.image}
-            >
-              <source src={`${basePath}/videos/corporate.mp4`} type="video/mp4" />
-            </video>
+            <Image src={seo.image} alt="Corporate" fill priority className="object-cover" />
 
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black" />
 
