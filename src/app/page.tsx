@@ -256,48 +256,118 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-10 flex gap-9 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {[
-              {
-                src: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-                label: "Corporate",
-              },
-              {
-                src: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-                label: "Événementiel",
-              },
-              {
-                src: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-                label: "Mariage",
-              },
-              {
-                src: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-                label: "Publicté digitale",
-              },
-              {
-                src: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-                label: "Corporate",
-              },
-              {
-                src: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-                label: "Publicité digitale",
-              },
-              {
-                src: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-                label: "Corporate",
-              },
-            ].map((item, i) => (
-              <div
-                key={`${item.src}-${i}`}
-                className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
-              >
-                <Image src={item.src} alt={item.label} fill className="object-cover" />
-                <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
-                <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
-                  {item.label}
+          <div className="relative mt-10 overflow-hidden">
+            <div
+              className="ticker"
+              style={{ ["--ticker-duration" as string]: "35s" }}
+            >
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[15%] bg-gradient-to-r from-black to-black/0" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[15%] bg-gradient-to-l from-black to-black/0" />
+
+              <div className="flex">
+                <div className="ticker-track pr-[36px]" style={{ gap: "36px" }}>
+                  {[
+                    {
+                      src: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+                      label: "Corporate",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+                      label: "Événementiel",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+                      label: "Mariage",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+                      label: "Publicté digitale",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+                      label: "Corporate",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+                      label: "Publicité digitale",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+                      label: "Corporate",
+                    },
+                  ].map((item, i) => (
+                    <div
+                      key={`${item.src}-${i}`}
+                      className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.label}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
+                      <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
+                        {item.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div
+                  className="ticker-track pr-[36px]"
+                  style={{ gap: "36px" }}
+                  aria-hidden="true"
+                >
+                  {[
+                    {
+                      src: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+                      label: "Corporate",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+                      label: "Événementiel",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+                      label: "Mariage",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+                      label: "Publicté digitale",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+                      label: "Corporate",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+                      label: "Publicité digitale",
+                    },
+                    {
+                      src: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+                      label: "Corporate",
+                    },
+                  ].map((item, i) => (
+                    <div
+                      key={`${item.src}-${i}-dup`}
+                      className="relative h-[400px] w-[234px] flex-none overflow-hidden rounded-lg"
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.label}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
+                      <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
+                        {item.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </section>
 

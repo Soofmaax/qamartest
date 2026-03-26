@@ -83,7 +83,7 @@ body {
   flex-wrap: nowrap;
   width: max-content;
   gap: 43px;
-  animation: ticker-left 25s linear infinite;
+  animation: ticker-left var(--ticker-duration, 25s) linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
