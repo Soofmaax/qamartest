@@ -26,6 +26,8 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const services = [
   {
     title: "Portraits professionnels",
@@ -33,6 +35,7 @@ const services = [
       "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
     image:
       "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
+    href: "/corporate/portraits-professionnels/",
   },
   {
     title: "Reportages d’entreprise",
@@ -40,6 +43,7 @@ const services = [
       "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
     image:
       "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
+    href: "/corporate/reportages-entreprise/",
   },
   {
     title: "Présentation de marque",
@@ -47,6 +51,7 @@ const services = [
       "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage.Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
     image:
       "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
+    href: "/corporate/presentation-marque/",
   },
   {
     title: "Films institutionnels",
@@ -54,6 +59,7 @@ const services = [
       "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage.Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
     image:
       "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
+    href: "/corporate/films-institutionnels/",
   },
   {
     title: "Contenu pour site web & réseaux",
@@ -61,6 +67,7 @@ const services = [
       "Des productions régulières pour alimenter vos plateformes avec du contenu professionnel, dynamique et cohérent.Vous bénéficiez d’une stratégie visuelle complète, pensée pour renforcer votre présence digitale.",
     image:
       "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
+    href: "/corporate/contenu-web-reseaux/",
   },
 ];
 
@@ -157,7 +164,29 @@ export default function CorporatePage() {
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative hero-height w-full">
-            <Image src={seo.image} alt="Corporate" fill priority className="object-cover" />
+            <video
+              className="absolute inset-0 hidden h-full w-full object-cover md:block"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={seo.image}
+            >
+              <source src={`${basePath}/videos/corporate.mp4`} type="video/mp4" />
+            </video>
+
+            <video
+              className="absolute inset-0 h-full w-full object-cover md:hidden"
+              controls
+              muted
+              playsInline
+              preload="metadata"
+              poster={seo.image}
+            >
+              <source src={`${basePath}/videos/corporate.mp4`} type="video/mp4" />
+            </video>
+
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">
@@ -217,9 +246,9 @@ export default function CorporatePage() {
                   </p>
 
                   <Link
-                    href="/contact/"
+                    href={s.href}
                     data-ga-event="cta_click"
-                    data-ga-category="Lead"
+                    data-ga-category="Navigation"
                     data-ga-label={`/corporate/:service:${s.title}`}
                     className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                   >

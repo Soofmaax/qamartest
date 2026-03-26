@@ -11,6 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact/",
     "/mariage/",
     "/corporate/",
+    "/corporate/portraits-professionnels/",
+    "/corporate/reportages-entreprise/",
+    "/corporate/presentation-marque/",
+    "/corporate/films-institutionnels/",
+    "/corporate/contenu-web-reseaux/",
     "/événementiel/",
     "/publicité-digitale/",
   ];
