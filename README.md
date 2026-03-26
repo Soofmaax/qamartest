@@ -30,3 +30,9 @@ npm run seo:qa
 `NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments (e.g. GitHub Pages).
 
 Production (directedbyqamar.com) should build without this env var.
+
+## TODO (production domain)
+
+- `/corporate/`: replace the hero image with a background **video** (same approach as `/mariage/`).
+  - Do not commit large video files to GitHub.
+  - Host the `.mp4` on a CDN / Vercel Blob / Cloudinary and reference it from the page.
