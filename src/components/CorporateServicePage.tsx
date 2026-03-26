@@ -69,10 +69,45 @@ export function CorporateServicePage({
           </p>
         </section>
 
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+          <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
+            Le process
+          </h2>
+
+          <div className="mt-6 max-w-4xl text-[18px] leading-relaxed text-[#ededed] md:text-[20px]">
+            <p>
+              Le process est simple et efficace : on prépare ensemble le shooting,
+              on produit des images/vidéos cohérentes avec votre marque, puis je
+              livre des fichiers prêts pour votre site et vos réseaux.
+            </p>
+
+            <ul className="mt-6 list-disc space-y-2 pl-5">
+              <li>
+                Préparation : brief, objectifs, moodboard, planning, repérage si
+                besoin
+              </li>
+              <li>
+                Production : direction artistique, prise de vue, prise de son si
+                nécessaire
+              </li>
+              <li>
+                Post-production : sélection, retouches/montage, déclinaisons des
+                formats
+              </li>
+              <li>
+                Livraison : HD + versions web, formats LinkedIn / Reels selon le
+                besoin
+              </li>
+            </ul>
+
+            <p className="mt-6">Délais typiques : 3 à 10 jours selon le projet.</p>
+          </div>
+        </section>
+
         <section className="w-full bg-black py-16 md:py-20">
           <div className="site-pad-x">
             <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
-              Galerie
+              Portfolio
             </h2>
           </div>
           <div className="mt-10 w-full">
