@@ -18,6 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/corporate/contenu-web-reseaux/",
     "/événementiel/",
     "/publicité-digitale/",
+    "/publicité-digitale/conception-brainstorming-marketing/",
+    "/publicité-digitale/creation-photo-video-premium/",
+    "/publicité-digitale/adaptation-formats-social-media/",
+    "/publicité-digitale/optimisation-conversions-branding/",
   ];
 
   return routes.map((route) => ({
