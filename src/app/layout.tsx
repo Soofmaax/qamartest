@@ -14,6 +14,8 @@ const arimo = Arimo({
   weight: ["400", "700"],
 });
 
+const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
+
 export const metadata: Metadata = {
   title: "Photographe & vidéaste professionnel | Directed by Qamar",
   description:
@@ -22,6 +24,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  robots: isPreview
+    ? { index: false, follow: false, nocache: true }
+    : { index: true, follow: true },
   openGraph: {
     type: "website",
     title: "Photographe & vidéaste professionnel | Directed by Qamar",
@@ -29,8 +34,21 @@ export const metadata: Metadata = {
       "Photographe et vidéaste professionnel pour projets corporate, mariages et contenus digitaux. Images fortes, storytelling et accompagnement sur mesure.",
     url: "https://www.directedbyqamar.com/",
     images: [
-      "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+      {
+        url: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+        width: 1200,
+        height: 630,
+        alt: "Directed by Qamar",
+      },
     ],
+    locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Photographe & vidéaste professionnel | Directed by Qamar",
+    description:
+      "Photographe et vidéaste professionnel pour projets corporate, mariages et contenus digitaux. Images fortes, storytelling et accompagnement sur mesure.",
+    images: ["https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png"],
   },
 };
 
