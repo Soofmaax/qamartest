@@ -23,7 +23,13 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
 });
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const sent = searchParams?.sent === "1";
+
   return (
     <div className="min-h-screen bg-black">
       <JsonLd id="jsonld-page" data={structuredData} />
@@ -38,19 +44,13 @@ export default function ContactPage() {
           </p>
 
           <div className="mt-10 rounded-lg border border-white/10 bg-black/40 p-6 md:p-8">
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              className="space-y-5"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <p className="hidden">
-                <label>
-                  Don’t fill this out if you’re human: <input name="bot-field" />
-                </label>
+            {sent ? (
+              <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
+                Message envoyé. Je reviens vers vous rapidement.
               </p>
+            ) : null}
+
+            <form action="/api/contact" method="POST" className="space-y-5">
 
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="space-y-2">
