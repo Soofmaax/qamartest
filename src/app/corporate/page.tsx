@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import { ServicePage } from "@/components/ServicePage";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const seo = {
   title: "Photographe & vidéaste corporate | Directed by Qamar",
   description:
     "Production photo et vidéo corporate à Paris : portraits, équipes, events, interviews, contenus marque. Direction artistique et livraison prête pour le web.",
-  alternates: { canonical: "/corporate/" },
+  path: "/corporate/",
+  image: "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
 };
+
+export const metadata: Metadata = createPageMetadata(seo);
 
 export default function CorporatePage() {
   return (
     <ServicePage
+      path={seo.path}
+      seoTitle={seo.title}
+      seoDescription={seo.description}
       title="Corporate"
       description="Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure."
       introTitle="Production corporate pour marques & entreprises"
@@ -42,7 +49,7 @@ export default function CorporatePage() {
           a: "Photos en haute définition + versions web. Vidéos en 16:9, 1:1 et 9:16 selon besoin.",
         },
       ]}
-      heroImage="https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg"
+      heroImage={seo.image}
       gallery={[
         "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
         "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",

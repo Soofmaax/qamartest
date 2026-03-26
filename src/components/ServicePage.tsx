@@ -1,9 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import {
+  absoluteUrl,
+  buildFaqPage,
+  buildGraph,
+  buildService,
+  buildWebPage,
+} from "@/lib/structuredData";
 
 export function ServicePage({
+  path,
+  seoTitle,
+  seoDescription,
   title,
   description,
   heroImage,
@@ -14,6 +25,9 @@ export function ServicePage({
   deliverables,
   faq,
 }: {
+  path: string;
+  seoTitle?: string;
+  seoDescription?: string;
   title: string;
   description: string;
   heroImage: string;
@@ -24,8 +38,37 @@ export function ServicePage({
   deliverables: string[];
   faq: Array<{ q: string; a: string }>;
 }) {
+  const url = absoluteUrl(path);
+  const webpageId = `${url}#webpage`;
+  const serviceId = `${url}#service`;
+  const faqId = `${url}#faq`;
+
+  const structuredData = buildGraph([
+    {
+      ...buildWebPage({
+        path,
+        name: seoTitle ?? `${title} | Directed by Qamar`,
+        description: seoDescription ?? description,
+        imageUrl: heroImage,
+      }),
+      mainEntity: { "@id": serviceId },
+      hasPart: [{ "@id": faqId }],
+    },
+    {
+      ...buildService({ path, name: title, description }),
+      "@id": serviceId,
+      mainEntityOfPage: { "@id": webpageId },
+    },
+    {
+      ...buildFaqPage({ path, items: faq, aboutServiceId: serviceId }),
+      "@id": faqId,
+      mainEntityOfPage: { "@id": webpageId },
+    },
+  ]);
+
   return (
     <div className="min-h-screen bg-black">
+      <JsonLd id="jsonld-page" data={structuredData} />
       <SiteHeader />
 
       <main>

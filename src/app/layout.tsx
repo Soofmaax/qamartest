@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Arimo, Cormorant_SC } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/JsonLd";
+import {
+  buildGraph,
+  buildOrganizationLocalBusiness,
+  buildWebSite,
+} from "@/lib/structuredData";
 
 const cormorant = Cormorant_SC({
   variable: "--font-cormorant",
@@ -15,6 +21,11 @@ const arimo = Arimo({
 });
 
 const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
+
+const siteStructuredData = buildGraph([
+  buildOrganizationLocalBusiness(),
+  buildWebSite(),
+]);
 
 export const metadata: Metadata = {
   title: "Photographe & vidéaste professionnel | Directed by Qamar",
@@ -59,6 +70,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" dir="ltr">
+      <head>
+        <JsonLd id="jsonld-site" data={siteStructuredData} />
+      </head>
       <body className={`${cormorant.variable} ${arimo.variable} antialiased`}>
         {children}
       </body>

@@ -1,11 +1,28 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { createPageMetadata } from "@/lib/seo";
+import { buildWebPageGraph } from "@/lib/structuredData";
 
-export const metadata = {
+const seo = {
   title: "Services | Directed by Qamar",
+  description:
+    "Découvrez nos prestations photo & vidéo : mariage, corporate, événementiel et publicité digitale.",
+  path: "/services/",
+  image: "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
 };
+
+export const metadata: Metadata = createPageMetadata(seo);
+
+const structuredData = buildWebPageGraph({
+  path: seo.path,
+  name: seo.title,
+  description: seo.description,
+  imageUrl: seo.image,
+});
 
 const services = [
   {
@@ -43,6 +60,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-black">
+      <JsonLd id="jsonld-page" data={structuredData} />
       <SiteHeader />
 
       <main className="mx-auto site-width">

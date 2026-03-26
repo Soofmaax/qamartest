@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import { ServicePage } from "@/components/ServicePage";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const seo = {
   title: "Publicité digitale (photo & vidéo) | Directed by Qamar",
   description:
     "Contenus publicitaires photo/vidéo pour campagnes social ads : formats courts, storytelling, hooks, montage, déclinaisons 9:16, 1:1 et 16:9.",
-  alternates: { canonical: "/publicité-digitale/" },
+  path: "/publicité-digitale/",
+  image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
 };
+
+export const metadata: Metadata = createPageMetadata(seo);
 
 export default function PubliciteDigitalePage() {
   return (
     <ServicePage
+      path={seo.path}
+      seoTitle={seo.title}
+      seoDescription={seo.description}
       title="Publicité digitale"
       description="Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque."
       introTitle="Contenus performants pour vos campagnes"

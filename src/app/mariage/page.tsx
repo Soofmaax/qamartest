@@ -3,17 +3,30 @@ import Image from "next/image";
 
 import Link from "next/link";
 import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
+import { JsonLd } from "@/components/JsonLd";
+import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { Testimonials } from "@/components/Testimonials";
+import { createPageMetadata } from "@/lib/seo";
+import { buildWebPageGraph } from "@/lib/structuredData";
 
-export const metadata: Metadata = {
+const seo = {
   title: "Photographe & vidéaste de mariage | Directed by Qamar",
   description:
     "Vidéaste et photographe de mariage à Paris. Une approche cinématique et élégante pour créer des souvenirs intemporels.",
-  alternates: { canonical: "/mariage/" },
+  path: "/mariage/",
+  image: "https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg",
 };
+
+export const metadata: Metadata = createPageMetadata(seo);
+
+const structuredData = buildWebPageGraph({
+  path: seo.path,
+  name: seo.title,
+  description: seo.description,
+  imageUrl: seo.image,
+});
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -129,6 +142,7 @@ const projects = [
 export default function MariagePage() {
   return (
     <div className="min-h-screen bg-black">
+      <JsonLd id="jsonld-page" data={structuredData} />
       <SiteHeader />
 
       <main className="mx-auto site-width">
