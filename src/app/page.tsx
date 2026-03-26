@@ -144,20 +144,20 @@ export default function Home() {
 
             <Link
               href="/portfolio/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
           </div>
         </section>
 
-        <section className="w-full bg-black py-20 site-pad-x">
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex w-full flex-col items-start gap-5 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
-              <h2 className="font-serif text-[48px] font-semibold text-white">
+              <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
                 Nos références
               </h2>
-              <p className="text-[20px] text-[#ededed]">
+              <p className="text-[18px] text-[#ededed] md:text-[20px]">
                 Des collaborations qui parlent d’elles-mêmes.
               </p>
             </div>
@@ -205,51 +205,53 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-20 site-pad-x">
-          <div className="flex flex-wrap items-center justify-center gap-[35px]">
-            <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
-              <Image
-                src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
-                alt="Avis"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <div className="flex flex-col items-start gap-2">
-              <div className="flex items-center gap-1 text-white">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} aria-hidden>
-                    ★
-                  </span>
-                ))}
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="flex flex-col items-start gap-8 md:items-center">
+            <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
+              <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
+                <Image
+                  src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
+                  alt="Avis"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <p className="text-[20px] text-[#ededed]">
-                +150 entreprises accompagnées
-              </p>
-              <a
-                href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[20px] text-[#ededed] underline"
-              >
-                +16 avis Google
-              </a>
+
+              <div className="flex flex-col items-start gap-2">
+                <div className="flex items-center gap-1 text-white">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span key={i} aria-hidden>
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[18px] text-[#ededed] md:text-[20px]">
+                  +150 entreprises accompagnées
+                </p>
+                <a
+                  href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[18px] text-[#ededed] underline md:text-[20px]"
+                >
+                  +16 avis Google
+                </a>
+              </div>
             </div>
 
-            <div className="w-full pt-6">
+            <div className="w-full pt-2 md:pt-0">
               <Testimonials />
             </div>
           </div>
         </section>
 
-        <section id="services" className="w-full bg-black py-20">
+        <section id="services" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-10">
             <div className="text-center site-pad-x">
-              <h2 className="font-serif text-[48px] font-semibold text-white">
+              <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
                 Nos Prestations
               </h2>
-              <p className="mt-4 text-[20px] text-[#ededed]">
+              <p className="mt-4 text-[18px] text-[#ededed] md:text-[20px]">
                 Découvrez notre gamme de prestations.
               </p>
             </div>
@@ -258,7 +260,7 @@ export default function Home() {
               {services.map((s) => (
                 <div
                   key={s.title}
-                  className="relative h-[367px] w-full overflow-hidden"
+                  className="relative h-[300px] w-full overflow-hidden md:h-[367px]"
                 >
                   <Image
                     src={s.image}
@@ -269,15 +271,15 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />
 
                   <div className="absolute inset-0 flex flex-col justify-center gap-[22px] site-pad-x">
-                    <h3 className="font-serif text-[36px] font-semibold text-white">
+                    <h3 className="font-serif text-[28px] font-semibold text-white md:text-[36px]">
                       {s.title}
                     </h3>
-                    <p className="w-full text-[20px] text-[#ededed] md:w-[60%] lg:w-[38%]">
+                    <p className="w-full text-[18px] text-[#ededed] md:w-[60%] md:text-[20px] lg:w-[38%]">
                       {s.description}
                     </p>
                     <Link
                       href={s.href}
-                      className="w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+                      className="w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
                     >
                       Découvrir
                     </Link>
@@ -288,14 +290,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-20 site-pad-x">
-          <div className="flex items-center justify-between">
-            <h2 className="font-serif text-[48px] font-semibold text-white">
+        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
               Mon portfolio
             </h2>
             <Link
               href="/portfolio/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
@@ -306,14 +308,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-20">
-          <div className="flex flex-col items-center gap-[34px] text-center site-pad-x">
-            <h2 className="font-serif text-[64px] leading-none text-white">
+        <section className="w-full bg-black py-16 md:py-20">
+          <div className="flex flex-col items-center gap-[26px] text-center site-pad-x md:gap-[34px]">
+            <h2 className="font-serif text-[40px] leading-none text-white md:text-[64px]">
               Prêt à donner une nouvelle dimension à vos contenus ?
             </h2>
             <Link
               href="/contact/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Me contacter
             </Link>
