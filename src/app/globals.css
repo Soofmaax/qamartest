@@ -62,3 +62,32 @@ body {
 .hero-height {
   height: 768px;
 }
+
+/* --- ticker (references) --- */
+@keyframes ticker-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.ticker {
+  position: relative;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 43px;
+  animation: ticker-left 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}

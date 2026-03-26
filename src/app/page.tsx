@@ -122,19 +122,45 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="relative w-full overflow-hidden md:w-[55%]">
-              <div className="flex items-center gap-[43px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {references.map((ref) => (
-                  <div
-                    key={ref.src}
-                    className="relative h-[35px] w-[200px] flex-none"
-                  >
-                    <Image src={ref.src} alt={ref.alt} fill className="object-contain" />
+            <div className="relative w-full md:w-[55%]">
+              <div className="ticker h-[91px]">
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[23%] bg-gradient-to-r from-black to-black/0" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[23%] bg-gradient-to-l from-black to-black/0" />
+
+                <div className="flex h-full items-center">
+                  <div className="ticker-track pr-[43px]">
+                    {references.map((ref) => (
+                      <div
+                        key={ref.src}
+                        className="relative h-[35px] w-[200px] flex-none"
+                      >
+                        <Image
+                          src={ref.src}
+                          alt={ref.alt}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+
+                  <div className="ticker-track pr-[43px]" aria-hidden="true">
+                    {references.map((ref) => (
+                      <div
+                        key={`${ref.src}-dup`}
+                        className="relative h-[35px] w-[200px] flex-none"
+                      >
+                        <Image
+                          src={ref.src}
+                          alt={ref.alt}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-[23%] bg-gradient-to-r from-black to-black/0" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[23%] bg-gradient-to-l from-black to-black/0" />
             </div>
           </div>
         </section>
