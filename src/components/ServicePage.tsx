@@ -7,6 +7,7 @@ export function ServicePage({
   title,
   description,
   heroImage,
+  heroVideoSrc,
   gallery,
   introTitle,
   introParagraphs,
@@ -16,6 +17,7 @@ export function ServicePage({
   title: string;
   description: string;
   heroImage: string;
+  heroVideoSrc?: string;
   gallery: string[];
   introTitle: string;
   introParagraphs: string[];
@@ -29,7 +31,27 @@ export function ServicePage({
       <main>
         <section className="relative overflow-hidden px-4 py-20 md:px-8">
           <div className="relative mx-auto min-h-[420px] w-full max-w-6xl overflow-hidden rounded-lg">
-            <Image src={heroImage} alt={title} fill priority className="object-cover" />
+            {heroVideoSrc ? (
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={heroImage}
+              >
+                <source src={heroVideoSrc} type="video/mp4" />
+              </video>
+            ) : (
+              <Image
+                src={heroImage}
+                alt={title}
+                fill
+                priority
+                className="object-cover"
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black" />
             <div className="absolute inset-0 flex flex-col justify-end gap-4 p-6 md:p-10">
               <h1 className="font-serif text-5xl leading-[1] text-white md:text-6xl">
