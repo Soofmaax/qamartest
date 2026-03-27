@@ -23,12 +23,15 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
 });
 
-export default function ContactPage({
+export default async function ContactPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const sent = searchParams?.sent === "1";
+  const resolvedSearchParams = await searchParams;
+  const sentParam = resolvedSearchParams?.sent;
+  const sentValue = Array.isArray(sentParam) ? sentParam[0] : sentParam;
+  const sent = sentValue === "1";
   const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
 
   return (
