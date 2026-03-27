@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -250,7 +251,10 @@ export default function CorporatePage() {
 
             <div className="relative">
               <div className="ticker">
-                <div className="ticker-track" style={{ "--ticker-duration": "25s" } as any}>
+                <div
+                  className="ticker-track"
+                  style={{ "--ticker-duration": "25s" } as CSSProperties}
+                >
                   {referenceLogos.map((logo) => (
                     <div
                       key={logo.src}
@@ -266,7 +270,11 @@ export default function CorporatePage() {
                     </div>
                   ))}
                 </div>
-                <div className="ticker-track" aria-hidden style={{ "--ticker-duration": "25s" } as any}>
+                <div
+                  className="ticker-track"
+                  aria-hidden
+                  style={{ "--ticker-duration": "25s" } as CSSProperties}
+                >
                   {referenceLogos.map((logo) => (
                     <div
                       key={`${logo.src}-dup`}

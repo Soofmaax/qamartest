@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -188,7 +189,7 @@ export default function PubliciteDigitalePage() {
               Votre communication mérite des contenus publicitaires qui attirent,
               engagent et transforment. Chez Directed by Qamar, chaque production
               est conçue pour être performante et impactante, tout en renforçant
-              l'identité de votre marque.
+              l’identité de votre marque.
             </p>
           </div>
         </section>
@@ -238,7 +239,10 @@ export default function PubliciteDigitalePage() {
 
             <div className="relative">
               <div className="ticker">
-                <div className="ticker-track" style={{ "--ticker-duration": "25s" } as any}>
+                <div
+                  className="ticker-track"
+                  style={{ "--ticker-duration": "25s" } as CSSProperties}
+                >
                   {referenceLogos.map((logo) => (
                     <div
                       key={logo.src}
@@ -254,7 +258,11 @@ export default function PubliciteDigitalePage() {
                     </div>
                   ))}
                 </div>
-                <div className="ticker-track" aria-hidden style={{ "--ticker-duration": "25s" } as any}>
+                <div
+                  className="ticker-track"
+                  aria-hidden
+                  style={{ "--ticker-duration": "25s" } as CSSProperties}
+                >
                   {referenceLogos.map((logo) => (
                     <div
                       key={`${logo.src}-dup`}

@@ -33,8 +33,10 @@ export function AnalyticsEvents() {
       });
     };
 
-    document.addEventListener("click", onClick, { capture: true });
-    return () => document.removeEventListener("click", onClick, { capture: true } as any);
+    const opts: AddEventListenerOptions = { capture: true };
+
+    document.addEventListener("click", onClick, opts);
+    return () => document.removeEventListener("click", onClick, opts);
   }, []);
 
   return null;
