@@ -75,7 +75,6 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
 
   useEffect(() => {
     resetTransform();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openItemIndex, openImageIndex]);
 
   useEffect(() => {
