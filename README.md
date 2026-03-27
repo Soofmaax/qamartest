@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Directed by Qamar — static site (Next.js export)
 
-## Getting Started
+This repo contains a static-exported Next.js site (App Router) for **Directed by Qamar**.
 
-First, run the development server:
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production build (static export)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project uses `output: "export"`, so the build outputs a static site into `./out`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## SEO QA (optional)
 
-To learn more about Next.js, take a look at the following resources:
+After building, you can run a small sanity check on the exported HTML:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run seo:qa
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Preview vs production indexing
 
-## Deploy on Vercel
+`NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments (e.g. GitHub Pages).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Production (directedbyqamar.com) should build without this env var.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## TODO (corporate service detail pages)
+
+When clicking "En savoir plus" on `/corporate/`, each service should land on a dedicated SEO page with richer content (Portraits professionnels, Reportages d’entreprise, Présentation de marque, Films institutionnels, Contenu pour site web & réseaux):
+
+- Add a short section explaining the process (préparation, shooting, livraison, formats, délais).
+- Add/replace the gallery images (you will provide the final images).
+
+Pages:
+- `/corporate/portraits-professionnels/`
+- `/corporate/reportages-entreprise/`
+- `/corporate/presentation-marque/`
+- `/corporate/films-institutionnels/`
+- `/corporate/contenu-web-reseaux/`

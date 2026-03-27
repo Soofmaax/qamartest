@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import { ServicePage } from "@/components/ServicePage";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const seo = {
   title: "Photographe & vidéaste événementiel | Directed by Qamar",
   description:
     "Couverture photo/vidéo événementiel à Paris : conférences, lancements, soirées, festivals. Captation, montage, contenus live et recap.",
-  alternates: { canonical: "/événementiel/" },
+  path: "/événementiel/",
+  image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
 };
+
+export const metadata: Metadata = createPageMetadata(seo);
 
 export default function EvenementielPage() {
   return (
     <ServicePage
+      path={seo.path}
+      seoTitle={seo.title}
+      seoDescription={seo.description}
       title="Événementiel"
       description="Des contenus photo/vidéo pensés pour capturer l’énergie d’un événement et valoriser votre marque."
       introTitle="Couverture photo & vidéo événementielle"

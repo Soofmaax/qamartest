@@ -1,9 +1,30 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
+import { createPageMetadata } from "@/lib/seo";
+import { buildWebPageGraph } from "@/lib/structuredData";
+
+const seo = {
+  title: "Photographe & vidéaste professionnel | Directed by Qamar",
+  description:
+    "Directed by Qamar est un studio de création visuelle basé à Paris. Photo & vidéo corporate, mariage, événementiel et contenus digitaux.",
+  path: "/",
+  image: "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+};
+
+export const metadata: Metadata = createPageMetadata(seo);
+
+const structuredData = buildWebPageGraph({
+  path: seo.path,
+  name: seo.title,
+  description: seo.description,
+  imageUrl: seo.image,
+});
 
 const references = [
   {
@@ -111,6 +132,7 @@ const projects = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
+      <JsonLd id="jsonld-page" data={structuredData} />
       <SiteHeader />
 
       <main className="mx-auto site-width">
@@ -219,8 +241,8 @@ export default function Home() {
 
               <div className="flex flex-col items-start gap-2">
                 <div className="flex items-center gap-1 text-white">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} aria-hidden>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span key={star} aria-hidden>
                       ★
                     </span>
                   ))}
