@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CorporateServicePage } from "@/components/CorporateServicePage";
+import { DigitalAdsServicePage } from "@/components/DigitalAdsServicePage";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -10,11 +10,11 @@ import {
 } from "@/lib/structuredData";
 
 const seo = {
-  title: "Contenu pour site web & réseaux | Corporate | Directed by Qamar",
+  title: "Création photo & vidéo premium | Publicité digitale | Directed by Qamar",
   description:
-    "Contenu régulier pour site web & réseaux : formats courts, photos, vidéos, déclinaisons. Une stratégie visuelle cohérente pour votre présence digitale.",
-  path: "/corporate/contenu-web-reseaux/",
-  image: "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
+    "Production photo et vidéo premium pour la publicité : direction artistique, cadrage, esthétique moderne, mise en valeur produit/service.",
+  path: "/publicite-digitale/creation-photo-video-premium/",
+  image: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -28,8 +28,8 @@ const structuredData = buildGraph([
     path: seo.path,
     items: [
       { name: "Accueil", path: "/" },
-      { name: "Corporate", path: "/corporate/" },
-      { name: "Contenu pour site web & réseaux", path: seo.path },
+      { name: "Publicité digitale", path: "/publicite-digitale/" },
+      { name: "Création photo & vidéo premium", path: seo.path },
     ],
   }),
   {
@@ -44,7 +44,7 @@ const structuredData = buildGraph([
   {
     ...buildService({
       path: seo.path,
-      name: "Contenu pour site web & réseaux",
+      name: "Création photo & vidéo premium",
       description: seo.description,
     }),
     "@id": serviceId,
@@ -52,24 +52,24 @@ const structuredData = buildGraph([
   },
 ]);
 
-export default function ContenuWebReseauxPage() {
+export default function CreationPhotoVideoPremiumPage() {
   return (
-    <CorporateServicePage
+    <DigitalAdsServicePage
       path={seo.path}
       seoTitle={seo.title}
       seoDescription={seo.description}
       structuredData={structuredData}
-      title="Contenu pour site web & réseaux"
-      eyebrow="Corporate"
-      description="Produisez du contenu régulier, dynamique et cohérent : photos, vidéos, formats courts et déclinaisons. Objectif : alimenter votre site et vos réseaux avec une identité visuelle forte et constante."
+      title="Création photo & vidéo premium"
+      eyebrow="Publicité digitale"
+      description="Des visuels soigneusement réalisés, avec une direction artistique claire, un cadrage précis, et une esthétique moderne qui valorise votre produit ou service. Notre objectif : produire des assets capables de rivaliser avec les codes des marques leaders."
       heroImage={seo.image}
       gallery={[
         {
           title: "Exemples",
-          cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+          cover: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
           images: [
-            "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
             "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+            "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
             "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
           ],
         },

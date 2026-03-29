@@ -9,11 +9,51 @@ const pages = [
   { route: "/portfolio/", file: path.join("portfolio", "index.html") },
   { route: "/contact/", file: path.join("contact", "index.html") },
   { route: "/mariage/", file: path.join("mariage", "index.html") },
+
   { route: "/corporate/", file: path.join("corporate", "index.html") },
-  { route: "/événementiel/", file: path.join("événementiel", "index.html") },
   {
-    route: "/publicité-digitale/",
-    file: path.join("publicité-digitale", "index.html"),
+    route: "/corporate/portraits-professionnels/",
+    file: path.join("corporate", "portraits-professionnels", "index.html"),
+  },
+  {
+    route: "/corporate/reportages-entreprise/",
+    file: path.join("corporate", "reportages-entreprise", "index.html"),
+  },
+  {
+    route: "/corporate/presentation-marque/",
+    file: path.join("corporate", "presentation-marque", "index.html"),
+  },
+  {
+    route: "/corporate/films-institutionnels/",
+    file: path.join("corporate", "films-institutionnels", "index.html"),
+  },
+  {
+    route: "/corporate/contenu-web-reseaux/",
+    file: path.join("corporate", "contenu-web-reseaux", "index.html"),
+  },
+
+  { route: "/evenementiel/", file: path.join("evenementiel", "index.html") },
+
+  { route: "/publicite-digitale/", file: path.join("publicite-digitale", "index.html") },
+  {
+    route: "/publicite-digitale/conception-brainstorming-marketing/",
+    file: path.join(
+      "publicite-digitale",
+      "conception-brainstorming-marketing",
+      "index.html"
+    ),
+  },
+  {
+    route: "/publicite-digitale/creation-photo-video-premium/",
+    file: path.join("publicite-digitale", "creation-photo-video-premium", "index.html"),
+  },
+  {
+    route: "/publicite-digitale/adaptation-formats-social-media/",
+    file: path.join("publicite-digitale", "adaptation-formats-social-media", "index.html"),
+  },
+  {
+    route: "/publicite-digitale/optimisation-conversions-branding/",
+    file: path.join("publicite-digitale", "optimisation-conversions-branding", "index.html"),
   },
 ];
 
@@ -130,8 +170,16 @@ async function checkPages({ preview }) {
   }
 }
 
+async function detectPreview() {
+  if (process.env.NEXT_PUBLIC_IS_PREVIEW === "1") return true;
+
+  // When running QA against a pre-built export, infer preview mode from robots.txt.
+  const txt = await readOutFile("robots.txt");
+  return /^\s*Disallow:\s*\/\s*$/im.test(txt);
+}
+
 async function main() {
-  const preview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
+  const preview = await detectPreview();
 
   await checkSitemap();
   await checkRobots({ preview });

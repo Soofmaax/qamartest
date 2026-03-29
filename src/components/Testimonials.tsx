@@ -29,7 +29,7 @@ export function Testimonials() {
           setIndex((v) => (v - 1 + testimonials.length) % testimonials.length)
         }
       >
-        <span className="text-2xl leading-none">‹</span>
+        <span aria-hidden className="text-2xl leading-none">‹</span>
       </button>
 
       <p className="w-full text-center text-[20px] leading-[23px] text-[#ededed] md:w-[75%]">
@@ -42,7 +42,9 @@ export function Testimonials() {
         className="grid h-[38px] w-[38px] place-items-center text-white"
         onClick={() => setIndex((v) => (v + 1) % testimonials.length)}
       >
-        <span className="text-2xl leading-none">›</span>
+        <span aria-hidden className="text-2xl leading-none">
+          ›
+        </span>
       </button>
     </div>
   );

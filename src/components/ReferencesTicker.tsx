@@ -44,7 +44,13 @@ export function ReferencesTicker({
                 key={ref.src}
                 className={`relative h-[35px] w-[200px] flex-none ${logoClassName ?? ""}`}
               >
-                <Image src={ref.src} alt={ref.alt} fill className="object-contain" />
+                <Image
+                  src={ref.src}
+                  alt={ref.alt}
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
               </div>
             ))}
           </div>
@@ -55,7 +61,7 @@ export function ReferencesTicker({
                 key={`${ref.src}-dup`}
                 className={`relative h-[35px] w-[200px] flex-none ${logoClassName ?? ""}`}
               >
-                <Image src={ref.src} alt={ref.alt} fill className="object-contain" />
+                <Image src={ref.src} alt={ref.alt} fill sizes="200px" className="object-contain" />
               </div>
             ))}
           </div>
@@ -87,7 +93,13 @@ export function ReferencesTicker({
                   className="h-auto max-h-[64px] w-auto object-contain"
                 />
               ) : (
-                <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
               )}
             </div>
           ))}
@@ -112,7 +124,7 @@ export function ReferencesTicker({
                   className="h-auto max-h-[64px] w-auto object-contain"
                 />
               ) : (
-                <Image src={logo.src} alt="" fill className="object-contain" />
+                <Image src={logo.src} alt="" fill sizes="200px" className="object-contain" />
               )}
             </div>
           ))}

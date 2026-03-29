@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CorporateServicePage } from "@/components/CorporateServicePage";
+import { DigitalAdsServicePage } from "@/components/DigitalAdsServicePage";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -10,11 +10,12 @@ import {
 } from "@/lib/structuredData";
 
 const seo = {
-  title: "Contenu pour site web & réseaux | Corporate | Directed by Qamar",
+  title:
+    "Conception & brainstorming marketing | Publicité digitale | Directed by Qamar",
   description:
-    "Contenu régulier pour site web & réseaux : formats courts, photos, vidéos, déclinaisons. Une stratégie visuelle cohérente pour votre présence digitale.",
-  path: "/corporate/contenu-web-reseaux/",
-  image: "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
+    "Conception d’angles publicitaires, hooks et scripts. Une phase stratégique pour transformer votre message en contenus performants.",
+  path: "/publicite-digitale/conception-brainstorming-marketing/",
+  image: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -28,8 +29,8 @@ const structuredData = buildGraph([
     path: seo.path,
     items: [
       { name: "Accueil", path: "/" },
-      { name: "Corporate", path: "/corporate/" },
-      { name: "Contenu pour site web & réseaux", path: seo.path },
+      { name: "Publicité digitale", path: "/publicite-digitale/" },
+      { name: "Conception & brainstorming marketing", path: seo.path },
     ],
   }),
   {
@@ -44,7 +45,7 @@ const structuredData = buildGraph([
   {
     ...buildService({
       path: seo.path,
-      name: "Contenu pour site web & réseaux",
+      name: "Conception & brainstorming marketing",
       description: seo.description,
     }),
     "@id": serviceId,
@@ -52,16 +53,16 @@ const structuredData = buildGraph([
   },
 ]);
 
-export default function ContenuWebReseauxPage() {
+export default function ConceptionBrainstormingMarketingPage() {
   return (
-    <CorporateServicePage
+    <DigitalAdsServicePage
       path={seo.path}
       seoTitle={seo.title}
       seoDescription={seo.description}
       structuredData={structuredData}
-      title="Contenu pour site web & réseaux"
-      eyebrow="Corporate"
-      description="Produisez du contenu régulier, dynamique et cohérent : photos, vidéos, formats courts et déclinaisons. Objectif : alimenter votre site et vos réseaux avec une identité visuelle forte et constante."
+      title="Conception & brainstorming marketing"
+      eyebrow="Publicité digitale"
+      description="On pose les fondations de la performance : angles, messages, promesses, structure et rythme. L’objectif est de produire des contenus qui captent l’attention et rendent votre offre évidente."
       heroImage={seo.image}
       gallery={[
         {
@@ -70,7 +71,7 @@ export default function ContenuWebReseauxPage() {
           images: [
             "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
             "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-            "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+            "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
           ],
         },
       ]}

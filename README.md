@@ -50,12 +50,12 @@ See:
 - `CONTRIBUTING.md` (conventions, structure, and rules for Next export)
 - `AGENTS.md` (quick rules for AI-assisted changes)
 
-## TODO (corporate service detail pages)
+## TODO (content polish)
 
-When clicking "En savoir plus" on `/corporate/`, each service should land on a dedicated SEO page with richer content (Portraits professionnels, Reportages d’entreprise, Présentation de marque, Films institutionnels, Contenu pour site web & réseaux):
+The dedicated SEO pages now exist for each service category. Remaining work is content-level:
 
-- Add a short section explaining the process (préparation, shooting, livraison, formats, délais).
-- Add/replace the gallery images (you will provide the final images).
+- Refine copy (tone/duplication) and add a clear “process” section where relevant.
+- Replace the placeholder gallery images with final selections.
 
 Pages:
 - `/corporate/portraits-professionnels/`
@@ -63,3 +63,4 @@ Pages:
 - `/corporate/presentation-marque/`
 - `/corporate/films-institutionnels/`
 - `/corporate/contenu-web-reseaux/`
+- `/publicite-digitale/…` (service detail pages)

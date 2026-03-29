@@ -23,6 +23,10 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [
+    { name: "Accueil", path: "/" },
+    { name: "Contact", path: seo.path },
+  ],
 });
 
 export default function ContactPage() {

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { CorporateServicePage } from "@/components/CorporateServicePage";
 import { createPageMetadata } from "@/lib/seo";
-import { buildWebPageGraph } from "@/lib/structuredData";
+import {
+  absoluteUrl,
+  buildBreadcrumbList,
+  buildGraph,
+  buildService,
+  buildWebPage,
+} from "@/lib/structuredData";
 
 const seo = {
   title: "Présentation de marque | Corporate | Directed by Qamar",
@@ -13,12 +19,38 @@ const seo = {
 
 export const metadata: Metadata = createPageMetadata(seo);
 
-const structuredData = buildWebPageGraph({
-  path: seo.path,
-  name: seo.title,
-  description: seo.description,
-  imageUrl: seo.image,
-});
+const url = absoluteUrl(seo.path);
+const webpageId = `${url}#webpage`;
+const serviceId = `${url}#service`;
+
+const structuredData = buildGraph([
+  buildBreadcrumbList({
+    path: seo.path,
+    items: [
+      { name: "Accueil", path: "/" },
+      { name: "Corporate", path: "/corporate/" },
+      { name: "Présentation de marque", path: seo.path },
+    ],
+  }),
+  {
+    ...buildWebPage({
+      path: seo.path,
+      name: seo.title,
+      description: seo.description,
+      imageUrl: seo.image,
+    }),
+    mainEntity: { "@id": serviceId },
+  },
+  {
+    ...buildService({
+      path: seo.path,
+      name: "Présentation de marque",
+      description: seo.description,
+    }),
+    "@id": serviceId,
+    mainEntityOfPage: { "@id": webpageId },
+  },
+]);
 
 export default function PresentationMarquePage() {
   return (

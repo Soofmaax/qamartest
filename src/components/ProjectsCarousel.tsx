@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import type { CSSProperties } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 type Project = {
   title: string;
@@ -19,6 +20,11 @@ export function ProjectsCarousel({
   const [openProjectIndex, setOpenProjectIndex] = useState<number | null>(null);
   const [openImageIndex, setOpenImageIndex] = useState(0);
 
+  const dialogTitleId = useId();
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  const lastActiveElementRef = useRef<HTMLElement | null>(null);
+  const prevOpenProjectIndexRef = useRef(openProjectIndex);
+
   const openProject = useMemo(() => {
     if (openProjectIndex === null) return null;
     return projects[openProjectIndex] ?? null;
@@ -34,12 +40,46 @@ export function ProjectsCarousel({
     setOpenImageIndex(0);
   };
 
+  useEffect(() => {
+    if (!openProject) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+
+      if (openProject.images.length > 1 && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+        setOpenImageIndex((v) => {
+          const len = openProject.images.length;
+          return e.key === "ArrowLeft" ? (v - 1 + len) % len : (v + 1) % len;
+        });
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [openProject]);
+
+  useEffect(() => {
+    if (openProjectIndex !== null && prevOpenProjectIndexRef.current === null) {
+      closeRef.current?.focus();
+    }
+
+    if (openProjectIndex === null && prevOpenProjectIndexRef.current !== null) {
+      lastActiveElementRef.current?.focus();
+      lastActiveElementRef.current = null;
+    }
+
+    prevOpenProjectIndexRef.current = openProjectIndex;
+  }, [openProjectIndex]);
+
   return (
     <>
       <div className="relative overflow-hidden">
         <div
           className="ticker"
-          style={{ ["--ticker-duration" as string]: tickerDuration }}
+          style={{ "--ticker-duration": tickerDuration } as CSSProperties}
         >
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[15%] bg-gradient-to-r from-black to-black/0" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[15%] bg-gradient-to-l from-black to-black/0" />
@@ -52,11 +92,18 @@ export function ProjectsCarousel({
                   type="button"
                   className="relative h-[320px] w-[190px] flex-none overflow-hidden rounded-lg text-left md:h-[400px] md:w-[234px]"
                   onClick={() => {
+                    lastActiveElementRef.current = document.activeElement as HTMLElement | null;
                     setOpenProjectIndex(idx);
                     setOpenImageIndex(0);
                   }}
                 >
-                  <Image src={p.cover} alt={p.title} fill className="object-cover" />
+                  <Image
+                    src={p.cover}
+                    alt={p.title}
+                    fill
+                    sizes="(min-width: 768px) 234px, 190px"
+                    className="object-cover"
+                  />
                   <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
                   <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
                     {p.title}
@@ -75,7 +122,13 @@ export function ProjectsCarousel({
                   key={`${p.cover}-${idx}-dup`}
                   className="relative h-[320px] w-[190px] flex-none overflow-hidden rounded-lg md:h-[400px] md:w-[234px]"
                 >
-                  <Image src={p.cover} alt={p.title} fill className="object-cover" />
+                  <Image
+                    src={p.cover}
+                    alt={p.title}
+                    fill
+                    sizes="(min-width: 768px) 234px, 190px"
+                    className="object-cover"
+                  />
                   <div className="absolute inset-x-0 bottom-0 h-[182px] bg-gradient-to-t from-black to-black/0" />
                   <div className="absolute bottom-[14px] left-1/2 w-[88%] -translate-x-1/2 text-center font-serif text-[32px] font-semibold text-white">
                     {p.title}
@@ -92,17 +145,18 @@ export function ProjectsCarousel({
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
           role="dialog"
           aria-modal="true"
-          aria-label={`Projet ${openProject.title}`}
+          aria-labelledby={dialogTitleId}
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
         >
           <div className="w-full max-w-5xl">
             <div className="flex items-center justify-between gap-4 pb-4">
-              <h3 className="font-serif text-3xl font-semibold text-white">
+              <h2 id={dialogTitleId} className="font-serif text-3xl font-semibold text-white">
                 {openProject.title}
-              </h3>
+              </h2>
               <button
+                ref={closeRef}
                 type="button"
                 className="rounded-md border border-white/15 bg-black px-3 py-2 text-white hover:bg-white/5"
                 onClick={close}
@@ -112,7 +166,13 @@ export function ProjectsCarousel({
             </div>
 
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-black">
-              <Image src={openImage} alt={openProject.title} fill className="object-contain" />
+              <Image
+                src={openImage}
+                alt={openProject.title}
+                fill
+                sizes="100vw"
+                className="object-contain"
+              />
 
               {openProject.images.length > 1 ? (
                 <>
@@ -126,7 +186,7 @@ export function ProjectsCarousel({
                       )
                     }
                   >
-                    ‹
+                    <span aria-hidden>‹</span>
                   </button>
                   <button
                     type="button"
@@ -136,7 +196,7 @@ export function ProjectsCarousel({
                       setOpenImageIndex((v) => (v + 1) % openProject.images.length)
                     }
                   >
-                    ›
+                    <span aria-hidden>›</span>
                   </button>
                 </>
               ) : null}
@@ -148,12 +208,14 @@ export function ProjectsCarousel({
                   <button
                     key={src}
                     type="button"
+                    aria-label={`Voir l’image ${idx + 1} de ${openProject.images.length}`}
+                    aria-current={idx === openImageIndex ? "true" : undefined}
                     className={`relative h-[72px] w-[110px] flex-none overflow-hidden rounded-md border ${
                       idx === openImageIndex ? "border-white" : "border-white/15"
                     }`}
                     onClick={() => setOpenImageIndex(idx)}
                   >
-                    <Image src={src} alt="" fill className="object-cover" />
+                    <Image src={src} alt="" fill sizes="110px" className="object-cover" />
                   </button>
                 ))}
               </div>

@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import {
   buildGraph,
   buildOrganizationLocalBusiness,
+  buildPerson,
   buildWebSite,
 } from "@/lib/structuredData";
 
@@ -14,18 +15,21 @@ const cormorant = Cormorant_SC({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 const arimo = Arimo({
   variable: "--font-arimo",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
 });
 
 const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
 
 const siteStructuredData = buildGraph([
   buildOrganizationLocalBusiness(),
+  buildPerson(),
   buildWebSite(),
 ]);
 
@@ -73,11 +77,11 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA4_ID;
 
   return (
-    <html lang="fr" dir="ltr">
+    <html lang="fr" dir="ltr" className={`${cormorant.variable} ${arimo.variable}`}>
       <head>
         <JsonLd id="jsonld-site" data={siteStructuredData} />
       </head>
-      <body className={`${cormorant.variable} ${arimo.variable} antialiased`}>
+      <body className="antialiased">
         {!isPreview && gaId ? (
           <>
             <Script

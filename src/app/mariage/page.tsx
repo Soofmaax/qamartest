@@ -9,7 +9,14 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
 import { createPageMetadata } from "@/lib/seo";
-import { buildWebPageGraph } from "@/lib/structuredData";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import {
+  absoluteUrl,
+  buildBreadcrumbList,
+  buildGraph,
+  buildService,
+  buildWebPage,
+} from "@/lib/structuredData";
 
 const seo = {
   title: "Photographe & vidéaste de mariage | Directed by Qamar",
@@ -21,12 +28,37 @@ const seo = {
 
 export const metadata: Metadata = createPageMetadata(seo);
 
-const structuredData = buildWebPageGraph({
-  path: seo.path,
-  name: seo.title,
-  description: seo.description,
-  imageUrl: seo.image,
-});
+const url = absoluteUrl(seo.path);
+const webpageId = `${url}#webpage`;
+const serviceId = `${url}#service`;
+
+const structuredData = buildGraph([
+  buildBreadcrumbList({
+    path: seo.path,
+    items: [
+      { name: "Accueil", path: "/" },
+      { name: "Mariage", path: seo.path },
+    ],
+  }),
+  {
+    ...buildWebPage({
+      path: seo.path,
+      name: seo.title,
+      description: seo.description,
+      imageUrl: seo.image,
+    }),
+    mainEntity: { "@id": serviceId },
+  },
+  {
+    ...buildService({
+      path: seo.path,
+      name: "Mariage",
+      description: seo.description,
+    }),
+    "@id": serviceId,
+    mainEntityOfPage: { "@id": webpageId },
+  },
+]);
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -129,7 +161,7 @@ const projects = [
     ],
   },
   {
-    title: "Publicté digitale",
+    title: "Publicité digitale",
     cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
     images: [
       "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
@@ -356,6 +388,9 @@ export default function MariagePage() {
                   src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
                   alt="Avis"
                   fill
+                  sizes="141px"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
                   className="object-cover"
                 />
               </div>

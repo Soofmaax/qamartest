@@ -1,5 +1,14 @@
 export type StructuredDataNode = Record<string, unknown>;
 
+export type StructuredDataGraph = ReturnType<typeof buildGraph>;
+
+export type BreadcrumbItem = {
+  /** Visible label (ex: "Corporate"). */
+  name: string;
+  /** Route path with leading+trailing slash (ex: "/corporate/"). */
+  path: string;
+};
+
 type BuildWebPageInput = {
   path: string;
   name: string;
@@ -13,7 +22,7 @@ type BuildServiceInput = {
   description?: string;
 };
 
-type FaqItem = { q: string; a: string };
+export type FaqItem = { q: string; a: string };
 
 type BuildFaqPageInput = {
   path: string;
@@ -21,11 +30,21 @@ type BuildFaqPageInput = {
   aboutServiceId?: string;
 };
 
+type BuildBreadcrumbListInput = {
+  path: string;
+  items: BreadcrumbItem[];
+};
+
+type BuildWebPageGraphInput = BuildWebPageInput & {
+  breadcrumbs?: BreadcrumbItem[];
+};
+
 export const SITE_URL = "https://www.directedbyqamar.com";
 export const SITE_NAME = "Directed by Qamar";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const PERSON_ID = `${SITE_URL}/#person`;
 
 export function absoluteUrl(path: string) {
   return new URL(path, SITE_URL).toString();
@@ -38,6 +57,18 @@ export function buildGraph(nodes: StructuredDataNode[]) {
   };
 }
 
+export function buildPerson() {
+  return {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: "Qamar",
+    url: `${SITE_URL}/`,
+    jobTitle: "Photographe & vidéaste",
+    image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    worksFor: { "@id": ORGANIZATION_ID },
+  } satisfies StructuredDataNode;
+}
+
 export function buildOrganizationLocalBusiness() {
   return {
     "@type": ["Organization", "LocalBusiness"],
@@ -46,6 +77,7 @@ export function buildOrganizationLocalBusiness() {
     url: `${SITE_URL}/`,
     logo: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
     image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    founder: { "@id": PERSON_ID },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Paris",
@@ -89,6 +121,21 @@ export function buildWebPage({ path, name, description, imageUrl }: BuildWebPage
   } satisfies StructuredDataNode;
 }
 
+export function buildBreadcrumbList({ path, items }: BuildBreadcrumbListInput) {
+  const url = absoluteUrl(path);
+
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  } satisfies StructuredDataNode;
+}
+
 export function buildService({ path, name, description }: BuildServiceInput) {
   const url = absoluteUrl(path);
 
@@ -122,7 +169,14 @@ export function buildFaqPage({ path, items, aboutServiceId }: BuildFaqPageInput)
   } satisfies StructuredDataNode;
 }
 
-/** Convenience helper for non-service pages. */
-export function buildWebPageGraph(input: BuildWebPageInput) {
-  return buildGraph([buildWebPage(input)]);
+/** Convenience helper for non-service pages.
+ * Includes the WebPage node and (optionally) a BreadcrumbList.
+ */
+export function buildWebPageGraph(input: BuildWebPageGraphInput) {
+  return buildGraph([
+    buildWebPage(input),
+    ...(input.breadcrumbs
+      ? [buildBreadcrumbList({ path: input.path, items: input.breadcrumbs })]
+      : []),
+  ]);
 }

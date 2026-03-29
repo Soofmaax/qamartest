@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -22,6 +23,10 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [
+    { name: "Accueil", path: "/" },
+    { name: "Services", path: seo.path },
+  ],
 });
 
 const services = [
@@ -44,15 +49,15 @@ const services = [
     title: "Publicité digitale",
     description:
       "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: "/publicité-digitale/",
+    href: "/publicite-digitale/",
     image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
     position: "object-left",
   },
   {
     title: "Événementiel",
     description:
-      "Des vidéos publicitaires stratégiques et créatives, conçues pour maximiser votre visibilité et booster vos conversions.",
-    href: "/événementiel/",
+      "Couverture photo/vidéo d’événements : conférences, lancements, soirées, festivals. Captation, contenus live et recap.",
+    href: "/evenementiel/",
     image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
   },
 ];
@@ -83,6 +88,9 @@ export default function ServicesPage() {
                 src={s.image}
                 alt={s.title}
                 fill
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={DARK_BLUR_DATA_URL}
                 className={`object-cover ${s.position ?? ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />

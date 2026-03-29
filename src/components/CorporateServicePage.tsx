@@ -4,6 +4,7 @@ import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import type { StructuredDataGraph } from "@/lib/structuredData";
 
 export function CorporateServicePage({
   path,
@@ -19,7 +20,7 @@ export function CorporateServicePage({
   path: string;
   seoTitle: string;
   seoDescription: string;
-  structuredData: unknown;
+  structuredData: StructuredDataGraph;
   title: string;
   eyebrow: string;
   description: string;
@@ -34,7 +35,16 @@ export function CorporateServicePage({
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
-            <Image src={heroImage} alt={seoTitle} fill priority className="object-cover" />
+            <Image
+              src={heroImage}
+              alt={seoTitle}
+              fill
+              priority
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={DARK_BLUR_DATA_URL}
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">

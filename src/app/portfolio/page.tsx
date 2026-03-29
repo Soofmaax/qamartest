@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -22,6 +23,10 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [
+    { name: "Accueil", path: "/" },
+    { name: "Portfolio", path: seo.path },
+  ],
 });
 
 const items = [
@@ -92,6 +97,9 @@ export default function PortfolioPage() {
                   src={item.src}
                   alt={item.category}
                   fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
                   className="object-cover transition duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black to-black/0" />

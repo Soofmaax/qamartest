@@ -1,5 +1,7 @@
+import type { StructuredDataGraph, StructuredDataNode } from "@/lib/structuredData";
+
 type JsonLdProps = {
-  data: unknown;
+  data: StructuredDataNode | StructuredDataGraph;
   id?: string;
 };
 

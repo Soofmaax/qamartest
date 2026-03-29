@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 
 const navItems = [
   { href: "/", label: "Accueil" },
@@ -13,6 +14,23 @@ const navItems = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const menuDialogId = useId();
+  const menuTitleId = useId();
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  const prevOpenRef = useRef(open);
+
+  useEffect(() => {
+    if (open && !prevOpenRef.current) {
+      closeRef.current?.focus();
+    }
+
+    if (!open && prevOpenRef.current) {
+      triggerRef.current?.focus();
+    }
+
+    prevOpenRef.current = open;
+  }, [open]);
 
   return (
     <header className="w-full bg-black">
@@ -23,8 +41,10 @@ export function SiteHeader() {
               src="https://framerusercontent.com/images/CQ0Kd86NZDyfrUsqQ2XdDJBGDs.png"
               alt="Directed by Qamar"
               fill
+              sizes="(min-width: 768px) 213px, 160px"
+              placeholder="blur"
+              blurDataURL={DARK_BLUR_DATA_URL}
               className="object-contain"
-              priority
             />
           </Link>
 
@@ -50,12 +70,16 @@ export function SiteHeader() {
             </Link>
 
             <button
+              ref={triggerRef}
               type="button"
               className="grid h-11 w-11 place-items-center rounded-lg border border-white/15 text-white md:hidden"
               aria-label="Ouvrir le menu"
+              aria-haspopup="dialog"
+              aria-controls={menuDialogId}
+              aria-expanded={open}
               onClick={() => setOpen(true)}
             >
-              <span className="text-2xl leading-none">≡</span>
+              <span aria-hidden className="text-2xl leading-none">≡</span>
             </button>
           </div>
         </div>
@@ -63,18 +87,22 @@ export function SiteHeader() {
 
       {open ? (
         <div
+          id={menuDialogId}
           className="fixed inset-0 z-[100] bg-black/80"
           role="dialog"
           aria-modal="true"
-          aria-label="Menu"
+          aria-labelledby={menuTitleId}
           onClick={(e) => {
             if (e.target === e.currentTarget) setOpen(false);
           }}
         >
           <div className="absolute right-4 top-4 w-[min(92vw,360px)] rounded-lg border border-white/10 bg-black p-5">
             <div className="flex items-center justify-between">
-              <p className="font-serif text-2xl font-semibold text-white">Menu</p>
+              <h2 id={menuTitleId} className="font-serif text-2xl font-semibold text-white">
+                Menu
+              </h2>
               <button
+                ref={closeRef}
                 type="button"
                 className="rounded-md border border-white/15 bg-black px-3 py-2 text-white"
                 onClick={() => setOpen(false)}

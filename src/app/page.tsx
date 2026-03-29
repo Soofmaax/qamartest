@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
 import { createPageMetadata } from "@/lib/seo";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -25,6 +26,7 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [{ name: "Accueil", path: "/" }],
 });
 
 const references = [
@@ -92,15 +94,15 @@ const services = [
     title: "Publicité digitale",
     description:
       "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: "/publicité-digitale/",
+    href: "/publicite-digitale/",
     image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
     position: "object-left",
   },
   {
     title: "Événementiel",
     description:
-      "Des vidéos publicitaires stratégiques et créatives, conçues pour maximiser votre visibilité et booster vos conversions.",
-    href: "/événementiel/",
+      "Couverture photo/vidéo d’événements : conférences, lancements, soirées, festivals. Captation, contenus live et recap.",
+    href: "/evenementiel/",
     image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
   },
 ];
@@ -134,7 +136,7 @@ const projects = [
     ],
   },
   {
-    title: "Publicté digitale",
+    title: "Publicité digitale",
     cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
     images: [
       "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
@@ -157,6 +159,9 @@ export default function Home() {
             alt="Directed by Qamar"
             fill
             priority
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={DARK_BLUR_DATA_URL}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black" />
@@ -213,6 +218,9 @@ export default function Home() {
                   src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
                   alt="Avis"
                   fill
+                  sizes="141px"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
                   className="object-cover"
                 />
               </div>
@@ -266,6 +274,9 @@ export default function Home() {
                     src={s.image}
                     alt={s.title}
                     fill
+                    sizes="100vw"
+                    placeholder="blur"
+                    blurDataURL={DARK_BLUR_DATA_URL}
                     className={`object-cover ${s.position ?? ""}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />

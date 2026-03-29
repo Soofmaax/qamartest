@@ -3,12 +3,15 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import {
   absoluteUrl,
+  buildBreadcrumbList,
   buildFaqPage,
   buildGraph,
   buildService,
   buildWebPage,
+  type FaqItem,
 } from "@/lib/structuredData";
 
 export function ServicePage({
@@ -36,7 +39,7 @@ export function ServicePage({
   introTitle: string;
   introParagraphs: string[];
   deliverables: string[];
-  faq: Array<{ q: string; a: string }>;
+  faq: FaqItem[];
 }) {
   const url = absoluteUrl(path);
   const webpageId = `${url}#webpage`;
@@ -44,6 +47,13 @@ export function ServicePage({
   const faqId = `${url}#faq`;
 
   const structuredData = buildGraph([
+    buildBreadcrumbList({
+      path,
+      items: [
+        { name: "Accueil", path: "/" },
+        { name: title, path },
+      ],
+    }),
     {
       ...buildWebPage({
         path,
@@ -92,6 +102,9 @@ export function ServicePage({
                 alt={title}
                 fill
                 priority
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={DARK_BLUR_DATA_URL}
                 className="object-cover"
               />
             )}
@@ -159,7 +172,15 @@ export function ServicePage({
                 key={src}
                 className="relative aspect-[3/4] overflow-hidden rounded-lg"
               >
-                <Image src={src} alt={`${title} ${i + 1}`} fill className="object-cover" />
+                <Image
+                  src={src}
+                  alt={`${title} ${i + 1}`}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
@@ -188,8 +209,8 @@ export function ServicePage({
               {[
                 { href: "/mariage/", label: "Mariage" },
                 { href: "/corporate/", label: "Corporate" },
-                { href: "/publicité-digitale/", label: "Publicité digitale" },
-                { href: "/événementiel/", label: "Événementiel" },
+                { href: "/publicite-digitale/", label: "Publicité digitale" },
+                { href: "/evenementiel/", label: "Événementiel" },
               ]
                 .filter((l) => l.label !== title)
                 .map((l) => (

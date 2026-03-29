@@ -4,6 +4,8 @@ import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import type { StructuredDataGraph } from "@/lib/structuredData";
 
 export function DigitalAdsServicePage({
   path,
@@ -19,7 +21,7 @@ export function DigitalAdsServicePage({
   path: string;
   seoTitle: string;
   seoDescription: string;
-  structuredData: unknown;
+  structuredData: StructuredDataGraph;
   title: string;
   eyebrow: string;
   description: string;
@@ -108,7 +110,7 @@ export function DigitalAdsServicePage({
         <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <Link
-              href="/publicité-digitale/"
+              href="/publicite-digitale/"
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label={`${path}:back`}

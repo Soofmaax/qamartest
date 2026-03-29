@@ -1,47 +1,21 @@
 import type { Metadata } from "next";
-import { DigitalAdsServicePage } from "@/components/DigitalAdsServicePage";
+import { LegacyRedirectPage } from "@/components/LegacyRedirectPage";
 import { createPageMetadata } from "@/lib/seo";
-import { buildWebPageGraph } from "@/lib/structuredData";
 
-const seo = {
-  title: "Création photo & vidéo premium | Publicité digitale | Directed by Qamar",
-  description:
-    "Production photo et vidéo premium pour la publicité : direction artistique, cadrage, esthétique moderne, mise en valeur produit/service.",
-  path: "/publicité-digitale/creation-photo-video-premium/",
-  image: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+const to = "/publicite-digitale/creation-photo-video-premium/";
+
+const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
+
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    title: "Création photo & vidéo premium | Publicité digitale | Directed by Qamar",
+    description:
+      "Production photo et vidéo premium pour la publicité : direction artistique, cadrage, esthétique moderne, mise en valeur produit/service.",
+    path: to,
+  }),
+  robots: isPreview ? { index: false, follow: false, nocache: true } : { index: false, follow: true },
 };
 
-export const metadata: Metadata = createPageMetadata(seo);
-
-const structuredData = buildWebPageGraph({
-  path: seo.path,
-  name: seo.title,
-  description: seo.description,
-  imageUrl: seo.image,
-});
-
-export default function CreationPhotoVideoPremiumPage() {
-  return (
-    <DigitalAdsServicePage
-      path={seo.path}
-      seoTitle={seo.title}
-      seoDescription={seo.description}
-      structuredData={structuredData}
-      title="Création photo & vidéo premium"
-      eyebrow="Publicité digitale"
-      description="Des visuels soigneusement réalisés, avec une direction artistique claire, un cadrage précis, et une esthétique moderne qui valorise votre produit ou service. Notre objectif : produire des assets capables de rivaliser avec les codes des marques leaders."
-      heroImage={seo.image}
-      gallery={[
-        {
-          title: "Exemples",
-          cover: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-          images: [
-            "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-            "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-            "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-          ],
-        },
-      ]}
-    />
-  );
+export default function PubliciteDigitaleCreationLegacyPage() {
+  return <LegacyRedirectPage to={to} />;
 }

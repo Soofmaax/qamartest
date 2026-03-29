@@ -6,6 +6,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  NEXT_TELEMETRY_DISABLED: "1"
 
 permissions:
   contents: read
@@ -26,16 +27,24 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: npm
 
       - name: Install
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Build
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_IS_PREVIEW: "1"
+
+      - name: SEO QA
+        run: npm run seo:qa
+        env:
           NEXT_PUBLIC_IS_PREVIEW: "1"
 
       - name: Upload artifact

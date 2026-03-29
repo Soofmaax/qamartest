@@ -18,12 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/corporate/presentation-marque/",
     "/corporate/films-institutionnels/",
     "/corporate/contenu-web-reseaux/",
-    "/événementiel/",
-    "/publicité-digitale/",
-    "/publicité-digitale/conception-brainstorming-marketing/",
-    "/publicité-digitale/creation-photo-video-premium/",
-    "/publicité-digitale/adaptation-formats-social-media/",
-    "/publicité-digitale/optimisation-conversions-branding/",
+    "/evenementiel/",
+    "/publicite-digitale/",
+    "/publicite-digitale/conception-brainstorming-marketing/",
+    "/publicite-digitale/creation-photo-video-premium/",
+    "/publicite-digitale/adaptation-formats-social-media/",
+    "/publicite-digitale/optimisation-conversions-branding/",
   ];
 
   return routes.map((route) => ({

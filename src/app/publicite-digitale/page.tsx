@@ -7,8 +7,8 @@ import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
-import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
   buildBreadcrumbList,
@@ -18,11 +18,11 @@ import {
 } from "@/lib/structuredData";
 
 const seo = {
-  title: "Photographe & vidéaste corporate | Directed by Qamar",
+  title: "Photographe & vidéaste publicité digitale | Directed by Qamar",
   description:
-    "Création de contenus photo et vidéo pour entreprises : image de marque, communication corporate, vidéos professionnelles et storytelling visuel.",
-  path: "/corporate/",
-  image: "https://framerusercontent.com/images/9MhLc1R5WqXjf2kyVHnU1AmNhXs.jpg",
+    "Des contenus publicitaires pensés pour performer : photo/vidéo premium, storytelling, hooks, formats Ads, et déclinaisons pour réseaux et site web.",
+  path: "/publicite-digitale/",
+  image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -36,7 +36,7 @@ const structuredData = buildGraph([
     path: seo.path,
     items: [
       { name: "Accueil", path: "/" },
-      { name: "Corporate", path: seo.path },
+      { name: "Publicité digitale", path: seo.path },
     ],
   }),
   {
@@ -51,7 +51,7 @@ const structuredData = buildGraph([
   {
     ...buildService({
       path: seo.path,
-      name: "Corporate",
+      name: "Publicité digitale",
       description: seo.description,
     }),
     "@id": serviceId,
@@ -61,44 +61,32 @@ const structuredData = buildGraph([
 
 const services = [
   {
-    title: "Portraits professionnels",
+    title: "Conception & brainstorming marketing",
     description:
-      "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
-    href: "/corporate/portraits-professionnels/",
+      "Des idées claires, des angles forts et une accroche qui retient l’attention. On prépare les messages, le rythme, et la structure pour produire des contenus efficaces.",
+    image: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    href: "/publicite-digitale/conception-brainstorming-marketing/",
   },
   {
-    title: "Reportages d’entreprise",
+    title: "Création photo & vidéo premium",
     description:
-      "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
-    href: "/corporate/reportages-entreprise/",
+      "Des visuels soigneusement réalisés, avec une direction artistique claire, un cadrage précis, et une esthétique moderne qui valorise votre produit ou service. Notre expertise permet de créer des contenus capables de rivaliser avec les codes des marques leaders.",
+    image: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+    href: "/publicite-digitale/creation-photo-video-premium/",
   },
   {
-    title: "Présentation de marque",
+    title: "Adaptation aux formats social media",
     description:
-      "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage. Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
-    href: "/corporate/presentation-marque/",
+      "Reels, TikTok, YouTube, Facebook Ads, LinkedIn... Chaque format est optimisé pour respecter les codes de la plateforme tout en maximisant l’impact : rythme, storytelling, durée, accroche visuelle.",
+    image: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+    href: "/publicite-digitale/adaptation-formats-social-media/",
   },
   {
-    title: "Films institutionnels",
+    title: "Optimisation pour conversions & branding",
     description:
-      "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage. Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
-    href: "/corporate/films-institutionnels/",
-  },
-  {
-    title: "Contenu pour site web & réseaux",
-    description:
-      "Des productions régulières pour alimenter vos plateformes avec du contenu professionnel, dynamique et cohérent. Vous bénéficiez d’une stratégie visuelle complète, pensée pour renforcer votre présence digitale.",
-    image:
-      "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
-    href: "/corporate/contenu-web-reseaux/",
+      "Nous produisons des contenus capables de générer de vrais résultats concrets : une hausse mesurable des ventes, une amélioration des taux de clic, une augmentation de l’engagement ainsi qu’un renforcement durable de votre notoriété. Chaque visuel est pensé comme un levier de performance, conçu pour capter l’attention, transmettre votre valeur et inciter votre audience à passer à l’action. Chaque asset s’inscrit dans une logique publicitaire précise, où l’esthétique sert avant tout l’efficacité.",
+    image: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+    href: "/publicite-digitale/optimisation-conversions-branding/",
   },
 ];
 
@@ -186,7 +174,7 @@ const projects = [
   },
 ];
 
-export default function CorporatePage() {
+export default function PubliciteDigitalePage() {
   return (
     <div className="min-h-screen bg-black">
       <JsonLd id="jsonld-page" data={structuredData} />
@@ -197,7 +185,7 @@ export default function CorporatePage() {
           <div className="relative hero-height w-full">
             <Image
               src={seo.image}
-              alt="Corporate"
+              alt="Publicité digitale"
               fill
               priority
               sizes="100vw"
@@ -205,22 +193,21 @@ export default function CorporatePage() {
               blurDataURL={DARK_BLUR_DATA_URL}
               className="object-cover"
             />
-
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">
               <div className="flex flex-col items-center gap-3 px-4 text-center">
                 <h1 className="font-serif text-5xl tracking-wide text-white md:text-6xl">
-                  Corporate
+                  Publicité digitale
                 </h1>
                 <p className="text-[18px] text-white/80 md:text-[20px]">
-                  Créer de la valeur avec l’image
+                  Des contenus pensés pour performer
                 </p>
                 <Link
                   href="/contact/"
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
-                  data-ga-label="/corporate/:hero"
+                  data-ga-label="/publicite-digitale/:hero"
                   className="mt-5 w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                 >
                   Discuter de votre projet
@@ -236,13 +223,14 @@ export default function CorporatePage() {
           </h2>
           <div className="mx-auto mt-6 max-w-4xl text-center text-[18px] leading-relaxed text-[#ededed] md:text-[20px]">
             <p>
-              Une communication visuelle cohérente renforce votre identité, votre
-              crédibilité et votre impact.
+              Dans un environnement saturé d’informations, seules les images
+              pertinentes, belles et stratégiquement pensées retiennent l’attention.
             </p>
             <p className="mt-6">
-              Chez Directed by Qamar, chaque production est pensée pour refléter
-              votre professionnalisme, renforcer la confiance de vos clients et
-              mettre en lumière ce qui rend votre entreprise unique.
+              Votre communication mérite des contenus publicitaires qui attirent,
+              engagent et transforment. Chez Directed by Qamar, chaque production
+              est conçue pour être performante et impactante, tout en renforçant
+              l’identité de votre marque.
             </p>
           </div>
         </section>
@@ -276,7 +264,7 @@ export default function CorporatePage() {
                     href={s.href}
                     data-ga-event="cta_click"
                     data-ga-category="Navigation"
-                    data-ga-label={`/corporate/:service:${s.title}`}
+                    data-ga-label={`/publicite-digitale/:service:${s.title}`}
                     className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                   >
                     En savoir plus
@@ -313,7 +301,7 @@ export default function CorporatePage() {
               href="/portfolio/"
               data-ga-event="cta_click"
               data-ga-category="Navigation"
-              data-ga-label="/corporate/:portfolio"
+              data-ga-label="/publicite-digitale/:portfolio"
               className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
               Découvrir mon travail
@@ -327,25 +315,24 @@ export default function CorporatePage() {
 
         <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
-            Corporate
+            Pourquoi investir dans la publicité digitale ?
           </h2>
-          <h3 className="mt-6 font-serif text-3xl font-semibold text-white md:text-[48px]">
-            Une image forte attire plus que des regards : elle crée de la confiance.
-          </h3>
 
           <div className="mt-6 max-w-4xl text-[18px] leading-relaxed text-[#ededed] md:text-[20px]">
             <p>
-              Aujourd’hui, une entreprise avec une identité visuelle soignée
-              convertit davantage, attire de meilleurs clients et se positionne
-              comme un acteur crédible.
+              Aujourd’hui, les entreprises qui gagnent en visibilité sont celles
+              qui maîtrisent leur communication et utilisent le bon contenu au bon
+              moment.
             </p>
-            <p className="mt-6">Une vidéo professionnelle peut :</p>
+
+            <p className="mt-6">Un bon contenu publicitaire permet de :</p>
             <ul className="mt-6 list-disc space-y-2 pl-5">
-              <li>Accroître le taux de rétention sur votre site</li>
-              <li>Clarifier l’offre et les valeurs de votre entreprise</li>
-              <li>Améliorer votre visibilité sur les réseaux</li>
-              <li>Renforcer l’engagement de vos équipes</li>
-              <li>Attirer des prospects plus qualifiés</li>
+              <li>Attirer l’attention malgré la saturation</li>
+              <li>Créer un lien émotionnel avec le public</li>
+              <li>Communiquer votre valeur réelle</li>
+              <li>Convertir sans paraître agressif</li>
+              <li>Renforcer la crédibilité de votre marque</li>
+              <li>Se démarquer des concurrents</li>
             </ul>
           </div>
         </section>
@@ -356,36 +343,40 @@ export default function CorporatePage() {
           </h2>
 
           <div className="mt-6 max-w-4xl text-[18px] leading-relaxed text-[#ededed] md:text-[20px]">
-            <p>
-              Aujourd’hui, une entreprise avec une identité visuelle soignée
-              convertit davantage, attire de meilleurs clients et se positionne
-              comme un acteur crédible.
-            </p>
-            <p className="mt-6">Une vidéo professionnelle peut :</p>
-            <ul className="mt-6 list-disc space-y-2 pl-5">
-              <li>Direction artistique haut de gamme</li>
-              <li>Une approche stratégique</li>
-              <li>Accompagnement complet</li>
-              <li>Des productions qui durent dans le temps</li>
-              <li>Expertise dans la publicité digitale</li>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>Spécialisation en publicité digitale</li>
+              <li>Production haut de gamme</li>
+              <li>Stratégie + créativité</li>
+              <li>Processus fluide et accompagnement complet</li>
+              <li>Un créateur qui comprend les enjeux business</li>
             </ul>
 
             <h3 className="mt-10 font-serif text-3xl font-semibold text-white">
-              Pour qui ?
+              Mon objectif
             </h3>
             <p className="mt-4">
-              PME, startups, agences, directions marketing, entreprises ambitieuses
-              souhaitant transmettre une image professionnelle et moderne.
+              Créer des contenus publicitaires capables d’impulser une véritable
+              dynamique de croissance. Des productions pensées pour stimuler les
+              ventes, accroître la visibilité de votre marque et installer
+              durablement votre notoriété. Chaque création vise à transformer
+              l’attention en intérêt, puis l’intérêt en action, afin de positionner
+              votre entreprise là où elle mérite d’être : au premier plan.
             </p>
+
+            <div className="mt-10 flex flex-col gap-4 md:flex-row md:gap-10">
+              <p className="font-serif text-3xl text-white">Ventes</p>
+              <p className="font-serif text-3xl text-white">Visibilité</p>
+              <p className="font-serif text-3xl text-white">Notoriété</p>
+            </div>
 
             <Link
               href="/contact/"
               data-ga-event="cta_click"
               data-ga-category="Lead"
-              data-ga-label="/corporate/:devis"
-              className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
+              data-ga-label="/publicite-digitale/:devis"
+              className="mt-10 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
-              Demander un devis
+              Discuter de votre projet
             </Link>
           </div>
         </section>
