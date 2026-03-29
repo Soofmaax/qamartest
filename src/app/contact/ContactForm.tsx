@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SERVICES } from "@/lib/content";
 import { pushContactFormSubmitted, readAttributionFromUrl } from "@/lib/gtm";
@@ -20,6 +20,53 @@ type Values = {
   message: string;
   website: string;
 };
+
+const DRAFT_STORAGE_KEY = "contact_form_draft_v1";
+
+function loadDraft(): Partial<Values> | null {
+  if (typeof window === "undefined") return null;
+
+  const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== "object") return null;
+
+    const draft = parsed as Partial<Values>;
+    return {
+      name: typeof draft.name === "string" ? draft.name : undefined,
+      email: typeof draft.email === "string" ? draft.email : undefined,
+      phone: typeof draft.phone === "string" ? draft.phone : undefined,
+      service: typeof draft.service === "string" ? draft.service : undefined,
+      subject: typeof draft.subject === "string" ? draft.subject : undefined,
+      message: typeof draft.message === "string" ? draft.message : undefined,
+      website: "",
+    };
+  } catch {
+    return null;
+  }
+}
+
+function saveDraft(values: Values) {
+  if (typeof window === "undefined") return;
+
+  const payload = {
+    name: values.name,
+    email: values.email,
+    phone: values.phone,
+    service: values.service,
+    subject: values.subject,
+    message: values.message,
+  };
+
+  window.localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(payload));
+}
+
+function clearDraft() {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+}
 
 type Touched = Record<Field, boolean>;
 
@@ -54,14 +101,18 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const [values, setValues] = useState<Values>({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    subject: "",
-    message: "",
-    website: "",
+  const [values, setValues] = useState<Values>(() => {
+    const draft = loadDraft();
+
+    return {
+      name: draft?.name ?? "",
+      email: draft?.email ?? "",
+      phone: draft?.phone ?? "",
+      service: draft?.service ?? "",
+      subject: draft?.subject ?? "",
+      message: draft?.message ?? "",
+      website: "",
+    };
   });
 
   const [touched, setTouched] = useState<Touched>({
@@ -82,6 +133,16 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
   const canSubmit = !isPreview && !isSubmitting && isValid;
 
   const showError = (field: Field) => (touched[field] ? errors[field] : undefined);
+
+  useEffect(() => {
+    if (isPreview) return;
+
+    const id = window.setTimeout(() => {
+      saveDraft(values);
+    }, 250);
+
+    return () => window.clearTimeout(id);
+  }, [isPreview, values]);
 
   return (
     <form
@@ -144,6 +205,18 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
         if (attribution.utm_content) params.set("utm_content", attribution.utm_content);
         if (attribution.gclid) params.set("gclid", attribution.gclid);
         if (attribution.fbclid) params.set("fbclid", attribution.fbclid);
+
+        clearDraft();
+        setTouched({ name: false, email: false, phone: false, message: false });
+        setValues({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          subject: "",
+          message: "",
+          website: "",
+        });
 
         router.push(`/merci/${params.toString() ? `?${params.toString()}` : ""}`);
       }}
@@ -281,7 +354,21 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
 
         <button
           type="button"
-          onClick={() => router.push("/")}
+          onClick={() => {
+            clearDraft();
+            setTouched({ name: false, email: false, phone: false, message: false });
+            setValues({
+              name: "",
+              email: "",
+              phone: "",
+              service: "",
+              subject: "",
+              message: "",
+              website: "",
+            });
+
+            router.push("/");
+          }}
           className="text-center text-zinc-200 underline"
         >
           Retour à l’accueil

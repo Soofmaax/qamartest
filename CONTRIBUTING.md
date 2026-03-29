@@ -59,6 +59,12 @@ Configure these in your hosting provider (and locally via `.env.local` if needed
 Notes:
 - The Meta Pixel is injected via **GTM** (not hard-coded). `NEXT_PUBLIC_META_PIXEL_ID` is pushed to the `dataLayer` as `meta_pixel_id` so GTM can read it.
 
+### Contact form UX (draft)
+
+The contact form autosaves a draft to `localStorage` while you type.
+- Key: `contact_form_draft_v1`
+- Cleared on successful submit and when clicking "Retour à l’accueil".
+
 ### Contact form conversion events
 
 On successful submission of `/contact/`, the app pushes the following to `dataLayer`:
