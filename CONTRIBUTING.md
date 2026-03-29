@@ -66,12 +66,16 @@ On successful submission of `/contact/`, the app pushes the following to `dataLa
 - `event: "contact_form_submitted"`
 - `page: "/contact/"`
 - `service: "..."` (only if selected)
+- attribution fields (if present in URL):
+  - `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`
+  - `gclid`, `fbclid`
 
 The thank-you page (`/merci/`) pushes:
 
 - `event: "contact_thank_you_view"`
 - `page: "/merci/"`
 - `service: "..."` (copied from query param)
+- same attribution fields (read from query params)
 
 ### GTM setup (what to configure)
 

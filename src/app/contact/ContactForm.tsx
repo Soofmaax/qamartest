@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SERVICES } from "@/lib/content";
-import { pushContactFormSubmitted } from "@/lib/gtm";
+import { pushContactFormSubmitted, readAttributionFromUrl } from "@/lib/gtm";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Accepts: 06..., 07..., +33 6..., +33 7... (spaces/dots allowed)
@@ -127,10 +127,23 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
         }
 
         const service = values.service.trim() || undefined;
-        pushContactFormSubmitted({ page: "/contact/", ...(service ? { service } : {}) });
+        const attribution = readAttributionFromUrl(new URL(window.location.href));
+
+        pushContactFormSubmitted({
+          page: "/contact/",
+          ...(service ? { service } : {}),
+          ...attribution,
+        });
 
         const params = new URLSearchParams();
         if (service) params.set("service", service);
+        if (attribution.utm_source) params.set("utm_source", attribution.utm_source);
+        if (attribution.utm_medium) params.set("utm_medium", attribution.utm_medium);
+        if (attribution.utm_campaign) params.set("utm_campaign", attribution.utm_campaign);
+        if (attribution.utm_term) params.set("utm_term", attribution.utm_term);
+        if (attribution.utm_content) params.set("utm_content", attribution.utm_content);
+        if (attribution.gclid) params.set("gclid", attribution.gclid);
+        if (attribution.fbclid) params.set("fbclid", attribution.fbclid);
 
         router.push(`/merci/${params.toString() ? `?${params.toString()}` : ""}`);
       }}
