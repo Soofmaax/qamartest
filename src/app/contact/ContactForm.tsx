@@ -18,6 +18,7 @@ type Values = {
   service: string;
   subject: string;
   message: string;
+  website: string;
 };
 
 type Touched = Record<Field, boolean>;
@@ -60,6 +61,7 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
     service: "",
     subject: "",
     message: "",
+    website: "",
   });
 
   const [touched, setTouched] = useState<Touched>({
@@ -105,6 +107,7 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
         formData.set("service", values.service);
         formData.set("subject", values.subject);
         formData.set("message", values.message);
+        formData.set("website", values.website);
 
         const res = await fetch("/api/contact", {
           method: "POST",
@@ -132,6 +135,16 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
         router.push(`/merci/${params.toString() ? `?${params.toString()}` : ""}`);
       }}
     >
+      <input
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        value={values.website}
+        onChange={(e) => setValues((v) => ({ ...v, website: e.target.value }))}
+        className="sr-only"
+        aria-hidden
+      />
+
       <div className="grid gap-5 md:grid-cols-2">
         <label className="space-y-2">
           <span className="text-sm text-zinc-200">Nom</span>

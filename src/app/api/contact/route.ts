@@ -5,15 +5,57 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FR_PHONE_REGEX = /^(?:(?:\+33|0033)\s*[67]|0\s*[67])(?:[\s.\-]*\d){8}$/;
 const HTTP_LINK_REGEX = /https?:\/\//i;
 
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 5;
+
+const rateLimitStore = new Map<string, number[]>();
+
+function getClientIp(req: Request) {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0]?.trim() || null;
+
+  const realIp = req.headers.get("x-real-ip");
+  if (realIp) return realIp.trim();
+
+  return null;
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const prev = rateLimitStore.get(ip) ?? [];
+
+  const recent = prev.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  recent.push(now);
+  rateLimitStore.set(ip, recent);
+
+  return recent.length > RATE_LIMIT_MAX;
+}
+
 export async function POST(req: Request) {
   const formData = await req.formData();
 
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
   const phone = String(formData.get("phone") ?? "").trim();
+  const website = String(formData.get("website") ?? "").trim();
   const service = String(formData.get("service") ?? "").trim();
   const subject = String(formData.get("subject") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
+
+  if (website) {
+    return NextResponse.json({ ok: false, error: "Message rejeté." }, { status: 400 });
+  }
+
+  const ip = getClientIp(req);
+  if (ip) {
+    const limited = isRateLimited(ip);
+    if (limited) {
+      return NextResponse.json(
+        { ok: false, error: "Trop de tentatives. Réessayez dans une minute." },
+        { status: 429 }
+      );
+    }
+  }
 
   if (name.length < 2) {
     return NextResponse.json(
