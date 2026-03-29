@@ -22,6 +22,21 @@ type BuildServiceInput = {
   description?: string;
 };
 
+type BuildVideoObjectInput = {
+  /** Page path where the video is showcased ("/mariage/") */
+  path: string;
+  name: string;
+  description?: string;
+  /** Absolute or site-relative URL to the video file / player. */
+  contentUrl: string;
+  /** Absolute or site-relative URL to the thumbnail/poster. */
+  thumbnailUrl: string;
+  /** ISO date (YYYY-MM-DD) or full ISO timestamp. */
+  uploadDate?: string;
+  /** ISO8601 duration (ex: PT1M30S). */
+  duration?: string;
+};
+
 export type FaqItem = { q: string; a: string };
 
 type BuildFaqPageInput = {
@@ -172,6 +187,34 @@ export function buildService({ path, name, description }: BuildServiceInput) {
     url,
     provider: { "@id": ORGANIZATION_ID },
     areaServed: { "@type": "City", name: "Paris" },
+  } satisfies StructuredDataNode;
+}
+
+function toAbsoluteUrlMaybe(value: string) {
+  if (value.startsWith("http://") || value.startsWith("https://")) return value;
+  return absoluteUrl(value);
+}
+
+export function buildVideoObject({
+  path,
+  name,
+  description,
+  contentUrl,
+  thumbnailUrl,
+  uploadDate,
+  duration,
+}: BuildVideoObjectInput) {
+  const url = absoluteUrl(path);
+
+  return {
+    "@type": "VideoObject",
+    "@id": `${url}#video`,
+    name,
+    description,
+    thumbnailUrl: toAbsoluteUrlMaybe(thumbnailUrl),
+    contentUrl: toAbsoluteUrlMaybe(contentUrl),
+    ...(uploadDate ? { uploadDate } : {}),
+    ...(duration ? { duration } : {}),
   } satisfies StructuredDataNode;
 }
 
