@@ -48,6 +48,12 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
           NEXT_PUBLIC_IS_PREVIEW: "1"
 
+      - name: Media QA
+        run: npm run media:qa
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+          NEXT_PUBLIC_IS_PREVIEW: "1"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
