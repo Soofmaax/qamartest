@@ -4,6 +4,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SERVICES } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { ROUTES } from "@/lib/routes";
@@ -30,38 +31,7 @@ const structuredData = buildWebPageGraph({
   ],
 });
 
-const services = [
-  {
-    title: "Mariage",
-    description:
-      "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
-    href: ROUTES.mariage,
-    image:
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-  },
-  {
-    title: "Corporate",
-    description:
-      "Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure.",
-    href: ROUTES.corporate,
-    image: "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
-  },
-  {
-    title: "Publicité digitale",
-    description:
-      "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: ROUTES.publiciteDigitale,
-    image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
-    position: "object-left",
-  },
-  {
-    title: "Événementiel",
-    description:
-      "Couverture photo/vidéo d’événements : conférences, lancements, soirées, festivals. Captation, contenus live et recap.",
-    href: ROUTES.evenementiel,
-    image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-  },
-];
+
 
 export default function ServicesPage() {
   return (
@@ -80,7 +50,7 @@ export default function ServicesPage() {
         </section>
 
         <section className="w-full bg-black pb-16 md:pb-20">
-          {services.map((s) => (
+          {SERVICES.map((s) => (
             <div
               key={s.title}
               className="relative h-[300px] w-full overflow-hidden md:h-[367px]"
