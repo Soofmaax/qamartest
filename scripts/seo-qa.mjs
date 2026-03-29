@@ -36,7 +36,10 @@ const pages = [
 
   { route: "/evenementiel/", file: path.join("evenementiel", "index.html") },
 
-  { route: "/publicite-digitale/", file: path.join("publicite-digitale", "index.html") },
+  {
+    route: "/publicite-digitale/",
+    file: path.join("publicite-digitale", "index.html"),
+  },
   {
     route: "/publicite-digitale/conception-brainstorming-marketing/",
     file: path.join(
