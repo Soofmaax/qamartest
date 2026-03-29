@@ -205,7 +205,12 @@ async function checkRobots({ preview }) {
   assertIncludes(
     txt,
     "Sitemap: https://www.directedbyqamar.com/sitemap.xml",
-    "robots.txt missing Sitemap"
+    "robots.txt missing sitemap.xml"
+  );
+  assertIncludes(
+    txt,
+    "Sitemap: https://www.directedbyqamar.com/video-sitemap.xml",
+    "robots.txt missing video-sitemap.xml"
   );
 }
 
