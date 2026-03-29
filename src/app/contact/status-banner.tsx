@@ -1,10 +1,14 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function ContactStatusBanner({ isPreview }: { isPreview: boolean }) {
-  const searchParams = useSearchParams();
-  const sent = searchParams.get("sent") === "1";
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setSent(params.get("sent") === "1");
+  }, []);
 
   if (isPreview) {
     return (
