@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { buildImageAlt } from "@/lib/altText";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 
 export type GalleryItem = {
@@ -241,7 +242,7 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
           >
             <Image
               src={item.cover}
-              alt={item.title}
+              alt={buildImageAlt({ context: "Galerie", subject: item.title })}
               fill
               sizes="100vw"
               placeholder="blur"
@@ -315,7 +316,12 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
               >
                 <Image
                   src={openImage}
-                  alt={openItem.title}
+                  alt={buildImageAlt({
+                    context: "Galerie",
+                    subject: openItem.title,
+                    index: openImageIndex + 1,
+                    total: openItem.images.length,
+                  })}
                   fill
                   sizes="100vw"
                   placeholder="blur"
@@ -375,7 +381,12 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
                   >
                     <Image
                       src={src}
-                      alt={openItem.title}
+                      alt={buildImageAlt({
+                        context: "Galerie",
+                        subject: openItem.title,
+                        index: idx + 1,
+                        total: openItem.images.length,
+                      })}
                       fill
                       sizes="110px"
                       placeholder="blur"

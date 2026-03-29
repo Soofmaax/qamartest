@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { buildImageAlt } from "@/lib/altText";
 
 type Project = {
   title: string;
@@ -49,7 +50,10 @@ export function ProjectsCarousel({
         return;
       }
 
-      if (openProject.images.length > 1 && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+      if (
+        openProject.images.length > 1 &&
+        (e.key === "ArrowLeft" || e.key === "ArrowRight")
+      ) {
         setOpenImageIndex((v) => {
           const len = openProject.images.length;
           return e.key === "ArrowLeft" ? (v - 1 + len) % len : (v + 1) % len;
@@ -92,14 +96,15 @@ export function ProjectsCarousel({
                   type="button"
                   className="relative h-[320px] w-[190px] flex-none overflow-hidden rounded-lg text-left md:h-[400px] md:w-[234px]"
                   onClick={() => {
-                    lastActiveElementRef.current = document.activeElement as HTMLElement | null;
+                    lastActiveElementRef.current =
+                      document.activeElement as HTMLElement | null;
                     setOpenProjectIndex(idx);
                     setOpenImageIndex(0);
                   }}
                 >
                   <Image
                     src={p.cover}
-                    alt={p.title}
+                    alt={buildImageAlt({ context: "Portfolio", subject: p.title })}
                     fill
                     sizes="(min-width: 768px) 234px, 190px"
                     className="object-cover"
@@ -124,7 +129,7 @@ export function ProjectsCarousel({
                 >
                   <Image
                     src={p.cover}
-                    alt={p.title}
+                    alt={buildImageAlt({ context: "Portfolio", subject: p.title })}
                     fill
                     sizes="(min-width: 768px) 234px, 190px"
                     className="object-cover"
@@ -152,7 +157,10 @@ export function ProjectsCarousel({
         >
           <div className="w-full max-w-5xl">
             <div className="flex items-center justify-between gap-4 pb-4">
-              <h2 id={dialogTitleId} className="font-serif text-3xl font-semibold text-white">
+              <h2
+                id={dialogTitleId}
+                className="font-serif text-3xl font-semibold text-white"
+              >
                 {openProject.title}
               </h2>
               <button
@@ -168,7 +176,12 @@ export function ProjectsCarousel({
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg bg-black">
               <Image
                 src={openImage}
-                alt={openProject.title}
+                alt={buildImageAlt({
+                  context: "Portfolio",
+                  subject: openProject.title,
+                  index: openImageIndex + 1,
+                  total: openProject.images.length,
+                })}
                 fill
                 sizes="100vw"
                 className="object-contain"
@@ -217,7 +230,12 @@ export function ProjectsCarousel({
                   >
                     <Image
                       src={src}
-                      alt={openProject.title}
+                      alt={buildImageAlt({
+                        context: "Portfolio",
+                        subject: openProject.title,
+                        index: idx + 1,
+                        total: openProject.images.length,
+                      })}
                       fill
                       sizes="110px"
                       className="object-cover"
