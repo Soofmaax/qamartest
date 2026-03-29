@@ -204,7 +204,7 @@ export default function PubliciteDigitalePage() {
               <div className="absolute inset-0">
                 <Image
                   src={s.image}
-                  alt=""
+                  alt={s.title}
                   fill
                   sizes="100vw"
                   placeholder="blur"

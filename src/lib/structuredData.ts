@@ -83,7 +83,32 @@ export function buildOrganizationLocalBusiness() {
       addressLocality: "Paris",
       addressCountry: "FR",
     },
-    sameAs: ["https://maps.app.goo.gl/CU93H22ijGqnEaKr7"],
+    telephone: "+33-6-02-65-77-52",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+33-6-02-65-77-52",
+      contactType: "customer service",
+      availableLanguage: ["fr"],
+    },
+    priceRange: "€€€",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+    sameAs: [
+      "https://maps.app.goo.gl/CU93H22ijGqnEaKr7",
+      "https://www.instagram.com/directedbyqamar/",
+    ],
   } satisfies StructuredDataNode;
 }
 
@@ -146,7 +171,7 @@ export function buildService({ path, name, description }: BuildServiceInput) {
     description,
     url,
     provider: { "@id": ORGANIZATION_ID },
-    areaServed: { "@type": "Country", name: "France" },
+    areaServed: { "@type": "City", name: "Paris" },
   } satisfies StructuredDataNode;
 }
 

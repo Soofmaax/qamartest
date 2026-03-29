@@ -375,7 +375,7 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
                   >
                     <Image
                       src={src}
-                      alt=""
+                      alt={openItem.title}
                       fill
                       sizes="110px"
                       placeholder="blur"

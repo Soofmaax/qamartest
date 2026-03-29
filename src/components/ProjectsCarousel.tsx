@@ -215,7 +215,13 @@ export function ProjectsCarousel({
                     }`}
                     onClick={() => setOpenImageIndex(idx)}
                   >
-                    <Image src={src} alt="" fill sizes="110px" className="object-cover" />
+                    <Image
+                      src={src}
+                      alt={openProject.title}
+                      fill
+                      sizes="110px"
+                      className="object-cover"
+                    />
                   </button>
                 ))}
               </div>
