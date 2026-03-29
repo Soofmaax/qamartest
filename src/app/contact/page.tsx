@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 import { ContactStatusBanner } from "./status-banner";
 
@@ -24,7 +25,7 @@ const structuredData = buildWebPageGraph({
   description: seo.description,
   imageUrl: seo.image,
   breadcrumbs: [
-    { name: "Accueil", path: "/" },
+    { name: "Accueil", path: ROUTES.home },
     { name: "Contact", path: seo.path },
   ],
 });
@@ -103,7 +104,7 @@ export default function ContactPage() {
                   Envoyer
                 </button>
 
-                <Link href="/" className="text-center text-zinc-200 underline">
+                <Link href={ROUTES.home} className="text-center text-zinc-200 underline">
                   Retour à l’accueil
                 </Link>
               </div>

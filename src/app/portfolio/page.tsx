@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -24,7 +25,7 @@ const structuredData = buildWebPageGraph({
   description: seo.description,
   imageUrl: seo.image,
   breadcrumbs: [
-    { name: "Accueil", path: "/" },
+    { name: "Accueil", path: ROUTES.home },
     { name: "Portfolio", path: seo.path },
   ],
 });
@@ -80,7 +81,7 @@ export default function PortfolioPage() {
             </div>
 
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               className="rounded-lg border border-white/15 bg-black px-6 py-3 text-center font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
             >
               Me contacter

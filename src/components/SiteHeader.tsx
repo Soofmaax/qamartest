@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 
 const navItems = [
-  { href: "/", label: "Accueil" },
-  { href: "/services/", label: "Services" },
-  { href: "/portfolio/", label: "Portfolio" },
-  { href: "/contact/", label: "Contact" },
+  { href: ROUTES.home, label: "Accueil" },
+  { href: ROUTES.services, label: "Services" },
+  { href: ROUTES.portfolio, label: "Portfolio" },
+  { href: ROUTES.contact, label: "Contact" },
 ];
 
 export function SiteHeader() {
@@ -36,7 +37,7 @@ export function SiteHeader() {
     <header className="w-full bg-black">
       <div className="mx-auto site-width">
         <div className="flex items-center justify-between gap-4 py-5 site-pad-x">
-          <Link href="/" className="relative h-[52px] w-[160px] md:h-[69px] md:w-[213px]">
+          <Link href={ROUTES.home} className="relative h-[52px] w-[160px] md:h-[69px] md:w-[213px]">
             <Image
               src="https://framerusercontent.com/images/CQ0Kd86NZDyfrUsqQ2XdDJBGDs.png"
               alt="Directed by Qamar"
@@ -63,7 +64,7 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               className="hidden rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:inline-block"
             >
               Me contacter
@@ -124,7 +125,7 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Link
-                href="/contact/"
+                href={ROUTES.contact}
                 className="mt-2 rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
                 onClick={() => setOpen(false)}
               >

@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 import {
   absoluteUrl,
   buildBreadcrumbList,
@@ -50,7 +51,7 @@ export function ServicePage({
     buildBreadcrumbList({
       path,
       items: [
-        { name: "Accueil", path: "/" },
+        { name: "Accueil", path: ROUTES.home },
         { name: title, path },
       ],
     }),
@@ -118,7 +119,7 @@ export function ServicePage({
               </p>
               <div className="pt-2">
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label={`${path}:hero_contact`}
@@ -153,7 +154,7 @@ export function ServicePage({
 
             <div className="mt-10">
               <Link
-                href="/contact/"
+                href={ROUTES.contact}
                 data-ga-event="cta_click"
                 data-ga-category="Lead"
                 data-ga-label={`${path}:devis`}
@@ -207,10 +208,10 @@ export function ServicePage({
             </h2>
             <div className="mt-6 flex flex-wrap gap-3">
               {[
-                { href: "/mariage/", label: "Mariage" },
-                { href: "/corporate/", label: "Corporate" },
-                { href: "/publicite-digitale/", label: "Publicité digitale" },
-                { href: "/evenementiel/", label: "Événementiel" },
+                { href: ROUTES.mariage, label: "Mariage" },
+                { href: ROUTES.corporate, label: "Corporate" },
+                { href: ROUTES.publiciteDigitale, label: "Publicité digitale" },
+                { href: ROUTES.evenementiel, label: "Événementiel" },
               ]
                 .filter((l) => l.label !== title)
                 .map((l) => (

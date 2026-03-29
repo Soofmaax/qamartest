@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -24,7 +25,7 @@ const structuredData = buildWebPageGraph({
   description: seo.description,
   imageUrl: seo.image,
   breadcrumbs: [
-    { name: "Accueil", path: "/" },
+    { name: "Accueil", path: ROUTES.home },
     { name: "Services", path: seo.path },
   ],
 });
@@ -34,7 +35,8 @@ const services = [
     title: "Mariage",
     description:
       "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
-    href: "/mariage/",
+    href: ROUTES.mariage,
+,
     image:
       "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
   },
@@ -42,14 +44,14 @@ const services = [
     title: "Corporate",
     description:
       "Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure.",
-    href: "/corporate/",
+    href: ROUTES.corporate,
     image: "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
   },
   {
     title: "Publicité digitale",
     description:
       "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: "/publicite-digitale/",
+    href: ROUTES.publiciteDigitale,
     image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
     position: "object-left",
   },
@@ -57,7 +59,7 @@ const services = [
     title: "Événementiel",
     description:
       "Couverture photo/vidéo d’événements : conférences, lancements, soirées, festivals. Captation, contenus live et recap.",
-    href: "/evenementiel/",
+    href: ROUTES.evenementiel,
     image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
   },
 ];
@@ -119,7 +121,7 @@ export default function ServicesPage() {
               Prêt à donner une nouvelle dimension à vos contenus ?
             </h2>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Me contacter

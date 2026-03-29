@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 import type { StructuredDataGraph } from "@/lib/structuredData";
 
 export function DigitalAdsServicePage({
@@ -55,7 +56,7 @@ export function DigitalAdsServicePage({
                 </h1>
                 <p className="text-[18px] text-white/80 md:text-[20px]">{eyebrow}</p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label={`${path}:hero`}
@@ -119,7 +120,7 @@ export function DigitalAdsServicePage({
         <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <Link
-              href="/publicite-digitale/"
+              href={ROUTES.publiciteDigitale}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label={`${path}:back`}
@@ -128,7 +129,7 @@ export function DigitalAdsServicePage({
               Retour à Publicité digitale
             </Link>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label={`${path}:devis`}

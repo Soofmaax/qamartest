@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -36,7 +37,7 @@ const structuredData = buildGraph([
   buildBreadcrumbList({
     path: seo.path,
     items: [
-      { name: "Accueil", path: "/" },
+      { name: "Accueil", path: ROUTES.home },
       { name: "Publicité digitale", path: seo.path },
     ],
   }),
@@ -166,7 +167,7 @@ export default function PubliciteDigitalePage() {
                   Des contenus pensés pour performer
                 </p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label="/publicite-digitale/:hero"
@@ -260,7 +261,7 @@ export default function PubliciteDigitalePage() {
               Mon portfolio
             </h2>
             <Link
-              href="/portfolio/"
+              href={ROUTES.portfolio}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label="/publicite-digitale/:portfolio"
@@ -332,7 +333,7 @@ export default function PubliciteDigitalePage() {
             </div>
 
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label="/publicite-digitale/:devis"

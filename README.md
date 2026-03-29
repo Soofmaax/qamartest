@@ -55,6 +55,7 @@ npm run seo:qa
 See:
 - `CONTRIBUTING.md` (conventions, structure, and rules for Next export)
 - `AGENTS.md` (quick rules for AI-assisted changes)
+- `SEO_TECH_CHECKLIST.md` (SEO tech checklist for migration)
 
 ## Content backlog (non-code)
 

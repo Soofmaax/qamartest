@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -36,7 +37,7 @@ const structuredData = buildGraph([
   buildBreadcrumbList({
     path: seo.path,
     items: [
-      { name: "Accueil", path: "/" },
+      { name: "Accueil", path: ROUTES.home },
       { name: "Corporate", path: seo.path },
     ],
   }),
@@ -179,7 +180,7 @@ export default function CorporatePage() {
                   Créer de la valeur avec l’image
                 </p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label="/corporate/:hero"
@@ -272,7 +273,7 @@ export default function CorporatePage() {
               Mon portfolio
             </h2>
             <Link
-              href="/portfolio/"
+              href={ROUTES.portfolio}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label="/corporate/:portfolio"
@@ -341,7 +342,7 @@ export default function CorporatePage() {
             </p>
 
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label="/corporate/:devis"

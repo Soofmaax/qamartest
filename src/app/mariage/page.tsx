@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
 import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { ROUTES } from "@/lib/routes";
 import {
   absoluteUrl,
   buildBreadcrumbList,
@@ -35,7 +36,7 @@ const structuredData = buildGraph([
   buildBreadcrumbList({
     path: seo.path,
     items: [
-      { name: "Accueil", path: "/" },
+      { name: "Accueil", path: ROUTES.home },
       { name: "Mariage", path: seo.path },
     ],
   }),
@@ -94,14 +95,15 @@ const lastPrestations = [
 const formulas = [
   {
     title: "Photo",
-    description: "Immortalisez votre journée avec des images élégantes et intemporelles.",
+    description:
+      "Immortalisez votre journée avec des images élégantes et intemporelles.",
     bullets: [
       "Reportage complet du mariage : préparatifs, cérémonie, portraits, soirée",
       "Photos haut de gamme, lumière et composition maîtrisées",
       "Retouches professionnelles et travail des couleurs",
       "Remise rapide via galerie privée",
     ],
-    href: "/contact/",
+    href: ROUTES.contact,
     cta: "En savoir plus",
   },
   {
@@ -113,7 +115,7 @@ const formulas = [
       "Montage cinématique, étalonnage et retouches premium",
       "Livraison rapide via galerie privée ou version téléchargeable",
     ],
-    href: "/contact/",
+    href: ROUTES.contact,
     cta: "En savoir plus",
   },
   {
@@ -126,7 +128,7 @@ const formulas = [
       "Couleurs, montage et retouches premium pour chaque support",
       "Galerie privée avec accès facile pour partager vos souvenirs",
     ],
-    href: "/contact/",
+    href: ROUTES.contact,
     cta: "En savoir plus",
   },
 ];
@@ -173,7 +175,7 @@ export default function MariagePage() {
                   fiançailles - Mariage - Shooting
                 </p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label="/mariage/:hero"
@@ -270,7 +272,7 @@ export default function MariagePage() {
               Mon portfolio
             </h2>
             <Link
-              href="/portfolio/"
+              href={ROUTES.portfolio}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label="/mariage/:portfolio"
@@ -329,7 +331,7 @@ export default function MariagePage() {
               à chaque projet.
             </p>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label="/mariage/:bottom"
