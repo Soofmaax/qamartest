@@ -2,6 +2,8 @@
 
 ## Quick start
 
+Requirements: Node.js 22 (matches CI) + npm.
+
 ```bash
 npm ci
 npm run dev
@@ -37,6 +39,10 @@ Special routes:
 ```ts
 export const dynamic = "force-static";
 ```
+
+## SEO QA
+
+`npm run seo:qa` validates the exported HTML in `./out`, so it must be run after a preview/static export build.
 
 ## TypeScript & lint rules
 

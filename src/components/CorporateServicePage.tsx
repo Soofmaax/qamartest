@@ -4,6 +4,7 @@ import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import type { StructuredDataGraph } from "@/lib/structuredData";
 
 export function CorporateServicePage({

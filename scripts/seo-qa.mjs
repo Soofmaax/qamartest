@@ -3,6 +3,8 @@ import path from "node:path";
 
 const OUT_DIR = process.argv[2] ?? "out";
 
+let OUT_PREFIX = "";
+
 const pages = [
   { route: "/", file: "index.html" },
   { route: "/services/", file: path.join("services", "index.html") },
@@ -97,8 +99,57 @@ function hasJsonLd(html) {
   return /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>/i.test(html);
 }
 
+function normalizeBasePath(basePath) {
+  return basePath.replace(/^\/+|\/+$/g, "");
+}
+
+async function fileExists(fullPath) {
+  try {
+    await fs.access(fullPath);
+    return true;
+  } catch (err) {
+    if (err && typeof err === "object" && "code" in err && err.code === "ENOENT") {
+      return false;
+    }
+    throw err;
+  }
+}
+
+async function detectOutPrefix() {
+  const rootRobots = path.join(OUT_DIR, "robots.txt");
+  if (await fileExists(rootRobots)) {
+    // If the export is rooted at OUT_DIR, we should also have index.html there.
+    // If not, it’s likely exported under a basePath folder.
+    const rootIndex = path.join(OUT_DIR, "index.html");
+    if (await fileExists(rootIndex)) return "";
+  }
+
+  const envBasePath = normalizeBasePath(process.env.NEXT_PUBLIC_BASE_PATH ?? "");
+  if (envBasePath) {
+    const envRobots = path.join(OUT_DIR, envBasePath, "robots.txt");
+    if (await fileExists(envRobots)) return envBasePath;
+  }
+
+  const entries = await fs.readdir(OUT_DIR, { withFileTypes: true });
+  const candidates = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    if (entry.name === "_next") continue;
+
+    const candidateRobots = path.join(OUT_DIR, entry.name, "robots.txt");
+    if (await fileExists(candidateRobots)) candidates.push(entry.name);
+  }
+
+  if (candidates.length === 1) return candidates[0];
+
+  fail(
+    `Could not locate robots.txt in ${OUT_DIR} (checked root and ${candidates.length ? `candidates: ${candidates.join(", ")}` : "no candidates"}).`
+  );
+}
+
 async function readOutFile(relPath) {
-  const full = path.join(OUT_DIR, relPath);
+  const full = path.join(OUT_DIR, OUT_PREFIX, relPath);
   return fs.readFile(full, "utf8");
 }
 
@@ -179,6 +230,8 @@ async function detectPreview() {
 }
 
 async function main() {
+  OUT_PREFIX = (await detectOutPrefix()) ?? "";
+
   const preview = await detectPreview();
 
   await checkSitemap();
@@ -187,7 +240,7 @@ async function main() {
 
   // eslint-disable-next-line no-console
   console.log(
-    `SEO QA passed for ${pages.length} pages in ${OUT_DIR}${preview ? " (preview)" : ""}.`
+    `SEO QA passed for ${pages.length} pages in ${path.join(OUT_DIR, OUT_PREFIX)}${preview ? " (preview)" : ""}.`
   );
 }
 

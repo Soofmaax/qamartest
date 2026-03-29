@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Testimonials } from "@/components/Testimonials";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { PORTFOLIO_PROJECTS } from "@/lib/content";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -107,45 +108,6 @@ const services = [
   },
 ];
 
-const projects = [
-  {
-    title: "Corporate",
-    cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-    images: [
-      "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-      "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-    ],
-  },
-  {
-    title: "Événementiel",
-    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-    images: [
-      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
-    ],
-  },
-  {
-    title: "Mariage",
-    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-    images: [
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    ],
-  },
-  {
-    title: "Publicité digitale",
-    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    images: [
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-    ],
-  },
-];
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
@@ -210,48 +172,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col items-start gap-8 md:items-center">
-            <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
-              <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
-                <Image
-                  src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
-                  alt="Avis"
-                  fill
-                  sizes="141px"
-                  placeholder="blur"
-                  blurDataURL={DARK_BLUR_DATA_URL}
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="flex flex-col items-start gap-2">
-                <div className="flex items-center gap-1 text-white">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <span key={star} aria-hidden>
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="text-[18px] text-[#ededed] md:text-[20px]">
-                  +150 entreprises accompagnées
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[18px] text-[#ededed] underline md:text-[20px]"
-                >
-                  +16 avis Google
-                </a>
-              </div>
-            </div>
-
-            <div className="w-full pt-2 md:pt-0">
-              <Testimonials />
-            </div>
-          </div>
-        </section>
+        <GoogleReviewsSection />
 
         <section id="services" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-10">
@@ -315,7 +236,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10">
-            <ProjectsCarousel projects={projects} />
+            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
         </section>
 

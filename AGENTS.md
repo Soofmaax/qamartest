@@ -25,8 +25,13 @@ export const dynamic = "force-static";
 
 ## Commands
 
+- Node.js 22 (matches CI)
+
 ```bash
+npm ci
 npm run lint
 npm run build
 npm run seo:qa
 ```
+
+Note: `npm run seo:qa` expects `./out` (static export), so it should be run after a preview build.

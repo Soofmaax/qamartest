@@ -2,6 +2,11 @@
 
 This repo contains a static-exported Next.js site (App Router) for **Directed by Qamar**.
 
+## Requirements
+
+- Node.js 22 (matches CI)
+- npm (this repo uses `package-lock.json`)
+
 ## Development
 
 ```bash
@@ -21,7 +26,7 @@ npm run build
 This project uses `output: "export"` for preview deployments (e.g. GitHub Pages). The build outputs a static site into `./out`.
 
 ```bash
-NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH=/REPO_NAME npm run build
+NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 ```
 
 Notes:
@@ -38,9 +43,10 @@ npm run build
 
 ## SEO QA (optional)
 
-After building, you can run a small sanity check on the exported HTML:
+`npm run seo:qa` validates the exported HTML in `./out`, so it must be run after a preview/static export build.
 
 ```bash
+NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 npm run seo:qa
 ```
 
@@ -50,7 +56,7 @@ See:
 - `CONTRIBUTING.md` (conventions, structure, and rules for Next export)
 - `AGENTS.md` (quick rules for AI-assisted changes)
 
-## TODO (content polish)
+## Content backlog (non-code)
 
 The dedicated SEO pages now exist for each service category. Remaining work is content-level:
 
