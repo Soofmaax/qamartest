@@ -8,7 +8,7 @@ import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { DIGITAL_ADS_SERVICES, PORTFOLIO_PROJECTS } from "@/lib/content";
+import { DIGITAL_ADS_SERVICES, PORTFOLIO_PROJECTS, REFERENCE_LOGOS } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -61,50 +61,7 @@ const structuredData = buildGraph([
   },
 ]);
 
-const referenceLogos = [
-  {
-    src: "https://framerusercontent.com/images/WCk6aWdk3lcNK2YQ4jOZuMqrL8.png",
-    width: 243,
-    height: 30,
-    alt: "PWF",
-  },
-  {
-    src: "https://framerusercontent.com/images/hAQHQ3tidhNw5v9lqDPRy0by4Q.png",
-    width: 197,
-    height: 35,
-    alt: "Group",
-  },
-  {
-    src: "https://framerusercontent.com/images/PkZtUBhle6TenR3CV9mGcpJKQHk.png",
-    width: 148,
-    height: 30,
-    alt: "Fitness Park",
-  },
-  {
-    src: "https://framerusercontent.com/images/Kyt0tHHdYIDhl3RD2HCCBhrpiuc.png",
-    width: 134,
-    height: 34,
-    alt: "UNESCO",
-  },
-  {
-    src: "https://framerusercontent.com/images/fg88tcEcPzAeOIv7O1HBZbLYWfw.png",
-    width: 108,
-    height: 27,
-    alt: "Canal+",
-  },
-  {
-    src: "https://framerusercontent.com/images/DAfyAGHuflSzQsjykANU3SYhX0.png",
-    width: 107,
-    height: 30,
-    alt: "Logo",
-  },
-  {
-    src: "https://framerusercontent.com/images/t3a40zYxxocfwj5czXN2yGUnP5w.png",
-    width: 80,
-    height: 64,
-    alt: "CNA",
-  },
-];
+
 
 export default function PubliciteDigitalePage() {
   return (
@@ -220,7 +177,7 @@ export default function PubliciteDigitalePage() {
             </div>
 
             <div className="relative">
-              <ReferencesTicker logos={referenceLogos} durationSeconds={25} />
+              <ReferencesTicker logos={REFERENCE_LOGOS} durationSeconds={25} />
             </div>
           </div>
         </section>

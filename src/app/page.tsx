@@ -9,7 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { PORTFOLIO_PROJECTS, SERVICES } from "@/lib/content";
+import { PORTFOLIO_PROJECTS, REFERENCE_LOGOS, SERVICES } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
@@ -31,50 +31,7 @@ const structuredData = buildWebPageGraph({
   breadcrumbs: [{ name: "Accueil", path: ROUTES.home }],
 });
 
-const references = [
-  {
-    src: "https://framerusercontent.com/images/WCk6aWdk3lcNK2YQ4jOZuMqrL8.png",
-    alt: "PFW",
-    width: 200,
-    height: 35,
-  },
-  {
-    src: "https://framerusercontent.com/images/hAQHQ3tidhNw5v9lqDPRy0by4Q.png",
-    alt: "Référence",
-    width: 200,
-    height: 35,
-  },
-  {
-    src: "https://framerusercontent.com/images/PkZtUBhle6TenR3CV9mGcpJKQHk.png",
-    alt: "Fitness Park",
-    width: 200,
-    height: 35,
-  },
-  {
-    src: "https://framerusercontent.com/images/Kyt0tHHdYIDhl3RD2HCCBhrpiuc.png",
-    alt: "UNESCO",
-    width: 200,
-    height: 35,
-  },
-  {
-    src: "https://framerusercontent.com/images/fg88tcEcPzAeOIv7O1HBZbLYWfw.png",
-    alt: "Canal+",
-    width: 200,
-    height: 35,
-  },
-  {
-    src: "https://framerusercontent.com/images/DAfyAGHuflSzQsjykANU3SYhX0.png",
-    alt: "Référence",
-    width: 200,
-    height: 35,
-  },
-  {
-    src: "https://framerusercontent.com/images/t3a40zYxxocfwj5czXN2yGUnP5w.png",
-    alt: "CNA",
-    width: 200,
-    height: 35,
-  },
-];
+
 
 export default function Home() {
   return (
@@ -136,7 +93,7 @@ export default function Home() {
             </div>
 
             <div className="relative w-full md:w-[55%]">
-              <ReferencesTicker logos={references} variant="home" />
+              <ReferencesTicker logos={REFERENCE_LOGOS} variant="home" />
             </div>
           </div>
         </section>

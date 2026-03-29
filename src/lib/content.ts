@@ -14,6 +14,59 @@ export type ServiceItem = {
   position?: string;
 };
 
+export type ReferenceLogo = {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+};
+
+/** Shared project set used in the "Mon portfolio" carousel across multiple pages. */
+export const REFERENCE_LOGOS: ReferenceLogo[] = [
+  {
+    src: "https://framerusercontent.com/images/WCk6aWdk3lcNK2YQ4jOZuMqrL8.png",
+    width: 243,
+    height: 30,
+    alt: "PWF",
+  },
+  {
+    src: "https://framerusercontent.com/images/hAQHQ3tidhNw5v9lqDPRy0by4Q.png",
+    width: 197,
+    height: 35,
+    alt: "Group",
+  },
+  {
+    src: "https://framerusercontent.com/images/PkZtUBhle6TenR3CV9mGcpJKQHk.png",
+    width: 148,
+    height: 30,
+    alt: "Fitness Park",
+  },
+  {
+    src: "https://framerusercontent.com/images/Kyt0tHHdYIDhl3RD2HCCBhrpiuc.png",
+    width: 134,
+    height: 34,
+    alt: "UNESCO",
+  },
+  {
+    src: "https://framerusercontent.com/images/fg88tcEcPzAeOIv7O1HBZbLYWfw.png",
+    width: 108,
+    height: 27,
+    alt: "Canal+",
+  },
+  {
+    src: "https://framerusercontent.com/images/DAfyAGHuflSzQsjykANU3SYhX0.png",
+    width: 107,
+    height: 30,
+    alt: "Logo",
+  },
+  {
+    src: "https://framerusercontent.com/images/t3a40zYxxocfwj5czXN2yGUnP5w.png",
+    width: 80,
+    height: 64,
+    alt: "CNA",
+  },
+];
+
 /** Shared project set used in the "Mon portfolio" carousel across multiple pages. */
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
