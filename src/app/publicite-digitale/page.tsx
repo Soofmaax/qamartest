@@ -8,7 +8,7 @@ import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { DIGITAL_ADS_SERVICES, PORTFOLIO_PROJECTS } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -60,37 +60,6 @@ const structuredData = buildGraph([
     mainEntityOfPage: { "@id": webpageId },
   },
 ]);
-
-const services = [
-  {
-    title: "Conception & brainstorming marketing",
-    description:
-      "Des idées claires, des angles forts et une accroche qui retient l’attention. On prépare les messages, le rythme, et la structure pour produire des contenus efficaces.",
-    image: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    href: "/publicite-digitale/conception-brainstorming-marketing/",
-  },
-  {
-    title: "Création photo & vidéo premium",
-    description:
-      "Des visuels soigneusement réalisés, avec une direction artistique claire, un cadrage précis, et une esthétique moderne qui valorise votre produit ou service. Notre expertise permet de créer des contenus capables de rivaliser avec les codes des marques leaders.",
-    image: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-    href: "/publicite-digitale/creation-photo-video-premium/",
-  },
-  {
-    title: "Adaptation aux formats social media",
-    description:
-      "Reels, TikTok, YouTube, Facebook Ads, LinkedIn... Chaque format est optimisé pour respecter les codes de la plateforme tout en maximisant l’impact : rythme, storytelling, durée, accroche visuelle.",
-    image: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-    href: "/publicite-digitale/adaptation-formats-social-media/",
-  },
-  {
-    title: "Optimisation pour conversions & branding",
-    description:
-      "Nous produisons des contenus capables de générer de vrais résultats concrets : une hausse mesurable des ventes, une amélioration des taux de clic, une augmentation de l’engagement ainsi qu’un renforcement durable de votre notoriété. Chaque visuel est pensé comme un levier de performance, conçu pour capter l’attention, transmettre votre valeur et inciter votre audience à passer à l’action. Chaque asset s’inscrit dans une logique publicitaire précise, où l’esthétique sert avant tout l’efficacité.",
-    image: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-    href: "/publicite-digitale/optimisation-conversions-branding/",
-  },
-];
 
 const referenceLogos = [
   {
@@ -200,7 +169,7 @@ export default function PubliciteDigitalePage() {
         </section>
 
         <section className="w-full bg-black">
-          {services.map((s) => (
+          {DIGITAL_ADS_SERVICES.map((s) => (
             <div key={s.title} className="relative overflow-hidden">
               <div className="absolute inset-0">
                 <Image

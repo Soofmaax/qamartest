@@ -8,7 +8,7 @@ import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { CORPORATE_SERVICES, PORTFOLIO_PROJECTS } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -60,49 +60,6 @@ const structuredData = buildGraph([
     mainEntityOfPage: { "@id": webpageId },
   },
 ]);
-
-const services = [
-  {
-    title: "Portraits professionnels",
-    description:
-      "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
-    href: "/corporate/portraits-professionnels/",
-  },
-  {
-    title: "Reportages d’entreprise",
-    description:
-      "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
-    href: "/corporate/reportages-entreprise/",
-  },
-  {
-    title: "Présentation de marque",
-    description:
-      "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage. Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
-    href: "/corporate/presentation-marque/",
-  },
-  {
-    title: "Films institutionnels",
-    description:
-      "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage. Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
-    href: "/corporate/films-institutionnels/",
-  },
-  {
-    title: "Contenu pour site web & réseaux",
-    description:
-      "Des productions régulières pour alimenter vos plateformes avec du contenu professionnel, dynamique et cohérent. Vous bénéficiez d’une stratégie visuelle complète, pensée pour renforcer votre présence digitale.",
-    image:
-      "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
-    href: "/corporate/contenu-web-reseaux/",
-  },
-];
 
 const referenceLogos = [
   {
@@ -212,7 +169,7 @@ export default function CorporatePage() {
         </section>
 
         <section className="w-full bg-black">
-          {services.map((s) => (
+          {CORPORATE_SERVICES.map((s) => (
             <div key={s.title} className="relative overflow-hidden">
               <div className="absolute inset-0">
                 <Image
