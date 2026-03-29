@@ -50,6 +50,18 @@ NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 npm run seo:qa
 ```
 
+## Video (YouTube)
+
+- `src/components/YouTubeEmbed.tsx`: lazy-loaded YouTube iframe (no iframe until click).
+- `src/lib/videos.ts`: add entries to `SITE_VIDEOS` to:
+  - generate `/video-sitemap.xml`
+  - attach `VideoObject` JSON-LD on pages that pull a primary video via `getPrimaryVideoForPage(path)`
+
+## Image alt text
+
+- `src/lib/altText.ts`: `buildImageAlt(...)` helper.
+- Gallery/portfolio components use it so future content updates mostly require only image URLs + titles.
+
 ## Project conventions (for maintainability)
 
 See:
