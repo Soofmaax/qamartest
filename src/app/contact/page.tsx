@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -41,7 +42,9 @@ export default function ContactPage() {
           </p>
 
           <div className="mt-10 rounded-lg border border-white/10 bg-black/40 p-6 md:p-8">
-            <ContactStatusBanner isPreview={isPreview} />
+            <Suspense fallback={null}>
+              <ContactStatusBanner isPreview={isPreview} />
+            </Suspense>
 
             <form action={isPreview ? "#" : "/api/contact"} method="POST" className="space-y-5">
 
