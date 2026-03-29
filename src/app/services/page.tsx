@@ -36,7 +36,6 @@ const services = [
     description:
       "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
     href: ROUTES.mariage,
-,
     image:
       "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
   },
