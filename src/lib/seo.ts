@@ -20,6 +20,8 @@ type CreatePageMetadataInput = {
   path?: string;
   /** Absolute URL to an OG image. */
   image?: string;
+  /** Optional robots override (ex: thank-you pages). */
+  robots?: Metadata["robots"];
 };
 
 function normalizePath(path: string) {
@@ -35,6 +37,7 @@ export function createPageMetadata({
   canonical,
   path,
   image,
+  robots,
 }: CreatePageMetadataInput): Metadata {
   const canonicalPath = normalizePath(canonical ?? path ?? "/");
   const url = new URL(canonicalPath, SITE_URL).toString();
@@ -57,6 +60,7 @@ export function createPageMetadata({
   return {
     title,
     description,
+    ...(robots ? { robots } : {}),
     alternates: {
       canonical: canonicalPath,
     },

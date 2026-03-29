@@ -5,6 +5,7 @@ export async function POST(req: Request) {
 
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
+  const service = String(formData.get("service") ?? "").trim();
   const subject = String(formData.get("subject") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
 
@@ -31,6 +32,7 @@ export async function POST(req: Request) {
       <h2>Nouveau message depuis le site</h2>
       <p><strong>Nom:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Service:</strong> ${escapeHtml(service || "(non précisé)")}</p>
       <p><strong>Sujet:</strong> ${escapeHtml(subject || "(sans sujet)")}</p>
       <hr />
       <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
@@ -58,6 +60,12 @@ export async function POST(req: Request) {
       { ok: false, error: "Erreur lors de l’envoi.", details: errText },
       { status: 502 }
     );
+  }
+
+  const accept = req.headers.get("accept") ?? "";
+
+  if (accept.includes("application/json")) {
+    return NextResponse.json({ ok: true }, { status: 200 });
   }
 
   const url = new URL(req.url);

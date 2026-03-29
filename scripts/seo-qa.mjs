@@ -10,6 +10,7 @@ const pages = [
   { route: "/services/", file: path.join("services", "index.html") },
   { route: "/portfolio/", file: path.join("portfolio", "index.html") },
   { route: "/contact/", file: path.join("contact", "index.html") },
+  { route: "/merci/", file: path.join("merci", "index.html") },
   { route: "/mariage/", file: path.join("mariage", "index.html") },
 
   { route: "/corporate/", file: path.join("corporate", "index.html") },

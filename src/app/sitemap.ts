@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/",
     "/portfolio/",
     "/contact/",
+    "/merci/",
     "/mariage/",
     "/corporate/",
     "/corporate/portraits-professionnels/",
