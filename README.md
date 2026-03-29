@@ -5,13 +5,32 @@ This repo contains a static-exported Next.js site (App Router) for **Directed by
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Production build (static export)
+## CI checks (before opening/merging a PR)
 
-This project uses `output: "export"`, so the build outputs a static site into `./out`.
+```bash
+npm run lint
+npm run build
+```
+
+## GitHub Pages / preview build (static export)
+
+This project uses `output: "export"` for preview deployments (e.g. GitHub Pages). The build outputs a static site into `./out`.
+
+```bash
+NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH=/REPO_NAME npm run build
+```
+
+Notes:
+- `NEXT_PUBLIC_BASE_PATH` must match the GitHub Pages base path (usually `/<repo-name>`).
+- `NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments.
+
+## Production build (no basePath)
+
+Production (directedbyqamar.com) should build without preview env vars:
 
 ```bash
 npm run build
@@ -25,11 +44,11 @@ After building, you can run a small sanity check on the exported HTML:
 npm run seo:qa
 ```
 
-## Preview vs production indexing
+## Project conventions (for maintainability)
 
-`NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments (e.g. GitHub Pages).
-
-Production (directedbyqamar.com) should build without this env var.
+See:
+- `CONTRIBUTING.md` (conventions, structure, and rules for Next export)
+- `AGENTS.md` (quick rules for AI-assisted changes)
 
 ## TODO (corporate service detail pages)
 
