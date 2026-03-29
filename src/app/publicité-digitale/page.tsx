@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
+import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
@@ -238,49 +238,7 @@ export default function PubliciteDigitalePage() {
             </div>
 
             <div className="relative">
-              <div className="ticker">
-                <div
-                  className="ticker-track"
-                  style={{ "--ticker-duration": "25s" } as CSSProperties}
-                >
-                  {referenceLogos.map((logo) => (
-                    <div
-                      key={logo.src}
-                      className="relative flex h-[64px] w-auto flex-none items-center"
-                    >
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={logo.width}
-                        height={logo.height}
-                        className="h-auto max-h-[64px] w-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div
-                  className="ticker-track"
-                  aria-hidden
-                  style={{ "--ticker-duration": "25s" } as CSSProperties}
-                >
-                  {referenceLogos.map((logo) => (
-                    <div
-                      key={`${logo.src}-dup`}
-                      className="relative flex h-[64px] w-auto flex-none items-center"
-                    >
-                      <Image
-                        src={logo.src}
-                        alt=""
-                        width={logo.width}
-                        height={logo.height}
-                        className="h-auto max-h-[64px] w-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-[15%] bg-gradient-to-r from-black to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[15%] bg-gradient-to-l from-black to-transparent" />
+              <ReferencesTicker logos={referenceLogos} durationSeconds={25} />
             </div>
           </div>
         </section>

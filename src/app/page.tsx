@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
+import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Testimonials } from "@/components/Testimonials";
@@ -30,30 +31,44 @@ const references = [
   {
     src: "https://framerusercontent.com/images/WCk6aWdk3lcNK2YQ4jOZuMqrL8.png",
     alt: "PFW",
+    width: 200,
+    height: 35,
   },
   {
     src: "https://framerusercontent.com/images/hAQHQ3tidhNw5v9lqDPRy0by4Q.png",
     alt: "Référence",
+    width: 200,
+    height: 35,
   },
   {
     src: "https://framerusercontent.com/images/PkZtUBhle6TenR3CV9mGcpJKQHk.png",
     alt: "Fitness Park",
+    width: 200,
+    height: 35,
   },
   {
     src: "https://framerusercontent.com/images/Kyt0tHHdYIDhl3RD2HCCBhrpiuc.png",
     alt: "UNESCO",
+    width: 200,
+    height: 35,
   },
   {
     src: "https://framerusercontent.com/images/fg88tcEcPzAeOIv7O1HBZbLYWfw.png",
     alt: "Canal+",
+    width: 200,
+    height: 35,
   },
   {
     src: "https://framerusercontent.com/images/DAfyAGHuflSzQsjykANU3SYhX0.png",
     alt: "Référence",
+    width: 200,
+    height: 35,
   },
   {
     src: "https://framerusercontent.com/images/t3a40zYxxocfwj5czXN2yGUnP5w.png",
     alt: "CNA",
+    width: 200,
+    height: 35,
   },
 ];
 
@@ -185,44 +200,7 @@ export default function Home() {
             </div>
 
             <div className="relative w-full md:w-[55%]">
-              <div className="ticker h-[91px]">
-                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[23%] bg-gradient-to-r from-black to-black/0" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[23%] bg-gradient-to-l from-black to-black/0" />
-
-                <div className="flex h-full items-center">
-                  <div className="ticker-track pr-[43px]">
-                    {references.map((ref) => (
-                      <div
-                        key={ref.src}
-                        className="relative h-[35px] w-[200px] flex-none"
-                      >
-                        <Image
-                          src={ref.src}
-                          alt={ref.alt}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="ticker-track pr-[43px]" aria-hidden="true">
-                    {references.map((ref) => (
-                      <div
-                        key={`${ref.src}-dup`}
-                        className="relative h-[35px] w-[200px] flex-none"
-                      >
-                        <Image
-                          src={ref.src}
-                          alt={ref.alt}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <ReferencesTicker logos={references} variant="home" />
             </div>
           </div>
         </section>
