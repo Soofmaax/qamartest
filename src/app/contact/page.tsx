@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
 import { buildWebPageGraph } from "@/lib/structuredData";
+import { ContactStatusBanner } from "./status-banner";
 
 const seo = {
   title: "Contact | Directed by Qamar",
@@ -23,15 +24,7 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
 });
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const resolvedSearchParams = await searchParams;
-  const sentParam = resolvedSearchParams?.sent;
-  const sentValue = Array.isArray(sentParam) ? sentParam[0] : sentParam;
-  const sent = sentValue === "1";
+export default function ContactPage() {
   const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
 
   return (
@@ -48,15 +41,7 @@ export default async function ContactPage({
           </p>
 
           <div className="mt-10 rounded-lg border border-white/10 bg-black/40 p-6 md:p-8">
-            {isPreview ? (
-              <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
-                Formulaire email disponible sur le site final (Vercel + Resend).
-              </p>
-            ) : sent ? (
-              <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
-                Message envoyé. Je reviens vers vous rapidement.
-              </p>
-            ) : null}
+            <ContactStatusBanner isPreview={isPreview} />
 
             <form action={isPreview ? "#" : "/api/contact"} method="POST" className="space-y-5">
 
