@@ -181,6 +181,12 @@ async function checkSitemap() {
   }
 }
 
+async function checkVideoSitemap() {
+  const xml = await readOutFile("video-sitemap.xml");
+
+  assertMatch(xml, /<urlset\b[^>]*xmlns:video=/i, "video-sitemap.xml missing video namespace");
+}
+
 async function checkRobots({ preview }) {
   const txt = await readOutFile("robots.txt");
 
@@ -263,6 +269,7 @@ async function main() {
   const preview = await detectPreview();
 
   await checkSitemap();
+  await checkVideoSitemap();
   await checkRobots({ preview });
   await checkPages({ preview });
 

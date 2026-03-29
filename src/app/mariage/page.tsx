@@ -2,21 +2,24 @@ import type { Metadata } from "next";
 
 import Link from "next/link";
 import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
-import { JsonLd } from "@/components/JsonLd";
 import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
+import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { createPageMetadata } from "@/lib/seo";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { PORTFOLIO_PROJECTS } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
+import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
   buildBreadcrumbList,
   buildGraph,
   buildService,
+  buildVideoObject,
   buildWebPage,
 } from "@/lib/structuredData";
+import { youTubeThumbnailUrl, youTubeWatchUrl } from "@/lib/videos";
 
 const seo = {
   title: "Photographe & vidéaste de mariage | Directed by Qamar",
@@ -28,9 +31,15 @@ const seo = {
 
 export const metadata: Metadata = createPageMetadata(seo);
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+// TODO: set the real YouTube id (the `v=` query param).
+const heroYouTubeId = "";
+
 const url = absoluteUrl(seo.path);
 const webpageId = `${url}#webpage`;
 const serviceId = `${url}#service`;
+const videoId = `${url}#video`;
 
 const structuredData = buildGraph([
   buildBreadcrumbList({
@@ -48,6 +57,7 @@ const structuredData = buildGraph([
       imageUrl: seo.image,
     }),
     mainEntity: { "@id": serviceId },
+    ...(heroYouTubeId ? { hasPart: [{ "@id": videoId }] } : {}),
   },
   {
     ...buildService({
@@ -58,9 +68,18 @@ const structuredData = buildGraph([
     "@id": serviceId,
     mainEntityOfPage: { "@id": webpageId },
   },
+  ...(heroYouTubeId
+    ? [
+        buildVideoObject({
+          path: seo.path,
+          name: seo.title,
+          description: seo.description,
+          contentUrl: youTubeWatchUrl(heroYouTubeId),
+          thumbnailUrl: youTubeThumbnailUrl(heroYouTubeId),
+        }),
+      ]
+    : []),
 ]);
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const lastPrestations = [
   {
@@ -142,28 +161,41 @@ export default function MariagePage() {
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
-            <video
-              className="absolute inset-0 hidden h-full w-full object-cover object-bottom md:block"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
-            >
-              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
-            </video>
+            {heroYouTubeId ? (
+              <div className="absolute inset-0">
+                <YouTubeEmbed
+                  videoId={heroYouTubeId}
+                  title="Film de mariage — Directed by Qamar"
+                  className="h-full"
+                />
+              </div>
+            ) : (
+              <>
+                <video
+                  className="absolute inset-0 hidden h-full w-full object-cover object-bottom md:block"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+                >
+                  <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
+                </video>
 
-            <video
-              className="absolute inset-0 h-full w-full object-cover object-bottom md:hidden"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
-            >
-              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
-            </video>
+                <video
+                  className="absolute inset-0 h-full w-full object-cover object-bottom md:hidden"
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+                >
+                  <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
+                </video>
+              </>
+            )}
+
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black/90" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">
