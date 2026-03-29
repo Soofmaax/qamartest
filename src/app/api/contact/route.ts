@@ -1,17 +1,51 @@
 import { NextResponse } from "next/server";
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Accepts: 06..., 07..., +33 6..., +33 7... (spaces/dots allowed)
+const FR_PHONE_REGEX = /^(?:(?:\+33|0033)\s*[67]|0\s*[67])(?:[\s.\-]*\d){8}$/;
+const HTTP_LINK_REGEX = /https?:\/\//i;
+
 export async function POST(req: Request) {
   const formData = await req.formData();
 
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
+  const phone = String(formData.get("phone") ?? "").trim();
   const service = String(formData.get("service") ?? "").trim();
   const subject = String(formData.get("subject") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
 
-  if (!name || !email || !message) {
+  if (name.length < 2) {
     return NextResponse.json(
-      { ok: false, error: "Champs requis manquants." },
+      { ok: false, error: "Nom invalide (minimum 2 caractères)." },
+      { status: 400 }
+    );
+  }
+
+  if (!EMAIL_REGEX.test(email)) {
+    return NextResponse.json(
+      { ok: false, error: "Email invalide." },
+      { status: 400 }
+    );
+  }
+
+  if (phone && !FR_PHONE_REGEX.test(phone)) {
+    return NextResponse.json(
+      { ok: false, error: "Téléphone invalide." },
+      { status: 400 }
+    );
+  }
+
+  if (message.length < 20) {
+    return NextResponse.json(
+      { ok: false, error: "Message invalide (minimum 20 caractères)." },
+      { status: 400 }
+    );
+  }
+
+  if (HTTP_LINK_REGEX.test(message)) {
+    return NextResponse.json(
+      { ok: false, error: "Message rejeté (liens non autorisés)." },
       { status: 400 }
     );
   }
@@ -32,6 +66,7 @@ export async function POST(req: Request) {
       <h2>Nouveau message depuis le site</h2>
       <p><strong>Nom:</strong> ${escapeHtml(name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <p><strong>Téléphone:</strong> ${escapeHtml(phone || "(non précisé)")}</p>
       <p><strong>Service:</strong> ${escapeHtml(service || "(non précisé)")}</p>
       <p><strong>Sujet:</strong> ${escapeHtml(subject || "(sans sujet)")}</p>
       <hr />
