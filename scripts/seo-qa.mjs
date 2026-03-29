@@ -50,15 +50,27 @@ const pages = [
   },
   {
     route: "/publicite-digitale/creation-photo-video-premium/",
-    file: path.join("publicite-digitale", "creation-photo-video-premium", "index.html"),
+    file: path.join(
+      "publicite-digitale",
+      "creation-photo-video-premium",
+      "index.html"
+    ),
   },
   {
     route: "/publicite-digitale/adaptation-formats-social-media/",
-    file: path.join("publicite-digitale", "adaptation-formats-social-media", "index.html"),
+    file: path.join(
+      "publicite-digitale",
+      "adaptation-formats-social-media",
+      "index.html"
+    ),
   },
   {
     route: "/publicite-digitale/optimisation-conversions-branding/",
-    file: path.join("publicite-digitale", "optimisation-conversions-branding", "index.html"),
+    file: path.join(
+      "publicite-digitale",
+      "optimisation-conversions-branding",
+      "index.html"
+    ),
   },
 ];
 
@@ -75,6 +87,10 @@ function getFirstMatch(html, regex) {
 
 function assertIncludes(haystack, needle, message) {
   if (!haystack.includes(needle)) fail(message);
+}
+
+function assertMatch(haystack, regex, message) {
+  if (!regex.test(haystack)) fail(message);
 }
 
 function assertTruthy(value, message) {
@@ -168,14 +184,18 @@ async function checkSitemap() {
 async function checkRobots({ preview }) {
   const txt = await readOutFile("robots.txt");
 
+  assertMatch(txt, /^\s*user-agent\s*:/im, "robots.txt missing User-agent");
+
   if (preview) {
-    assertIncludes(txt, "User-agent:", "robots.txt missing User-agent");
-    assertIncludes(txt, "Disallow: /", "preview robots.txt should disallow all");
+    assertMatch(
+      txt,
+      /^\s*disallow\s*:\s*\/\s*$/im,
+      "preview robots.txt should disallow all"
+    );
     return;
   }
 
-  assertIncludes(txt, "User-agent:", "robots.txt missing User-agent");
-  assertIncludes(txt, "Allow: /", "robots.txt should allow /");
+  assertMatch(txt, /^\s*allow\s*:\s*\/\s*$/im, "robots.txt should allow /");
   assertIncludes(
     txt,
     "Sitemap: https://www.directedbyqamar.com/sitemap.xml",
@@ -190,7 +210,9 @@ async function checkPages({ preview }) {
     const canonical = extractCanonicalHref(html);
     assertTruthy(canonical, `${page.route}: missing canonical link tag`);
     if (!canonical.endsWith("/")) {
-      fail(`${page.route}: canonical href must end with a trailing slash (got: ${canonical})`);
+      fail(
+        `${page.route}: canonical href must end with a trailing slash (got: ${canonical})`
+      );
     }
 
     const hasOgTitle = hasMetaTag(html, ['property="og:title"', "content="]);
@@ -209,7 +231,10 @@ async function checkPages({ preview }) {
     }
 
     if (preview) {
-      const robotsTag = getFirstMatch(html, /(<meta\b[^>]*\bname=["']robots["'][^>]*>)/i);
+      const robotsTag = getFirstMatch(
+        html,
+        /(<meta\b[^>]*\bname=["']robots["'][^>]*>)/i
+      );
       assertTruthy(robotsTag, `${page.route}: missing robots meta tag (preview build)`);
 
       const content = getFirstMatch(robotsTag, /\bcontent=["']([^"']+)["']/i) ?? "";
@@ -229,7 +254,7 @@ async function detectPreview() {
 
   // When running QA against a pre-built export, infer preview mode from robots.txt.
   const txt = await readOutFile("robots.txt");
-  return /^\s*Disallow:\s*\/\s*$/im.test(txt);
+  return /^\s*disallow\s*:\s*\/\s*$/im.test(txt);
 }
 
 async function main() {

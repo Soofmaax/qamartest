@@ -42,4 +42,5 @@ jobs:
       - name: SEO QA
         run: npm run seo:qa
         env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
           NEXT_PUBLIC_IS_PREVIEW: "1"
