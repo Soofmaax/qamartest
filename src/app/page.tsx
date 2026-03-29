@@ -9,7 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { PORTFOLIO_PROJECTS, SERVICES } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
@@ -76,39 +76,6 @@ const references = [
   },
 ];
 
-const services = [
-  {
-    title: "Mariage",
-    description:
-      "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
-    href: ROUTES.mariage,
-    image:
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-  },
-  {
-    title: "Corporate",
-    description:
-      "Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure.",
-    href: ROUTES.corporate,
-    image: "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
-  },
-  {
-    title: "Publicité digitale",
-    description:
-      "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: ROUTES.publiciteDigitale,
-    image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
-    position: "object-left",
-  },
-  {
-    title: "Événementiel",
-    description:
-      "Des vidéos publicitaires stratégiques et créatives, conçues pour maximiser votre visibilité et booster vos conversions.",
-    href: ROUTES.evenementiel,
-    image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-  },
-];
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
@@ -122,6 +89,7 @@ export default function Home() {
             alt="Directed by Qamar"
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             placeholder="blur"
             blurDataURL={DARK_BLUR_DATA_URL}
@@ -187,7 +155,7 @@ export default function Home() {
             </div>
 
             <div className="w-full">
-              {services.map((s) => (
+              {SERVICES.map((s) => (
                 <div
                   key={s.title}
                   className="relative h-[300px] w-full overflow-hidden md:h-[367px]"

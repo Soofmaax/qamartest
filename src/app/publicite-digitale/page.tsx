@@ -151,6 +151,7 @@ export default function PubliciteDigitalePage() {
               alt="Publicité digitale"
               fill
               priority
+              fetchPriority="high"
               sizes="100vw"
               placeholder="blur"
               blurDataURL={DARK_BLUR_DATA_URL}

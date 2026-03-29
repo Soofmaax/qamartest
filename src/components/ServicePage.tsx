@@ -103,6 +103,7 @@ export function ServicePage({
                 alt={title}
                 fill
                 priority
+                fetchPriority="high"
                 sizes="100vw"
                 placeholder="blur"
                 blurDataURL={DARK_BLUR_DATA_URL}
