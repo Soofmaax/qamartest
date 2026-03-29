@@ -19,7 +19,11 @@ import {
   buildVideoObject,
   buildWebPage,
 } from "@/lib/structuredData";
-import { youTubeThumbnailUrl, youTubeWatchUrl } from "@/lib/videos";
+import {
+  getPrimaryVideoForPage,
+  youTubeThumbnailUrl,
+  youTubeWatchUrl,
+} from "@/lib/videos";
 
 const seo = {
   title: "Photographe & vidéaste de mariage | Directed by Qamar",
@@ -33,8 +37,7 @@ export const metadata: Metadata = createPageMetadata(seo);
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-// TODO: set the real YouTube id (the `v=` query param).
-const heroYouTubeId = "";
+const heroVideo = getPrimaryVideoForPage(seo.path);
 
 const url = absoluteUrl(seo.path);
 const webpageId = `${url}#webpage`;
@@ -57,7 +60,7 @@ const structuredData = buildGraph([
       imageUrl: seo.image,
     }),
     mainEntity: { "@id": serviceId },
-    ...(heroYouTubeId ? { hasPart: [{ "@id": videoId }] } : {}),
+    ...(heroVideo ? { hasPart: [{ "@id": videoId }] } : {}),
   },
   {
     ...buildService({
@@ -68,14 +71,16 @@ const structuredData = buildGraph([
     "@id": serviceId,
     mainEntityOfPage: { "@id": webpageId },
   },
-  ...(heroYouTubeId
+  ...(heroVideo
     ? [
         buildVideoObject({
           path: seo.path,
-          name: seo.title,
-          description: seo.description,
-          contentUrl: youTubeWatchUrl(heroYouTubeId),
-          thumbnailUrl: youTubeThumbnailUrl(heroYouTubeId),
+          name: heroVideo.title,
+          description: heroVideo.description ?? seo.description,
+          contentUrl: youTubeWatchUrl(heroVideo.youtubeId),
+          thumbnailUrl: heroVideo.thumbnailUrl ?? youTubeThumbnailUrl(heroVideo.youtubeId),
+          uploadDate: heroVideo.uploadDate,
+          duration: heroVideo.duration,
         }),
       ]
     : []),
@@ -161,11 +166,11 @@ export default function MariagePage() {
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
-            {heroYouTubeId ? (
+            {heroVideo ? (
               <div className="absolute inset-0">
                 <YouTubeEmbed
-                  videoId={heroYouTubeId}
-                  title="Film de mariage — Directed by Qamar"
+                  videoId={heroVideo.youtubeId}
+                  title={heroVideo.title}
                   className="h-full"
                 />
               </div>

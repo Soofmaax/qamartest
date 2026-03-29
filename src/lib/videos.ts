@@ -29,3 +29,12 @@ export function youTubeThumbnailUrl(youtubeId: string) {
  * - video sitemap generation
  */
 export const SITE_VIDEOS: YouTubeVideo[] = [];
+
+export function getVideosForPage(pagePath: string) {
+  return SITE_VIDEOS.filter((v) => v.pagePath === pagePath);
+}
+
+/** Convenience helper when a page has a single primary/hero video. */
+export function getPrimaryVideoForPage(pagePath: string) {
+  return getVideosForPage(pagePath)[0] ?? null;
+}
