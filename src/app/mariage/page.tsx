@@ -9,6 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { MARIAGE_PAGE_CONTENT } from "@/lib/pageContent";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -25,13 +26,7 @@ import {
   youTubeWatchUrl,
 } from "@/lib/videos";
 
-const seo = {
-  title: "Photographe & vidéaste de mariage | Directed by Qamar",
-  description:
-    "Vidéaste et photographe de mariage à Paris. Une approche cinématique et élégante pour créer des souvenirs intemporels.",
-  path: "/mariage/",
-  image: "https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg",
-};
+const seo = MARIAGE_PAGE_CONTENT.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
@@ -86,76 +81,7 @@ const structuredData = buildGraph([
     : []),
 ]);
 
-const lastPrestations = [
-  {
-    title: "Ninon",
-    cover: "https://framerusercontent.com/images/aCW40boMagvmECJgfTGyeQNYAdk.jpg",
-    images: [
-      "https://framerusercontent.com/images/aCW40boMagvmECJgfTGyeQNYAdk.jpg",
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-    ],
-  },
-  {
-    title: "Sokona",
-    cover: "https://framerusercontent.com/images/CKNnTEwk1ePqVV3ppEpZJfaeY4.jpg",
-    images: [
-      "https://framerusercontent.com/images/CKNnTEwk1ePqVV3ppEpZJfaeY4.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-    ],
-  },
-  {
-    title: "Mauricien",
-    cover: "https://framerusercontent.com/images/eLN6hbfMAa0S7m6HCAs4dE66c.jpg",
-    images: [
-      "https://framerusercontent.com/images/eLN6hbfMAa0S7m6HCAs4dE66c.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    ],
-  },
-];
 
-const formulas = [
-  {
-    title: "Photo",
-    description:
-      "Immortalisez votre journée avec des images élégantes et intemporelles.",
-    bullets: [
-      "Reportage complet du mariage : préparatifs, cérémonie, portraits, soirée",
-      "Photos haut de gamme, lumière et composition maîtrisées",
-      "Retouches professionnelles et travail des couleurs",
-      "Remise rapide via galerie privée",
-    ],
-    href: ROUTES.contact,
-    cta: "En savoir plus",
-  },
-  {
-    title: "Vidéo",
-    description: "Revivez votre mariage comme un film.",
-    bullets: [
-      "Captation complète de votre journée avec sensibilité et style",
-      "Direction artistique et accompagnement pour chaque plan",
-      "Montage cinématique, étalonnage et retouches premium",
-      "Livraison rapide via galerie privée ou version téléchargeable",
-    ],
-    href: ROUTES.contact,
-    cta: "En savoir plus",
-  },
-  {
-    title: "Photo + Vidéo",
-    description:
-      "La formule complète pour une expérience immersive et cohérente.",
-    bullets: [
-      "Reportage complet combinant photos et vidéos",
-      "Direction artistique globale pour un rendu harmonieux",
-      "Couleurs, montage et retouches premium pour chaque support",
-      "Galerie privée avec accès facile pour partager vos souvenirs",
-    ],
-    href: ROUTES.contact,
-    cta: "En savoir plus",
-  },
-];
 
 export default function MariagePage() {
   return (
@@ -254,7 +180,7 @@ export default function MariagePage() {
           </div>
 
           <div className="mt-10 w-full">
-            <ImageLightboxGallery items={lastPrestations} />
+            <ImageLightboxGallery items={MARIAGE_PAGE_CONTENT.lastPrestations} />
           </div>
         </section>
 
@@ -272,7 +198,7 @@ export default function MariagePage() {
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {formulas.map((f) => (
+            {MARIAGE_PAGE_CONTENT.formulas.map((f) => (
               <div
                 key={f.title}
                 className="rounded-lg border border-white/10 bg-black/40 p-6 transition-colors duration-200 hover:border-white/20 hover:bg-black/60"

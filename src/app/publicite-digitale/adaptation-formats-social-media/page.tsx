@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DigitalAdsServicePage } from "@/components/DigitalAdsServicePage";
+import { DIGITAL_ADS_FORMATS_PAGE } from "@/lib/pageContent";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -9,14 +10,7 @@ import {
   buildWebPage,
 } from "@/lib/structuredData";
 
-const seo = {
-  title:
-    "Adaptation aux formats social media | Publicité digitale | Directed by Qamar",
-  description:
-    "Déclinaisons et optimisations pour Reels, TikTok, YouTube, Facebook Ads, LinkedIn : rythme, storytelling, durée, accroche visuelle.",
-  path: "/publicite-digitale/adaptation-formats-social-media/",
-  image: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-};
+const seo = DIGITAL_ADS_FORMATS_PAGE.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
@@ -60,21 +54,11 @@ export default function AdaptationFormatsSocialMediaPage() {
       seoTitle={seo.title}
       seoDescription={seo.description}
       structuredData={structuredData}
-      title="Adaptation aux formats social media"
-      eyebrow="Publicité digitale"
-      description="Reels, TikTok, YouTube, Facebook Ads, LinkedIn… Chaque format est optimisé pour respecter les codes de la plateforme tout en maximisant l’impact : rythme, storytelling, durée, accroche visuelle."
-      heroImage={seo.image}
-      gallery={[
-        {
-          title: "Exemples",
-          cover: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-          images: [
-            "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-            "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-            "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-          ],
-        },
-      ]}
+      title={DIGITAL_ADS_FORMATS_PAGE.title}
+      eyebrow={DIGITAL_ADS_FORMATS_PAGE.eyebrow}
+      description={DIGITAL_ADS_FORMATS_PAGE.description}
+      heroImage={DIGITAL_ADS_FORMATS_PAGE.heroImage}
+      gallery={DIGITAL_ADS_FORMATS_PAGE.gallery}
     />
   );
 }

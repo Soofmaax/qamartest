@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DigitalAdsServicePage } from "@/components/DigitalAdsServicePage";
+import { DIGITAL_ADS_OPTIMISATION_PAGE } from "@/lib/pageContent";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -9,14 +10,7 @@ import {
   buildWebPage,
 } from "@/lib/structuredData";
 
-const seo = {
-  title:
-    "Optimisation conversions & branding | Publicité digitale | Directed by Qamar",
-  description:
-    "Des contenus publicitaires orientés performance : ventes, taux de clic, engagement et notoriété. L’esthétique au service de l’efficacité.",
-  path: "/publicite-digitale/optimisation-conversions-branding/",
-  image: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-};
+const seo = DIGITAL_ADS_OPTIMISATION_PAGE.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
@@ -60,21 +54,11 @@ export default function OptimisationConversionsBrandingPage() {
       seoTitle={seo.title}
       seoDescription={seo.description}
       structuredData={structuredData}
-      title="Optimisation pour conversions & branding"
-      eyebrow="Publicité digitale"
-      description="Nous produisons des contenus capables de générer de vrais résultats concrets : une hausse mesurable des ventes, une amélioration des taux de clic, une augmentation de l’engagement ainsi qu’un renforcement durable de votre notoriété. Chaque visuel est pensé comme un levier de performance, conçu pour capter l’attention, transmettre votre valeur et inciter votre audience à passer à l’action."
-      heroImage={seo.image}
-      gallery={[
-        {
-          title: "Exemples",
-          cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-          images: [
-            "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-            "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-            "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-          ],
-        },
-      ]}
+      title={DIGITAL_ADS_OPTIMISATION_PAGE.title}
+      eyebrow={DIGITAL_ADS_OPTIMISATION_PAGE.eyebrow}
+      description={DIGITAL_ADS_OPTIMISATION_PAGE.description}
+      heroImage={DIGITAL_ADS_OPTIMISATION_PAGE.heroImage}
+      gallery={DIGITAL_ADS_OPTIMISATION_PAGE.gallery}
     />
   );
 }

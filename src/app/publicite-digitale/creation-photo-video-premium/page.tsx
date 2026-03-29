@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DigitalAdsServicePage } from "@/components/DigitalAdsServicePage";
+import { DIGITAL_ADS_PREMIUM_PAGE } from "@/lib/pageContent";
 import { createPageMetadata } from "@/lib/seo";
 import {
   absoluteUrl,
@@ -9,13 +10,7 @@ import {
   buildWebPage,
 } from "@/lib/structuredData";
 
-const seo = {
-  title: "Création photo & vidéo premium | Publicité digitale | Directed by Qamar",
-  description:
-    "Production photo et vidéo premium pour la publicité : direction artistique, cadrage, esthétique moderne, mise en valeur produit/service.",
-  path: "/publicite-digitale/creation-photo-video-premium/",
-  image: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-};
+const seo = DIGITAL_ADS_PREMIUM_PAGE.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
@@ -59,21 +54,11 @@ export default function CreationPhotoVideoPremiumPage() {
       seoTitle={seo.title}
       seoDescription={seo.description}
       structuredData={structuredData}
-      title="Création photo & vidéo premium"
-      eyebrow="Publicité digitale"
-      description="Des visuels soigneusement réalisés, avec une direction artistique claire, un cadrage précis, et une esthétique moderne qui valorise votre produit ou service. Notre objectif : produire des assets capables de rivaliser avec les codes des marques leaders."
-      heroImage={seo.image}
-      gallery={[
-        {
-          title: "Exemples",
-          cover: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-          images: [
-            "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-            "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-            "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-          ],
-        },
-      ]}
+      title={DIGITAL_ADS_PREMIUM_PAGE.title}
+      eyebrow={DIGITAL_ADS_PREMIUM_PAGE.eyebrow}
+      description={DIGITAL_ADS_PREMIUM_PAGE.description}
+      heroImage={DIGITAL_ADS_PREMIUM_PAGE.heroImage}
+      gallery={DIGITAL_ADS_PREMIUM_PAGE.gallery}
     />
   );
 }

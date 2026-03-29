@@ -21,6 +21,7 @@ npm run build
 - `src/app/*`: Next.js App Router routes.
 - `src/components/*`: reusable UI components.
 - `src/lib/*`: SEO helpers, structured data, shared utilities.
+  - `src/lib/pageContent.ts`: shared page copy (SEO + galleries) used by service pages.
 - `scripts/*`: maintenance scripts (ex: `seo-qa.mjs`).
 
 ## Static export (GitHub Pages preview)
