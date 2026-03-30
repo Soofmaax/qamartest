@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SERVICES } from "@/lib/content";
+import { Testimonials } from "@/components/Testimonials";
+import { REFERENCE_LOGOS, SERVICES } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { ROUTES } from "@/lib/routes";
@@ -106,6 +108,43 @@ export default function ServicesPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </RevealOnScroll>
+
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
+                Références
+              </p>
+              <h2 className="mt-4 font-serif text-3xl font-semibold text-white md:text-[48px]">
+                Confiance, sur la durée.
+              </h2>
+            </div>
+            <p className="max-w-[420px] text-right text-[12px] font-light leading-relaxed text-white/45">
+              Sélection de collaborations. Liste complète sur demande.
+            </p>
+          </div>
+
+          <div className="relative mt-10">
+            <ReferencesTicker logos={REFERENCE_LOGOS} />
+          </div>
+        </RevealOnScroll>
+
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="border border-white/10 p-8 md:p-12">
+            <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
+              Témoignages
+            </p>
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-white md:text-[48px]">
+              Une expérience fluide.
+            </h2>
+            <p className="mt-4 text-[18px] font-light text-white/70 md:text-[20px]">
+              Discrétion, direction artistique, livraison. Rien de superflu.
+            </p>
+            <div className="mt-10">
+              <Testimonials />
+            </div>
           </div>
         </RevealOnScroll>
 

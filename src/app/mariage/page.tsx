@@ -570,7 +570,7 @@ export default function MariagePage() {
               </h2>
             </div>
             <p className="max-w-[320px] text-right text-[12px] font-light leading-relaxed text-white/45">
-              Un aperçu de la façon dont nous racontons chaque journée.
+              Des récits photo et vidéo. Un rendu cohérent. Une narration discrète.
             </p>
           </div>
 
