@@ -56,6 +56,8 @@ const proof = [
   { label: "Approche", value: "Sur-mesure" },
 ];
 
+const clients = ["Hôtel Dali", "Fitness Park", "UNESCO"];
+
 export default function SignaturePage() {
   return (
     <div className="min-h-screen bg-black">
@@ -168,6 +170,17 @@ export default function SignaturePage() {
             <p className="max-w-[420px] text-right text-[12px] font-light leading-relaxed text-white/45">
               Sélection de collaborations. Liste complète sur demande.
             </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 border border-white/10 p-6 md:grid-cols-3 md:p-8">
+            {clients.map((c) => (
+              <div key={c} className="rounded-lg border border-white/10 bg-black p-6">
+                <p className="text-[10px] font-light tracking-[0.18em] text-white/45 uppercase">
+                  Client
+                </p>
+                <p className="mt-3 font-serif text-2xl text-white">{c}</p>
+              </div>
+            ))}
           </div>
 
           <div className="relative mt-10">
