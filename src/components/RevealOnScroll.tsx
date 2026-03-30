@@ -42,8 +42,7 @@ export function RevealOnScroll({
     return () => observer.disconnect();
   }, [once, threshold]);
 
-  const Tag = as as any;
-
+  const Tag = as as keyof HTMLElementTagNameMap;
   return (
     <Tag
       ref={(el: HTMLElement | null) => {
