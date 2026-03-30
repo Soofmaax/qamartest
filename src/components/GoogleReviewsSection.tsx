@@ -3,9 +3,9 @@ import Script from "next/script";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 
 const REVIEW_STATS = [
-  { value: "5,0", label: "Note" },
+  { value: "5,0", label: "Note Google" },
   { value: "20", label: "Avis" },
-  { value: "150+", label: "Clients" },
+  { value: "150+", label: "Marques & entreprises" },
 ];
 
 export function GoogleReviewsSection() {
