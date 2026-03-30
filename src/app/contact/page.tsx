@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Suspense } from "react";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
+import { ContactForm } from "./ContactForm";
+import { ContactStatusBanner } from "./status-banner";
 
 const seo = {
   title: "Contact | Directed by Qamar",
@@ -21,17 +24,13 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [
+    { name: "Accueil", path: ROUTES.home },
+    { name: "Contact", path: seo.path },
+  ],
 });
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const resolvedSearchParams = await searchParams;
-  const sentParam = resolvedSearchParams?.sent;
-  const sentValue = Array.isArray(sentParam) ? sentParam[0] : sentParam;
-  const sent = sentValue === "1";
+export default function ContactPage() {
   const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
 
   return (
@@ -48,74 +47,11 @@ export default async function ContactPage({
           </p>
 
           <div className="mt-10 rounded-lg border border-white/10 bg-black/40 p-6 md:p-8">
-            {isPreview ? (
-              <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
-                Formulaire email disponible sur le site final (Vercel + Resend).
-              </p>
-            ) : sent ? (
-              <p className="mb-6 rounded-md border border-white/10 bg-black/40 p-4 text-zinc-200">
-                Message envoyé. Je reviens vers vous rapidement.
-              </p>
-            ) : null}
+            <Suspense fallback={null}>
+              <ContactStatusBanner isPreview={isPreview} />
+            </Suspense>
 
-            <form action={isPreview ? "#" : "/api/contact"} method="POST" className="space-y-5">
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <label className="space-y-2">
-                  <span className="text-sm text-zinc-200">Nom</span>
-                  <input
-                    name="name"
-                    required
-                    className="w-full rounded-md border border-white/15 bg-black px-4 py-3 text-white outline-none focus:border-white/40"
-                  />
-                </label>
-
-                <label className="space-y-2">
-                  <span className="text-sm text-zinc-200">Email</span>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    className="w-full rounded-md border border-white/15 bg-black px-4 py-3 text-white outline-none focus:border-white/40"
-                  />
-                </label>
-              </div>
-
-              <label className="space-y-2">
-                <span className="text-sm text-zinc-200">Sujet</span>
-                <input
-                  name="subject"
-                  className="w-full rounded-md border border-white/15 bg-black px-4 py-3 text-white outline-none focus:border-white/40"
-                />
-              </label>
-
-              <label className="space-y-2">
-                <span className="text-sm text-zinc-200">Message</span>
-                <textarea
-                  name="message"
-                  required
-                  rows={6}
-                  className="w-full resize-y rounded-md border border-white/15 bg-black px-4 py-3 text-white outline-none focus:border-white/40"
-                />
-              </label>
-
-              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                <button
-                  type={isPreview ? "button" : "submit"}
-                  disabled={isPreview}
-                  data-ga-event="contact_submit"
-                  data-ga-category="Lead"
-                  data-ga-label="contact_form"
-                  className="w-full rounded-lg border border-white/15 bg-black px-6 py-3 font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-60 md:w-auto"
-                >
-                  Envoyer
-                </button>
-
-                <Link href="/" className="text-center text-zinc-200 underline">
-                  Retour à l’accueil
-                </Link>
-              </div>
-            </form>
+            <ContactForm isPreview={isPreview} />
 
             <p className="mt-5 text-sm text-zinc-400">
               Le destinataire email sera configuré une fois la Google Workspace

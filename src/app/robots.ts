@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   const isPreview = process.env.NEXT_PUBLIC_IS_PREVIEW === "1";
 
@@ -12,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
 
   return {
     rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: [`${SITE_URL}/sitemap.xml`, `${SITE_URL}/video-sitemap.xml`],
   };
 }

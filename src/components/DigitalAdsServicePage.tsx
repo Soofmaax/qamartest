@@ -4,6 +4,9 @@ import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
+import type { StructuredDataGraph } from "@/lib/structuredData";
 
 export function DigitalAdsServicePage({
   path,
@@ -19,7 +22,7 @@ export function DigitalAdsServicePage({
   path: string;
   seoTitle: string;
   seoDescription: string;
-  structuredData: unknown;
+  structuredData: StructuredDataGraph;
   title: string;
   eyebrow: string;
   description: string;
@@ -34,7 +37,17 @@ export function DigitalAdsServicePage({
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
-            <Image src={heroImage} alt={seoTitle} fill priority className="object-cover" />
+            <Image
+              src={heroImage}
+              alt={seoTitle}
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={DARK_BLUR_DATA_URL}
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">
@@ -44,7 +57,7 @@ export function DigitalAdsServicePage({
                 </h1>
                 <p className="text-[18px] text-white/80 md:text-[20px]">{eyebrow}</p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label={`${path}:hero`}
@@ -108,7 +121,7 @@ export function DigitalAdsServicePage({
         <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <Link
-              href="/publicité-digitale/"
+              href={ROUTES.publiciteDigitale}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label={`${path}:back`}
@@ -117,7 +130,7 @@ export function DigitalAdsServicePage({
               Retour à Publicité digitale
             </Link>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label={`${path}:devis`}

@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { buildImageAlt } from "@/lib/altText";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 
 export type GalleryItem = {
   title: string;
@@ -26,6 +28,12 @@ function center(a: { x: number; y: number }, b: { x: number; y: number }) {
 export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
   const [openItemIndex, setOpenItemIndex] = useState<number | null>(null);
   const [openImageIndex, setOpenImageIndex] = useState(0);
+
+  const dialogTitleId = useId();
+  const dialogDescriptionId = useId();
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  const lastActiveElementRef = useRef<HTMLElement | null>(null);
+  const prevOpenItemIndexRef = useRef(openItemIndex);
 
   const [scale, setScale] = useState(1);
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
@@ -76,6 +84,19 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
   useEffect(() => {
     resetTransform();
   }, [openItemIndex, openImageIndex]);
+
+  useEffect(() => {
+    if (openItemIndex !== null && prevOpenItemIndexRef.current === null) {
+      closeRef.current?.focus();
+    }
+
+    if (openItemIndex === null && prevOpenItemIndexRef.current !== null) {
+      lastActiveElementRef.current?.focus();
+      lastActiveElementRef.current = null;
+    }
+
+    prevOpenItemIndexRef.current = openItemIndex;
+  }, [openItemIndex]);
 
   useEffect(() => {
     if (!openItem) return;
@@ -214,14 +235,18 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
             type="button"
             className="group relative block h-[300px] w-full overflow-hidden text-left md:h-[367px]"
             onClick={() => {
+              lastActiveElementRef.current = document.activeElement as HTMLElement | null;
               setOpenItemIndex(idx);
               setOpenImageIndex(0);
             }}
           >
             <Image
               src={item.cover}
-              alt={item.title}
+              alt={buildImageAlt({ context: "Galerie", subject: item.title })}
               fill
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={DARK_BLUR_DATA_URL}
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-black/0 transition-colors duration-300 group-hover:from-black/90" />
@@ -242,7 +267,8 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
           role="dialog"
           aria-modal="true"
-          aria-label={`Galerie ${openItem.title}`}
+          aria-labelledby={dialogTitleId}
+          aria-describedby={dialogDescriptionId}
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
@@ -250,18 +276,19 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
           <div className="w-full max-w-5xl">
             <div className="flex items-center justify-between gap-4 pb-4">
               <div className="flex flex-col gap-1">
-                <h3 className="font-serif text-3xl font-semibold text-white">
+                <h2 id={dialogTitleId} className="font-serif text-3xl font-semibold text-white">
                   {openItem.title}
-                </h3>
+                </h2>
                 <p className="text-sm text-white/70">
                   {openImageIndex + 1}/{openItem.images.length}
                 </p>
-                <p className="text-sm text-white/50">
+                <p id={dialogDescriptionId} className="text-sm text-white/50">
                   Double tap / double clic pour zoomer · Pincer pour zoomer
                 </p>
               </div>
 
               <button
+                ref={closeRef}
                 type="button"
                 className="rounded-md border border-white/15 bg-black px-3 py-2 text-white hover:bg-white/5"
                 onClick={close}
@@ -289,8 +316,16 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
               >
                 <Image
                   src={openImage}
-                  alt={openItem.title}
+                  alt={buildImageAlt({
+                    context: "Galerie",
+                    subject: openItem.title,
+                    index: openImageIndex + 1,
+                    total: openItem.images.length,
+                  })}
                   fill
+                  sizes="100vw"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
                   className="object-contain"
                 />
               </div>
@@ -315,7 +350,7 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
                       )
                     }
                   >
-                    ‹
+                    <span aria-hidden>‹</span>
                   </button>
                   <button
                     type="button"
@@ -325,7 +360,7 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
                       setOpenImageIndex((v) => (v + 1) % openItem.images.length)
                     }
                   >
-                    ›
+                    <span aria-hidden>›</span>
                   </button>
                 </>
               ) : null}
@@ -337,12 +372,27 @@ export function ImageLightboxGallery({ items }: { items: GalleryItem[] }) {
                   <button
                     key={`${src}-${idx}`}
                     type="button"
+                    aria-label={`Voir l’image ${idx + 1} de ${openItem.images.length}`}
+                    aria-current={idx === openImageIndex ? "true" : undefined}
                     className={`relative h-[72px] w-[110px] flex-none overflow-hidden rounded-md border ${
                       idx === openImageIndex ? "border-white" : "border-white/15"
                     }`}
                     onClick={() => setOpenImageIndex(idx)}
                   >
-                    <Image src={src} alt="" fill className="object-cover" />
+                    <Image
+                      src={src}
+                      alt={buildImageAlt({
+                        context: "Galerie",
+                        subject: openItem.title,
+                        index: idx + 1,
+                        total: openItem.images.length,
+                      })}
+                      fill
+                      sizes="110px"
+                      placeholder="blur"
+                      blurDataURL={DARK_BLUR_DATA_URL}
+                      className="object-cover"
+                    />
                   </button>
                 ))}
               </div>

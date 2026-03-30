@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
+import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Testimonials } from "@/components/Testimonials";
 import { createPageMetadata } from "@/lib/seo";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { PORTFOLIO_PROJECTS, REFERENCE_LOGOS, SERVICES } from "@/lib/content";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -24,110 +28,10 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [{ name: "Accueil", path: ROUTES.home }],
 });
 
-const references = [
-  {
-    src: "https://framerusercontent.com/images/WCk6aWdk3lcNK2YQ4jOZuMqrL8.png",
-    alt: "PFW",
-  },
-  {
-    src: "https://framerusercontent.com/images/hAQHQ3tidhNw5v9lqDPRy0by4Q.png",
-    alt: "Référence",
-  },
-  {
-    src: "https://framerusercontent.com/images/PkZtUBhle6TenR3CV9mGcpJKQHk.png",
-    alt: "Fitness Park",
-  },
-  {
-    src: "https://framerusercontent.com/images/Kyt0tHHdYIDhl3RD2HCCBhrpiuc.png",
-    alt: "UNESCO",
-  },
-  {
-    src: "https://framerusercontent.com/images/fg88tcEcPzAeOIv7O1HBZbLYWfw.png",
-    alt: "Canal+",
-  },
-  {
-    src: "https://framerusercontent.com/images/DAfyAGHuflSzQsjykANU3SYhX0.png",
-    alt: "Référence",
-  },
-  {
-    src: "https://framerusercontent.com/images/t3a40zYxxocfwj5czXN2yGUnP5w.png",
-    alt: "CNA",
-  },
-];
 
-const services = [
-  {
-    title: "Mariage",
-    description:
-      "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
-    href: "/mariage/",
-    image:
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-  },
-  {
-    title: "Corporate",
-    description:
-      "Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure.",
-    href: "/corporate/",
-    image: "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
-  },
-  {
-    title: "Publicité digitale",
-    description:
-      "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: "/publicité-digitale/",
-    image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
-    position: "object-left",
-  },
-  {
-    title: "Événementiel",
-    description:
-      "Des vidéos publicitaires stratégiques et créatives, conçues pour maximiser votre visibilité et booster vos conversions.",
-    href: "/événementiel/",
-    image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-  },
-];
-
-const projects = [
-  {
-    title: "Corporate",
-    cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-    images: [
-      "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-      "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-    ],
-  },
-  {
-    title: "Événementiel",
-    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-    images: [
-      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
-    ],
-  },
-  {
-    title: "Mariage",
-    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-    images: [
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    ],
-  },
-  {
-    title: "Publicté digitale",
-    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    images: [
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-    ],
-  },
-];
 
 export default function Home() {
   return (
@@ -142,6 +46,10 @@ export default function Home() {
             alt="Directed by Qamar"
             fill
             priority
+            fetchPriority="high"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL={DARK_BLUR_DATA_URL}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black" />
@@ -165,8 +73,8 @@ export default function Home() {
             </div>
 
             <Link
-              href="/portfolio/"
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+              href={ROUTES.portfolio}
+              className="rounded-lg bg-black px-5 py-2.5 fontf text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
@@ -185,87 +93,12 @@ export default function Home() {
             </div>
 
             <div className="relative w-full md:w-[55%]">
-              <div className="ticker h-[91px]">
-                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[23%] bg-gradient-to-r from-black to-black/0" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[23%] bg-gradient-to-l from-black to-black/0" />
-
-                <div className="flex h-full items-center">
-                  <div className="ticker-track pr-[43px]">
-                    {references.map((ref) => (
-                      <div
-                        key={ref.src}
-                        className="relative h-[35px] w-[200px] flex-none"
-                      >
-                        <Image
-                          src={ref.src}
-                          alt={ref.alt}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="ticker-track pr-[43px]" aria-hidden="true">
-                    {references.map((ref) => (
-                      <div
-                        key={`${ref.src}-dup`}
-                        className="relative h-[35px] w-[200px] flex-none"
-                      >
-                        <Image
-                          src={ref.src}
-                          alt={ref.alt}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <ReferencesTicker logos={REFERENCE_LOGOS} variant="home" />
             </div>
           </div>
         </section>
 
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col items-start gap-8 md:items-center">
-            <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
-              <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
-                <Image
-                  src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
-                  alt="Avis"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="flex flex-col items-start gap-2">
-                <div className="flex items-center gap-1 text-white">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <span key={star} aria-hidden>
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="text-[18px] text-[#ededed] md:text-[20px]">
-                  +150 entreprises accompagnées
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[18px] text-[#ededed] underline md:text-[20px]"
-                >
-                  +16 avis Google
-                </a>
-              </div>
-            </div>
-
-            <div className="w-full pt-2 md:pt-0">
-              <Testimonials />
-            </div>
-          </div>
-        </section>
+        <GoogleReviewsSection />
 
         <section id="services" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-10">
@@ -279,7 +112,7 @@ export default function Home() {
             </div>
 
             <div className="w-full">
-              {services.map((s) => (
+              {SERVICES.map((s) => (
                 <div
                   key={s.title}
                   className="relative h-[300px] w-full overflow-hidden md:h-[367px]"
@@ -288,6 +121,9 @@ export default function Home() {
                     src={s.image}
                     alt={s.title}
                     fill
+                    sizes="100vw"
+                    placeholder="blur"
+                    blurDataURL={DARK_BLUR_DATA_URL}
                     className={`object-cover ${s.position ?? ""}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />
@@ -318,15 +154,15 @@ export default function Home() {
               Mon portfolio
             </h2>
             <Link
-              href="/portfolio/"
-              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+              href={ROUTES.portfolio}
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Découvrir mon travail
             </Link>
           </div>
 
           <div className="mt-10">
-            <ProjectsCarousel projects={projects} />
+            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
         </section>
 
@@ -336,7 +172,7 @@ export default function Home() {
               Prêt à donner une nouvelle dimension à vos contenus ?
             </h2>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Me contacter

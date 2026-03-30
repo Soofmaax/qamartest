@@ -4,7 +4,10 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SERVICES } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -22,40 +25,11 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [
+    { name: "Accueil", path: ROUTES.home },
+    { name: "Services", path: seo.path },
+  ],
 });
-
-const services = [
-  {
-    title: "Mariage",
-    description:
-      "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
-    href: "/mariage/",
-    image:
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-  },
-  {
-    title: "Corporate",
-    description:
-      "Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure.",
-    href: "/corporate/",
-    image: "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
-  },
-  {
-    title: "Publicité digitale",
-    description:
-      "Des contenus impactants pensés pour la performance : conversions, visibilité, image de marque.",
-    href: "/publicité-digitale/",
-    image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
-    position: "object-left",
-  },
-  {
-    title: "Événementiel",
-    description:
-      "Des vidéos publicitaires stratégiques et créatives, conçues pour maximiser votre visibilité et booster vos conversions.",
-    href: "/événementiel/",
-    image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-  },
-];
 
 export default function ServicesPage() {
   return (
@@ -74,7 +48,7 @@ export default function ServicesPage() {
         </section>
 
         <section className="w-full bg-black pb-16 md:pb-20">
-          {services.map((s) => (
+          {SERVICES.map((s) => (
             <div
               key={s.title}
               className="relative h-[300px] w-full overflow-hidden md:h-[367px]"
@@ -83,6 +57,9 @@ export default function ServicesPage() {
                 src={s.image}
                 alt={s.title}
                 fill
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={DARK_BLUR_DATA_URL}
                 className={`object-cover ${s.position ?? ""}`}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black to-black/0" />
@@ -111,7 +88,7 @@ export default function ServicesPage() {
               Prêt à donner une nouvelle dimension à vos contenus ?
             </h2>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
             >
               Me contacter

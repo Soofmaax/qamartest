@@ -1,143 +1,87 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 import Link from "next/link";
 import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
+import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
 import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Testimonials } from "@/components/Testimonials";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
+import { PORTFOLIO_PROJECTS } from "@/lib/content";
+import { MARIAGE_PAGE_CONTENT } from "@/lib/pageContent";
+import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
-import { buildWebPageGraph } from "@/lib/structuredData";
+import {
+  absoluteUrl,
+  buildBreadcrumbList,
+  buildGraph,
+  buildService,
+  buildVideoObject,
+  buildWebPage,
+} from "@/lib/structuredData";
+import {
+  getPrimaryVideoForPage,
+  youTubeThumbnailUrl,
+  youTubeWatchUrl,
+} from "@/lib/videos";
 
-const seo = {
-  title: "Photographe & vidéaste de mariage | Directed by Qamar",
-  description:
-    "Vidéaste et photographe de mariage à Paris. Une approche cinématique et élégante pour créer des souvenirs intemporels.",
-  path: "/mariage/",
-  image: "https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg",
-};
+const seo = MARIAGE_PAGE_CONTENT.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
-const structuredData = buildWebPageGraph({
-  path: seo.path,
-  name: seo.title,
-  description: seo.description,
-  imageUrl: seo.image,
-});
-
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-const lastPrestations = [
-  {
-    title: "Ninon",
-    cover: "https://framerusercontent.com/images/aCW40boMagvmECJgfTGyeQNYAdk.jpg",
-    images: [
-      "https://framerusercontent.com/images/aCW40boMagvmECJgfTGyeQNYAdk.jpg",
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-    ],
-  },
-  {
-    title: "Sokona",
-    cover: "https://framerusercontent.com/images/CKNnTEwk1ePqVV3ppEpZJfaeY4.jpg",
-    images: [
-      "https://framerusercontent.com/images/CKNnTEwk1ePqVV3ppEpZJfaeY4.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-    ],
-  },
-  {
-    title: "Mauricien",
-    cover: "https://framerusercontent.com/images/eLN6hbfMAa0S7m6HCAs4dE66c.jpg",
-    images: [
-      "https://framerusercontent.com/images/eLN6hbfMAa0S7m6HCAs4dE66c.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    ],
-  },
-];
+const heroVideo = getPrimaryVideoForPage(seo.path);
 
-const formulas = [
-  {
-    title: "Photo",
-    description: "Immortalisez votre journée avec des images élégantes et intemporelles.",
-    bullets: [
-      "Reportage complet du mariage : préparatifs, cérémonie, portraits, soirée",
-      "Photos haut de gamme, lumière et composition maîtrisées",
-      "Retouches professionnelles et travail des couleurs",
-      "Remise rapide via galerie privée",
-    ],
-    href: "/contact/",
-    cta: "En savoir plus",
-  },
-  {
-    title: "Vidéo",
-    description: "Revivez votre mariage comme un film.",
-    bullets: [
-      "Captation complète de votre journée avec sensibilité et style",
-      "Direction artistique et accompagnement pour chaque plan",
-      "Montage cinématique, étalonnage et retouches premium",
-      "Livraison rapide via galerie privée ou version téléchargeable",
-    ],
-    href: "/contact/",
-    cta: "En savoir plus",
-  },
-  {
-    title: "Photo + Vidéo",
-    description:
-      "La formule complète pour une expérience immersive et cohérente.",
-    bullets: [
-      "Reportage complet combinant photos et vidéos",
-      "Direction artistique globale pour un rendu harmonieux",
-      "Couleurs, montage et retouches premium pour chaque support",
-      "Galerie privée avec accès facile pour partager vos souvenirs",
-    ],
-    href: "/contact/",
-    cta: "En savoir plus",
-  },
-];
+const url = absoluteUrl(seo.path);
+const webpageId = `${url}#webpage`;
+const serviceId = `${url}#service`;
+const videoId = `${url}#video`;
 
-const projects = [
-  {
-    title: "Corporate",
-    cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-    images: [
-      "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-      "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+const structuredData = buildGraph([
+  buildBreadcrumbList({
+    path: seo.path,
+    items: [
+      { name: "Accueil", path: ROUTES.home },
+      { name: "Mariage", path: seo.path },
     ],
+  }),
+  {
+    ...buildWebPage({
+      path: seo.path,
+      name: seo.title,
+      description: seo.description,
+      imageUrl: seo.image,
+    }),
+    mainEntity: { "@id": serviceId },
+    ...(heroVideo ? { hasPart: [{ "@id": videoId }] } : {}),
   },
   {
-    title: "Événementiel",
-    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-    images: [
-      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
-    ],
+    ...buildService({
+      path: seo.path,
+      name: "Mariage",
+      description: seo.description,
+    }),
+    "@id": serviceId,
+    mainEntityOfPage: { "@id": webpageId },
   },
-  {
-    title: "Mariage",
-    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-    images: [
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    ],
-  },
-  {
-    title: "Publicté digitale",
-    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    images: [
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-    ],
-  },
-];
+  ...(heroVideo
+    ? [
+        buildVideoObject({
+          path: seo.path,
+          name: heroVideo.title,
+          description: heroVideo.description ?? seo.description,
+          contentUrl: youTubeWatchUrl(heroVideo.youtubeId),
+          thumbnailUrl: heroVideo.thumbnailUrl ?? youTubeThumbnailUrl(heroVideo.youtubeId),
+          uploadDate: heroVideo.uploadDate,
+          duration: heroVideo.duration,
+        }),
+      ]
+    : []),
+]);
+
+
 
 export default function MariagePage() {
   return (
@@ -148,28 +92,41 @@ export default function MariagePage() {
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative h-[520px] w-full md:h-[650px]">
-            <video
-              className="absolute inset-0 hidden h-full w-full object-cover object-bottom md:block"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
-            >
-              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
-            </video>
+            {heroVideo ? (
+              <div className="absolute inset-0">
+                <YouTubeEmbed
+                  videoId={heroVideo.youtubeId}
+                  title={heroVideo.title}
+                  className="h-full"
+                />
+              </div>
+            ) : (
+              <>
+                <video
+                  className="absolute inset-0 hidden h-full w-full object-cover object-bottom md:block"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+                >
+                  <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
+                </video>
 
-            <video
-              className="absolute inset-0 h-full w-full object-cover object-bottom md:hidden"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
-            >
-              <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
-            </video>
+                <video
+                  className="absolute inset-0 h-full w-full object-cover object-bottom md:hidden"
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+                >
+                  <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
+                </video>
+              </>
+            )}
+
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black/90" />
 
             <div className="relative z-[1] flex h-full w-full items-center justify-center">
@@ -181,7 +138,7 @@ export default function MariagePage() {
                   fiançailles - Mariage - Shooting
                 </p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label="/mariage/:hero"
@@ -223,7 +180,7 @@ export default function MariagePage() {
           </div>
 
           <div className="mt-10 w-full">
-            <ImageLightboxGallery items={lastPrestations} />
+            <ImageLightboxGallery items={MARIAGE_PAGE_CONTENT.lastPrestations} />
           </div>
         </section>
 
@@ -241,7 +198,7 @@ export default function MariagePage() {
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {formulas.map((f) => (
+            {MARIAGE_PAGE_CONTENT.formulas.map((f) => (
               <div
                 key={f.title}
                 className="rounded-lg border border-white/10 bg-black/40 p-6 transition-colors duration-200 hover:border-white/20 hover:bg-black/60"
@@ -278,7 +235,7 @@ export default function MariagePage() {
               Mon portfolio
             </h2>
             <Link
-              href="/portfolio/"
+              href={ROUTES.portfolio}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label="/mariage/:portfolio"
@@ -289,7 +246,7 @@ export default function MariagePage() {
           </div>
 
           <div className="mt-10">
-            <ProjectsCarousel projects={projects} />
+            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
         </section>
 
@@ -337,7 +294,7 @@ export default function MariagePage() {
               à chaque projet.
             </p>
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label="/mariage/:bottom"
@@ -348,45 +305,7 @@ export default function MariagePage() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col items-start gap-8 md:items-center">
-            <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
-              <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
-                <Image
-                  src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
-                  alt="Avis"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="flex flex-col items-start gap-2">
-                <div className="flex items-center gap-1 text-white">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} aria-hidden>
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="text-[18px] text-[#ededed] md:text-[20px]">
-                  +150 entreprises accompagnées
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[18px] text-[#ededed] underline md:text-[20px]"
-                >
-                  +16 avis Google
-                </a>
-              </div>
-            </div>
-
-            <div className="w-full pt-2 md:pt-0">
-              <Testimonials />
-            </div>
-          </div>
-        </section>
+        <GoogleReviewsSection />
       </main>
 
       <SiteFooter />

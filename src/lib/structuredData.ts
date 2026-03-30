@@ -1,5 +1,14 @@
 export type StructuredDataNode = Record<string, unknown>;
 
+export type StructuredDataGraph = ReturnType<typeof buildGraph>;
+
+export type BreadcrumbItem = {
+  /** Visible label (ex: "Corporate"). */
+  name: string;
+  /** Route path with leading+trailing slash (ex: "/corporate/"). */
+  path: string;
+};
+
 type BuildWebPageInput = {
   path: string;
   name: string;
@@ -13,7 +22,22 @@ type BuildServiceInput = {
   description?: string;
 };
 
-type FaqItem = { q: string; a: string };
+type BuildVideoObjectInput = {
+  /** Page path where the video is showcased ("/mariage/") */
+  path: string;
+  name: string;
+  description?: string;
+  /** Absolute or site-relative URL to the video file / player. */
+  contentUrl: string;
+  /** Absolute or site-relative URL to the thumbnail/poster. */
+  thumbnailUrl: string;
+  /** ISO date (YYYY-MM-DD) or full ISO timestamp. */
+  uploadDate?: string;
+  /** ISO8601 duration (ex: PT1M30S). */
+  duration?: string;
+};
+
+export type FaqItem = { q: string; a: string };
 
 type BuildFaqPageInput = {
   path: string;
@@ -21,11 +45,21 @@ type BuildFaqPageInput = {
   aboutServiceId?: string;
 };
 
+type BuildBreadcrumbListInput = {
+  path: string;
+  items: BreadcrumbItem[];
+};
+
+type BuildWebPageGraphInput = BuildWebPageInput & {
+  breadcrumbs?: BreadcrumbItem[];
+};
+
 export const SITE_URL = "https://www.directedbyqamar.com";
 export const SITE_NAME = "Directed by Qamar";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const PERSON_ID = `${SITE_URL}/#person`;
 
 export function absoluteUrl(path: string) {
   return new URL(path, SITE_URL).toString();
@@ -38,6 +72,18 @@ export function buildGraph(nodes: StructuredDataNode[]) {
   };
 }
 
+export function buildPerson() {
+  return {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: "Qamar",
+    url: `${SITE_URL}/`,
+    jobTitle: "Photographe & vidéaste",
+    image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    worksFor: { "@id": ORGANIZATION_ID },
+  } satisfies StructuredDataNode;
+}
+
 export function buildOrganizationLocalBusiness() {
   return {
     "@type": ["Organization", "LocalBusiness"],
@@ -46,12 +92,38 @@ export function buildOrganizationLocalBusiness() {
     url: `${SITE_URL}/`,
     logo: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
     image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    founder: { "@id": PERSON_ID },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Paris",
       addressCountry: "FR",
     },
-    sameAs: ["https://maps.app.goo.gl/CU93H22ijGqnEaKr7"],
+    telephone: "+33-6-02-65-77-52",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+33-6-02-65-77-52",
+      contactType: "customer service",
+      availableLanguage: ["fr"],
+    },
+    priceRange: "€€€",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+    sameAs: [
+      "https://maps.app.goo.gl/CU93H22ijGqnEaKr7",
+      "https://www.instagram.com/directedbyqamar/",
+    ],
   } satisfies StructuredDataNode;
 }
 
@@ -89,6 +161,21 @@ export function buildWebPage({ path, name, description, imageUrl }: BuildWebPage
   } satisfies StructuredDataNode;
 }
 
+export function buildBreadcrumbList({ path, items }: BuildBreadcrumbListInput) {
+  const url = absoluteUrl(path);
+
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  } satisfies StructuredDataNode;
+}
+
 export function buildService({ path, name, description }: BuildServiceInput) {
   const url = absoluteUrl(path);
 
@@ -99,7 +186,35 @@ export function buildService({ path, name, description }: BuildServiceInput) {
     description,
     url,
     provider: { "@id": ORGANIZATION_ID },
-    areaServed: { "@type": "Country", name: "France" },
+    areaServed: { "@type": "City", name: "Paris" },
+  } satisfies StructuredDataNode;
+}
+
+function toAbsoluteUrlMaybe(value: string) {
+  if (value.startsWith("http://") || value.startsWith("https://")) return value;
+  return absoluteUrl(value);
+}
+
+export function buildVideoObject({
+  path,
+  name,
+  description,
+  contentUrl,
+  thumbnailUrl,
+  uploadDate,
+  duration,
+}: BuildVideoObjectInput) {
+  const url = absoluteUrl(path);
+
+  return {
+    "@type": "VideoObject",
+    "@id": `${url}#video`,
+    name,
+    description,
+    thumbnailUrl: toAbsoluteUrlMaybe(thumbnailUrl),
+    contentUrl: toAbsoluteUrlMaybe(contentUrl),
+    ...(uploadDate ? { uploadDate } : {}),
+    ...(duration ? { duration } : {}),
   } satisfies StructuredDataNode;
 }
 
@@ -122,7 +237,14 @@ export function buildFaqPage({ path, items, aboutServiceId }: BuildFaqPageInput)
   } satisfies StructuredDataNode;
 }
 
-/** Convenience helper for non-service pages. */
-export function buildWebPageGraph(input: BuildWebPageInput) {
-  return buildGraph([buildWebPage(input)]);
+/** Convenience helper for non-service pages.
+ * Includes the WebPage node and (optionally) a BreadcrumbList.
+ */
+export function buildWebPageGraph(input: BuildWebPageGraphInput) {
+  return buildGraph([
+    buildWebPage(input),
+    ...(input.breadcrumbs
+      ? [buildBreadcrumbList({ path: input.path, items: input.breadcrumbs })]
+      : []),
+  ]);
 }

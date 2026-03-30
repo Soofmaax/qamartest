@@ -2,16 +2,40 @@
 
 This repo contains a static-exported Next.js site (App Router) for **Directed by Qamar**.
 
+## Requirements
+
+- Node.js 22 (matches CI)
+- npm (this repo uses `package-lock.json`)
+
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Production build (static export)
+## CI checks (before opening/merging a PR)
 
-This project uses `output: "export"`, so the build outputs a static site into `./out`.
+```bash
+npm run lint
+npm run build
+```
+
+## GitHub Pages / preview build (static export)
+
+This project uses `output: "export"` for preview deployments (e.g. GitHub Pages). The build outputs a static site into `./out`.
+
+```bash
+NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
+```
+
+Notes:
+- `NEXT_PUBLIC_BASE_PATH` must match the GitHub Pages base path (usually `/<repo-name>`).
+- `NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments.
+
+## Production build (no basePath)
+
+Production (directedbyqamar.com) should build without preview env vars:
 
 ```bash
 npm run build
@@ -19,24 +43,38 @@ npm run build
 
 ## SEO QA (optional)
 
-After building, you can run a small sanity check on the exported HTML:
+`npm run seo:qa` validates the exported HTML in `./out`, so it must be run after a preview/static export build.
 
 ```bash
+NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 npm run seo:qa
 ```
 
-## Preview vs production indexing
+## Video (YouTube)
 
-`NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments (e.g. GitHub Pages).
+- `src/components/YouTubeEmbed.tsx`: lazy-loaded YouTube iframe (no iframe until click).
+- `src/lib/videos.ts`: add entries to `SITE_VIDEOS` to:
+  - generate `/video-sitemap.xml`
+  - attach `VideoObject` JSON-LD on pages that pull a primary video via `getPrimaryVideoForPage(path)`
 
-Production (directedbyqamar.com) should build without this env var.
+## Image alt text
 
-## TODO (corporate service detail pages)
+- `src/lib/altText.ts`: `buildImageAlt(...)` helper.
+- Gallery/portfolio components use it so future content updates mostly require only image URLs + titles.
 
-When clicking "En savoir plus" on `/corporate/`, each service should land on a dedicated SEO page with richer content (Portraits professionnels, Reportages d’entreprise, Présentation de marque, Films institutionnels, Contenu pour site web & réseaux):
+## Project conventions (for maintainability)
 
-- Add a short section explaining the process (préparation, shooting, livraison, formats, délais).
-- Add/replace the gallery images (you will provide the final images).
+See:
+- `CONTRIBUTING.md` (conventions, structure, and rules for Next export)
+- `AGENTS.md` (quick rules for AI-assisted changes)
+- `SEO_TECH_CHECKLIST.md` (SEO tech checklist for migration)
+
+## Content backlog (non-code)
+
+The dedicated SEO pages now exist for each service category. Remaining work is content-level:
+
+- Refine copy (tone/duplication) and add a clear “process” section where relevant.
+- Replace the placeholder gallery images with final selections.
 
 Pages:
 - `/corporate/portraits-professionnels/`
@@ -44,3 +82,4 @@ Pages:
 - `/corporate/presentation-marque/`
 - `/corporate/films-institutionnels/`
 - `/corporate/contenu-web-reseaux/`
+- `/publicite-digitale/…` (service detail pages)

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ROUTES } from "@/lib/routes";
 
 const socials = [
   {
@@ -92,7 +93,7 @@ export function SiteFooter() {
             - Tous droits réservés.
           </p>
           <Link
-            href="/contact/"
+            href={ROUTES.contact}
             className="mt-2 rounded-lg border border-white/15 bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
           >
             Me contacter

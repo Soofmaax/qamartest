@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
+import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Testimonials } from "@/components/Testimonials";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { CORPORATE_SERVICES, PORTFOLIO_PROJECTS, REFERENCE_LOGOS } from "@/lib/content";
+import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
-import { buildWebPageGraph } from "@/lib/structuredData";
+import {
+  absoluteUrl,
+  buildBreadcrumbList,
+  buildGraph,
+  buildService,
+  buildWebPage,
+} from "@/lib/structuredData";
 
 const seo = {
   title: "Photographe & vidéaste corporate | Directed by Qamar",
@@ -20,139 +29,39 @@ const seo = {
 
 export const metadata: Metadata = createPageMetadata(seo);
 
-const structuredData = buildWebPageGraph({
-  path: seo.path,
-  name: seo.title,
-  description: seo.description,
-  imageUrl: seo.image,
-});
+const url = absoluteUrl(seo.path);
+const webpageId = `${url}#webpage`;
+const serviceId = `${url}#service`;
 
-const services = [
+const structuredData = buildGraph([
+  buildBreadcrumbList({
+    path: seo.path,
+    items: [
+      { name: "Accueil", path: ROUTES.home },
+      { name: "Corporate", path: seo.path },
+    ],
+  }),
   {
-    title: "Portraits professionnels",
-    description:
-      "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
-    href: "/corporate/portraits-professionnels/",
+    ...buildWebPage({
+      path: seo.path,
+      name: seo.title,
+      description: seo.description,
+      imageUrl: seo.image,
+    }),
+    mainEntity: { "@id": serviceId },
   },
   {
-    title: "Reportages d’entreprise",
-    description:
-      "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
-    href: "/corporate/reportages-entreprise/",
+    ...buildService({
+      path: seo.path,
+      name: "Corporate",
+      description: seo.description,
+    }),
+    "@id": serviceId,
+    mainEntityOfPage: { "@id": webpageId },
   },
-  {
-    title: "Présentation de marque",
-    description:
-      "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage.Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
-    href: "/corporate/presentation-marque/",
-  },
-  {
-    title: "Films institutionnels",
-    description:
-      "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage.Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
-    href: "/corporate/films-institutionnels/",
-  },
-  {
-    title: "Contenu pour site web & réseaux",
-    description:
-      "Des productions régulières pour alimenter vos plateformes avec du contenu professionnel, dynamique et cohérent.Vous bénéficiez d’une stratégie visuelle complète, pensée pour renforcer votre présence digitale.",
-    image:
-      "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
-    href: "/corporate/contenu-web-reseaux/",
-  },
-];
+]);
 
-const referenceLogos = [
-  {
-    src: "https://framerusercontent.com/images/WCk6aWdk3lcNK2YQ4jOZuMqrL8.png",
-    width: 243,
-    height: 30,
-    alt: "PWF",
-  },
-  {
-    src: "https://framerusercontent.com/images/hAQHQ3tidhNw5v9lqDPRy0by4Q.png",
-    width: 197,
-    height: 35,
-    alt: "Group",
-  },
-  {
-    src: "https://framerusercontent.com/images/PkZtUBhle6TenR3CV9mGcpJKQHk.png",
-    width: 148,
-    height: 30,
-    alt: "Fitness Park",
-  },
-  {
-    src: "https://framerusercontent.com/images/Kyt0tHHdYIDhl3RD2HCCBhrpiuc.png",
-    width: 134,
-    height: 34,
-    alt: "UNESCO",
-  },
-  {
-    src: "https://framerusercontent.com/images/fg88tcEcPzAeOIv7O1HBZbLYWfw.png",
-    width: 108,
-    height: 27,
-    alt: "Canal+",
-  },
-  {
-    src: "https://framerusercontent.com/images/DAfyAGHuflSzQsjykANU3SYhX0.png",
-    width: 107,
-    height: 30,
-    alt: "Logo",
-  },
-  {
-    src: "https://framerusercontent.com/images/t3a40zYxxocfwj5czXN2yGUnP5w.png",
-    width: 80,
-    height: 64,
-    alt: "CNA",
-  },
-];
 
-const projects = [
-  {
-    title: "Corporate",
-    cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-    images: [
-      "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-      "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-    ],
-  },
-  {
-    title: "Événementiel",
-    cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-    images: [
-      "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-      "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
-    ],
-  },
-  {
-    title: "Mariage",
-    cover: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-    images: [
-      "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    ],
-  },
-  {
-    title: "Publicté digitale",
-    cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-    images: [
-      "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-      "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-      "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-    ],
-  },
-];
 
 export default function CorporatePage() {
   return (
@@ -163,7 +72,17 @@ export default function CorporatePage() {
       <main className="mx-auto site-width">
         <section className="relative w-full overflow-hidden bg-black">
           <div className="relative hero-height w-full">
-            <Image src={seo.image} alt="Corporate" fill priority className="object-cover" />
+            <Image
+              src={seo.image}
+              alt="Corporate"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="100vw"
+              placeholder="blur"
+              blurDataURL={DARK_BLUR_DATA_URL}
+              className="object-cover"
+            />
 
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black" />
 
@@ -176,7 +95,7 @@ export default function CorporatePage() {
                   Créer de la valeur avec l’image
                 </p>
                 <Link
-                  href="/contact/"
+                  href={ROUTES.contact}
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label="/corporate/:hero"
@@ -207,10 +126,18 @@ export default function CorporatePage() {
         </section>
 
         <section className="w-full bg-black">
-          {services.map((s) => (
+          {CORPORATE_SERVICES.map((s) => (
             <div key={s.title} className="relative overflow-hidden">
               <div className="absolute inset-0">
-                <Image src={s.image} alt="" fill className="object-cover" />
+                <Image
+                  src={s.image}
+                  alt={s.title}
+                  fill
+                  sizes="100vw"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
+                  className="object-cover"
+                />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/55 to-black" />
 
@@ -250,49 +177,7 @@ export default function CorporatePage() {
             </div>
 
             <div className="relative">
-              <div className="ticker">
-                <div
-                  className="ticker-track"
-                  style={{ "--ticker-duration": "25s" } as CSSProperties}
-                >
-                  {referenceLogos.map((logo) => (
-                    <div
-                      key={logo.src}
-                      className="relative flex h-[64px] w-auto flex-none items-center"
-                    >
-                      <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={logo.width}
-                        height={logo.height}
-                        className="h-auto max-h-[64px] w-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div
-                  className="ticker-track"
-                  aria-hidden
-                  style={{ "--ticker-duration": "25s" } as CSSProperties}
-                >
-                  {referenceLogos.map((logo) => (
-                    <div
-                      key={`${logo.src}-dup`}
-                      className="relative flex h-[64px] w-auto flex-none items-center"
-                    >
-                      <Image
-                        src={logo.src}
-                        alt=""
-                        width={logo.width}
-                        height={logo.height}
-                        className="h-auto max-h-[64px] w-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-[15%] bg-gradient-to-r from-black to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[15%] bg-gradient-to-l from-black to-transparent" />
+              <ReferencesTicker logos={REFERENCE_LOGOS} durationSeconds={25} />
             </div>
           </div>
         </section>
@@ -303,7 +188,7 @@ export default function CorporatePage() {
               Mon portfolio
             </h2>
             <Link
-              href="/portfolio/"
+              href={ROUTES.portfolio}
               data-ga-event="cta_click"
               data-ga-category="Navigation"
               data-ga-label="/corporate/:portfolio"
@@ -314,7 +199,7 @@ export default function CorporatePage() {
           </div>
 
           <div className="mt-10 site-pad-x">
-            <ProjectsCarousel projects={projects} />
+            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
         </section>
 
@@ -372,7 +257,7 @@ export default function CorporatePage() {
             </p>
 
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label="/corporate/:devis"
@@ -383,45 +268,7 @@ export default function CorporatePage() {
           </div>
         </section>
 
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col items-start gap-8 md:items-center">
-            <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
-              <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
-                <Image
-                  src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
-                  alt="Avis"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="flex flex-col items-start gap-2">
-                <div className="flex items-center gap-1 text-white">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span key={i} aria-hidden>
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="text-[18px] text-[#ededed] md:text-[20px]">
-                  +150 entreprises accompagnées
-                </p>
-                <a
-                  href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[18px] text-[#ededed] underline md:text-[20px]"
-                >
-                  +16 avis Google
-                </a>
-              </div>
-            </div>
-
-            <div className="w-full pt-2 md:pt-0">
-              <Testimonials />
-            </div>
-          </div>
-        </section>
+        <GoogleReviewsSection />
       </main>
 
       <SiteFooter />

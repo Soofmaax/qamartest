@@ -5,6 +5,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { createPageMetadata } from "@/lib/seo";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
@@ -22,6 +24,10 @@ const structuredData = buildWebPageGraph({
   name: seo.title,
   description: seo.description,
   imageUrl: seo.image,
+  breadcrumbs: [
+    { name: "Accueil", path: ROUTES.home },
+    { name: "Portfolio", path: seo.path },
+  ],
 });
 
 const items = [
@@ -75,7 +81,7 @@ export default function PortfolioPage() {
             </div>
 
             <Link
-              href="/contact/"
+              href={ROUTES.contact}
               className="rounded-lg border border-white/15 bg-black px-6 py-3 text-center font-serif text-lg font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
             >
               Me contacter
@@ -92,6 +98,9 @@ export default function PortfolioPage() {
                   src={item.src}
                   alt={item.category}
                   fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
                   className="object-cover transition duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black to-black/0" />

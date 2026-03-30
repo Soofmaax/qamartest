@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
@@ -9,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/",
     "/portfolio/",
     "/contact/",
+    "/merci/",
     "/mariage/",
     "/corporate/",
     "/corporate/portraits-professionnels/",
@@ -16,12 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/corporate/presentation-marque/",
     "/corporate/films-institutionnels/",
     "/corporate/contenu-web-reseaux/",
-    "/événementiel/",
-    "/publicité-digitale/",
-    "/publicité-digitale/conception-brainstorming-marketing/",
-    "/publicité-digitale/creation-photo-video-premium/",
-    "/publicité-digitale/adaptation-formats-social-media/",
-    "/publicité-digitale/optimisation-conversions-branding/",
+    "/evenementiel/",
+    "/publicite-digitale/",
+    "/publicite-digitale/conception-brainstorming-marketing/",
+    "/publicite-digitale/creation-photo-video-premium/",
+    "/publicite-digitale/adaptation-formats-social-media/",
+    "/publicite-digitale/optimisation-conversions-branding/",
   ];
 
   return routes.map((route) => ({
