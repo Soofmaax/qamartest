@@ -92,6 +92,9 @@ export default function RootLayout({
       className={`${cormorant.variable} ${arimo.variable} ${syncopate.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://elfsightcdn.com" />
+        <link rel="dns-prefetch" href="https://elfsightcdn.com" />
+
         <JsonLd id="jsonld-site" data={siteStructuredData} />
 
         {!isPreview ? (

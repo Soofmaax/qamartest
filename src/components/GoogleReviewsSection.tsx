@@ -2,6 +2,8 @@ import Image from "next/image";
 import Script from "next/script";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 
+const GOOGLE_BUSINESS_URL = "https://maps.app.goo.gl/CU93H22ijGqnEaKr7";
+
 const REVIEW_STATS = [
   { value: "5,0", label: "Note Google" },
   { value: "20", label: "Avis" },
@@ -52,14 +54,19 @@ export function GoogleReviewsSection() {
               ))}
             </div>
 
-            <a
-              href="https://maps.app.goo.gl/CU93H22ijGqnEaKr7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[16px] text-[#ededed] underline md:text-[18px]"
-            >
-              Voir tous les avis Google
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[16px] text-[#ededed] underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white md:text-[18px]"
+              >
+                Voir tous les avis Google
+              </a>
+              <span className="text-[12px] uppercase tracking-[0.22em] text-white/50">
+                Google Business Profile
+              </span>
+            </div>
           </div>
         </div>
 
