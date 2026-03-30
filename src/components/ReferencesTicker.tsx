@@ -37,8 +37,8 @@ export function ReferencesTicker({
           className={`pointer-events-none absolute inset-y-0 right-0 z-10 ${fade} bg-gradient-to-l from-black to-black/0`}
         />
 
-        <div className="flex h-full items-center">
-          <div className="ticker-track pr-[43px]">
+        <div className="ticker-marquee flex h-full items-center pr-[43px]">
+          <div className="ticker-group pr-[43px]">
             {logos.map((ref) => (
               <div
                 key={ref.src}
@@ -55,7 +55,7 @@ export function ReferencesTicker({
             ))}
           </div>
 
-          <div className="ticker-track pr-[43px]" aria-hidden="true">
+          <div className="ticker-group pr-[43px]" aria-hidden="true">
             {logos.map((ref) => (
               <div
                 key={`${ref.src}-dup`}

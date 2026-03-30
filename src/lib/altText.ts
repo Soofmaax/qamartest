@@ -10,14 +10,14 @@ type BuildImageAltInput = {
 };
 
 export function buildImageAlt({ context, subject, index, total }: BuildImageAltInput) {
-  const base = subject ? `${context} — ${subject}` : context;
+  const base = subject ? `${context} · ${subject}` : context;
 
   if (typeof index === "number" && typeof total === "number" && total > 0) {
-    return `${base} — photo ${index}/${total}`;
+    return `${base} · photo ${index}/${total}`;
   }
 
   if (typeof index === "number") {
-    return `${base} — photo ${index}`;
+    return `${base} · photo ${index}`;
   }
 
   return base;

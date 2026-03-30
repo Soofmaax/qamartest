@@ -8,6 +8,7 @@ import { ROUTES } from "@/lib/routes";
 
 const navItems = [
   { href: ROUTES.home, label: "Accueil" },
+  { href: ROUTES.signature, label: "Signature" },
   { href: ROUTES.services, label: "Services" },
   { href: ROUTES.portfolio, label: "Portfolio" },
   { href: ROUTES.contact, label: "Contact" },

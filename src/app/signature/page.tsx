@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
@@ -6,19 +7,18 @@ import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Testimonials } from "@/components/Testimonials";
-import { REFERENCE_LOGOS, SERVICES } from "@/lib/content";
-import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
+import { REFERENCE_LOGOS } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
+import { createPageMetadata } from "@/lib/seo";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
 const seo = {
-  title: "Services | Directed by Qamar",
+  title: "Signature | Directed by Qamar",
   description:
-    "Découvrez nos prestations photo & vidéo : mariage, corporate, événementiel et publicité digitale.",
-  path: "/services/",
-  image: "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+    "Une approche photo et vidéo pensée pour le luxe : discrétion, direction artistique, cohérence, et livrables irréprochables.",
+  path: "/signature/",
+  image: "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -30,11 +30,35 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
   breadcrumbs: [
     { name: "Accueil", path: ROUTES.home },
-    { name: "Services", path: seo.path },
+    { name: "Signature", path: seo.path },
   ],
 });
 
-export default function ServicesPage() {
+const pillars = [
+  {
+    title: "Discrétion",
+    desc: "Présence maîtrisée, direction subtile. L’objectif : des images vraies, jamais forcées.",
+  },
+  {
+    title: "Direction artistique",
+    desc: "Lumière, composition, rythme. Une esthétique cohérente du début à la fin.",
+  },
+  {
+    title: "Exécution",
+    desc: "Un process fluide. Des livrables propres, calibrés et livrés avec exigence.",
+  },
+];
+
+const proof = [
+  { label: "Réponse", value: "48h" },
+  { label: "Livraison", value: "Rapide" },
+  { label: "Rendu", value: "Premium" },
+  { label: "Approche", value: "Sur-mesure" },
+];
+
+const clients = ["Hôtel Dali", "Fitness Park", "UNESCO"];
+
+export default function SignaturePage() {
   return (
     <div className="min-h-screen bg-black">
       <JsonLd id="jsonld-page" data={structuredData} />
@@ -44,7 +68,7 @@ export default function ServicesPage() {
         <section className="relative hero-height w-full overflow-hidden site-pad-x">
           <Image
             src={seo.image}
-            alt="Services"
+            alt="Signature Directed by Qamar"
             fill
             priority
             fetchPriority="high"
@@ -53,33 +77,35 @@ export default function ServicesPage() {
             blurDataURL={DARK_BLUR_DATA_URL}
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/45 to-black" />
 
-          <div className="relative z-10 flex h-full flex-col justify-end gap-6 pb-16 md:pb-20">
-            <div className="max-w-2xl">
+          <div className="relative z-10 flex h-full flex-col justify-end gap-8 pb-16 md:pb-20">
+            <div className="max-w-3xl">
               <p className="text-[10px] font-light tracking-[0.22em] text-white/60 uppercase">
-                Studio · Photo & Vidéo
+                Signature
               </p>
               <h1 className="mt-4 font-serif text-[44px] leading-none text-white md:text-[64px]">
-                Collections.
+                Une esthétique sobre.
+                <br />
+                Un rendu de luxe.
               </h1>
-              <p className="mt-6 text-[18px] leading-[23px] text-white/70 md:text-[20px]">
-                Des productions sobres, précises, et pensées pour durer.
+              <p className="mt-6 text-[18px] leading-relaxed text-white/70 md:text-[20px]">
+                Nous créons des images intemporelles, avec une attention obsessionnelle aux détails : lumière, matière, couleurs, rythme.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                href="#prestations"
+                href={ROUTES.portfolio}
                 className="w-fit rounded-lg bg-black/70 px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
               >
-                Voir les prestations
+                Voir le portfolio
               </Link>
               <Link
                 href={ROUTES.contact}
                 className="w-fit text-[11px] font-light tracking-[0.14em] text-white/55 uppercase hover:text-white/80"
               >
-                Me contacter →
+                Demander une disponibilité →
               </Link>
             </div>
           </div>
@@ -89,23 +115,43 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
-                Notre méthode
+                Ce qui nous différencie
               </p>
               <h2 className="mt-4 font-serif text-3xl font-semibold text-white md:text-[48px]">
-                Une production simple, un rendu premium.
+                Une expérience pensée comme du sur-mesure.
               </h2>
             </div>
             <p className="max-w-[420px] text-right text-[12px] font-light leading-relaxed text-white/45">
-              Réponse sous 48h. Devis clair. Livraison rapide. Un process pensé pour être fluide, du brief à la livraison.
+              Des décisions simples. Une exécution rigoureuse. Une direction artistique constante.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 border border-white/10 p-6 md:grid-cols-3 md:p-8">
-            {["Brief & moodboard", "Tournage maîtrisé", "Livraison premium"].map((t) => (
-              <div key={t} className="rounded-lg border border-white/10 bg-black p-6">
-                <p className="text-[11px] font-light tracking-[0.14em] text-white/55 uppercase">
-                  {t}
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {pillars.map((p) => (
+              <div
+                key={p.title}
+                className="rounded-lg border border-white/10 bg-black p-8"
+              >
+                <p className="text-[10px] font-light tracking-[0.18em] text-white/45 uppercase">
+                  Pilier
                 </p>
+                <p className="mt-4 font-serif text-2xl text-white">{p.title}</p>
+                <p className="mt-4 text-[13px] font-light leading-relaxed text-white/55">
+                  {p.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </RevealOnScroll>
+
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
+          <div className="grid grid-cols-2 gap-4 border border-white/10 p-6 md:grid-cols-4 md:p-8">
+            {proof.map((p) => (
+              <div key={p.label} className="rounded-lg border border-white/10 bg-black p-6">
+                <p className="text-[10px] font-light tracking-[0.18em] text-white/45 uppercase">
+                  {p.label}
+                </p>
+                <p className="mt-3 font-serif text-3xl text-white">{p.value}</p>
               </div>
             ))}
           </div>
@@ -118,7 +164,7 @@ export default function ServicesPage() {
                 Références
               </p>
               <h2 className="mt-4 font-serif text-3xl font-semibold text-white md:text-[48px]">
-                Confiance, sur la durée.
+                Ils nous font confiance.
               </h2>
             </div>
             <p className="max-w-[420px] text-right text-[12px] font-light leading-relaxed text-white/45">
@@ -126,80 +172,35 @@ export default function ServicesPage() {
             </p>
           </div>
 
+          <div className="mt-10 grid gap-4 border border-white/10 p-6 md:grid-cols-3 md:p-8">
+            {clients.map((c) => (
+              <div key={c} className="rounded-lg border border-white/10 bg-black p-6">
+                <p className="text-[10px] font-light tracking-[0.18em] text-white/45 uppercase">
+                  Client
+                </p>
+                <p className="mt-3 font-serif text-2xl text-white">{c}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="relative mt-10">
             <ReferencesTicker logos={REFERENCE_LOGOS} />
           </div>
         </RevealOnScroll>
 
-        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="border border-white/10 p-8 md:p-12">
-            <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
-              Témoignages
-            </p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold text-white md:text-[48px]">
-              Une expérience fluide.
-            </h2>
-            <p className="mt-4 text-[18px] font-light text-white/70 md:text-[20px]">
-              Discrétion, direction artistique, livraison. Rien de superflu.
-            </p>
-            <div className="mt-10">
-              <Testimonials />
-            </div>
-          </div>
-        </RevealOnScroll>
-
-        <section id="prestations" className="w-full bg-black pb-16 md:pb-20">
-          {SERVICES.map((s) => (
-            <RevealOnScroll
-              key={s.title}
-              as="div"
-              className="relative h-[300px] w-full overflow-hidden border-t border-white/10 md:h-[367px]"
-            >
-              <Image
-                src={s.image}
-                alt={s.title}
-                fill
-                sizes="100vw"
-                placeholder="blur"
-                blurDataURL={DARK_BLUR_DATA_URL}
-                className={`object-cover ${s.position ?? ""}`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/0" />
-
-              <div className="absolute inset-0 flex flex-col justify-center gap-[18px] site-pad-x md:gap-[22px]">
-                <p className="text-[10px] font-light tracking-[0.22em] text-white/50 uppercase">
-                  Collection
-                </p>
-                <h2 className="font-serif text-[28px] font-semibold text-white md:text-[36px]">
-                  {s.title}
-                </h2>
-                <p className="w-full text-[18px] text-white/70 md:w-[60%] md:text-[20px] lg:w-[38%]">
-                  {s.description}
-                </p>
-                <Link
-                  href={s.href}
-                  className="w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
-                >
-                  Découvrir
-                </Link>
-              </div>
-            </RevealOnScroll>
-          ))}
-        </section>
-
         <RevealOnScroll as="section" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-[26px] text-center site-pad-x md:gap-[34px]">
             <h2 className="font-serif text-[40px] leading-none text-white md:text-[64px]">
-              Prêt à donner une nouvelle dimension à vos contenus ?
+              Un projet, une vision.
             </h2>
             <p className="text-[18px] font-light text-white/70 md:text-[20px]">
-              Parlez-nous de votre besoin, on vous répond sous 48h.
+              Dites-nous ce que vous imaginez. On revient vers vous sous 48h.
             </p>
             <Link
               href={ROUTES.contact}
               className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
-              Me contacter
+              Demander une disponibilité
             </Link>
           </div>
         </RevealOnScroll>

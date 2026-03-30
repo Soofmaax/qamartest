@@ -1,45 +1,66 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-type TextCyclerProps = {
+type Props = {
   items: string[];
+  secondsPerItem?: number;
   className?: string;
   itemClassName?: string;
-  secondsPerItem?: number;
   ariaLabel?: string;
 };
 
 export function TextCycler({
   items,
+  secondsPerItem = 3,
   className,
   itemClassName,
-  secondsPerItem = 3,
   ariaLabel,
-}: TextCyclerProps) {
-  const safeItems = items.filter((t) => t.trim().length > 0);
-  const durationSeconds = Math.max(1, safeItems.length) * secondsPerItem;
+}: Props) {
+  const safeItems = useMemo(
+    () => items.filter((v) => typeof v === "string" && v.trim().length > 0),
+    [items]
+  );
+
+  const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    if (safeItems.length <= 1) return;
+
+    const ms = Math.max(1, secondsPerItem) * 1000;
+
+    const id = window.setInterval(() => {
+      setShow(false);
+      window.setTimeout(() => {
+        setIndex((v) => (v + 1) % safeItems.length);
+        setShow(true);
+      }, 180);
+    }, ms);
+
+    return () => window.clearInterval(id);
+  }, [safeItems.length, secondsPerItem]);
+
+  if (safeItems.length === 0) return null;
 
   return (
     <span
-      className={className ? `text-cycler ${className}` : "text-cycler"}
-      style={{
-        "--cycler-duration": `${durationSeconds}s`,
-        "--cycler-step": `${secondsPerItem}s`,
-      } as CSSProperties}
+      className={["relative block", className].filter(Boolean).join(" ")}
       aria-label={ariaLabel}
     >
-      {safeItems.map((text, index) => (
-        <span
-          key={`${index}-${text}`}
-          className={itemClassName ? `text-cycler-item ${itemClassName}` : "text-cycler-item"}
-          style={{
-            "--cycler-delay": `${index * secondsPerItem}s`,
-          } as CSSProperties}
-        >
-          {text}
-        </span>
-      ))}
+      <span
+        className={[
+          "block transition-opacity duration-200",
+          show ? "opacity-100" : "opacity-0",
+          itemClassName,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {safeItems[index]}
+      </span>
+
+      <span className="sr-only">{safeItems.join(" ")}</span>
     </span>
   );
 }

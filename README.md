@@ -1,4 +1,4 @@
-# Directed by Qamar — static site (Next.js export)
+# Directed by Qamar · static site (Next.js export)
 
 This repo contains a static-exported Next.js site (App Router) for **Directed by Qamar**.
 

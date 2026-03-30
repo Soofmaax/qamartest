@@ -4,6 +4,7 @@ export const ROUTES = {
   merci: "/merci/",
   portfolio: "/portfolio/",
   services: "/services/",
+  signature: "/signature/",
 
   mariage: "/mariage/",
   corporate: "/corporate/",

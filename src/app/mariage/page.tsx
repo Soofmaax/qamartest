@@ -204,7 +204,7 @@ export default function MariagePage() {
     },
     {
       cat: "Guide · Lecture 6 min",
-      title: "Film cinématique ou reportage vidéo — quelle différence ?",
+      title: "Film cinématique ou reportage vidéo : quelle différence ?",
       desc: "Deux approches. On vous explique laquelle correspond à votre personnalité et à votre vision du souvenir.",
     },
     {
@@ -223,24 +223,27 @@ export default function MariagePage() {
         "Une journée d’été dans l’un des plus beaux châteaux d’Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n’avaient d’yeux que l’un pour l’autre.",
       image: mariageImages[2],
       tags: ["Château", "Été", "Cinématique"],
+      href: "/mariage/ninon-alexandre/",
     },
     {
       index: "002",
       couple: "Sokona & Julien",
       meta: "Île-de-France · Automne 2024 · Photo + Vidéo",
       story:
-        "Deux cultures, une seule émotion. Un mariage d’une richesse visuelle rare — les tenues, les danses, les regards des familles réunies.",
+        "Deux cultures, une seule émotion. Un mariage d’une richesse visuelle rare : les tenues, les danses, les regards des familles réunies.",
       image: mariageImages[6],
       tags: ["Domaine", "Automne", "Multiculturel"],
+      href: "/mariage/sokona-julien/",
     },
     {
       index: "003",
       couple: "Karim & Inès",
       meta: "Marrakech · Printemps 2024 · Destination",
       story:
-        "La lumière de Marrakech est incomparable — dorée, dense, presque palpable. Trois jours de célébration condensés en un film.",
+        "La lumière de Marrakech est incomparable : dorée, dense, presque palpable. Trois jours de célébration condensés en un film.",
       image: mariageImages[10],
       tags: ["Destination", "Maroc", "Long format"],
+      href: "/mariage/karim-ines/",
     },
   ];
 
@@ -299,7 +302,7 @@ export default function MariagePage() {
                   Le film de votre vie.
                 </h1>
                 <p className="max-w-[680px] text-[18px] leading-relaxed text-white/75 md:text-[20px]">
-                  {"Vous avez passé des mois à préparer cette journée. Dans 20 ans, ce dont vous vous souviendrez — les regards, les larmes retenues, le moment où tout s’est arrêté — c’est notre travail de le rendre éternel."}
+                  {"Vous avez passé des mois à préparer cette journée. Dans 20 ans, ce dont vous vous souviendrez : les regards, les larmes retenues, le moment où tout s’est arrêté. C’est notre travail de le rendre éternel."}
                 </p>
                 <p className="text-[12px] font-light tracking-wide text-white/40">
                   Réservations 2026 & 2027 ouvertes · Quelques dates disponibles
@@ -415,7 +418,7 @@ export default function MariagePage() {
                 Recevoir la brochure
               </p>
               <p className="mt-4 text-[13px] font-light leading-relaxed text-white/55">
-                Formules, déroulé, livrables, et notre façon de travailler — pour vous aider à vous projeter.
+                Formules, déroulé, livrables, et notre façon de travailler : pour vous aider à vous projeter.
               </p>
               <Link
                 href={filmUrl}
@@ -567,7 +570,7 @@ export default function MariagePage() {
               </h2>
             </div>
             <p className="max-w-[320px] text-right text-[12px] font-light leading-relaxed text-white/45">
-              Un aperçu de la façon dont nous racontons chaque journée.
+              Des récits photo et vidéo. Un rendu cohérent. Une narration discrète.
             </p>
           </div>
 
@@ -624,7 +627,7 @@ export default function MariagePage() {
                     ))}
                   </div>
                   <Link
-                    href={ROUTES.portfolio}
+                    href={p.href}
                     className="text-[10px] font-light tracking-[0.12em] text-white uppercase hover:text-white/80"
                   >
                     Voir ce mariage →
@@ -752,7 +755,7 @@ export default function MariagePage() {
               {"Votre histoire mérite d’être immortalisée."}
             </h2>
             <p className="text-[18px] font-light text-white/70 md:text-[20px]">
-              Réservations 2026 et 2027 ouvertes — quelques dates encore disponibles.
+              Réservations 2026 et 2027 ouvertes : quelques dates encore disponibles.
             </p>
             <Link
               href={discoveryCallUrl}
