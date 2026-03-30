@@ -69,6 +69,14 @@ See:
 - `AGENTS.md` (quick rules for AI-assisted changes)
 - `SEO_TECH_CHECKLIST.md` (SEO tech checklist for migration)
 
+## TODO (before/after next PRs)
+
+- Add real links/pages for footer items:
+  - "Mentions légales"
+  - "CGV"
+- Add the LinkedIn URL in `src/components/SiteFooter.tsx` (currently empty).
+- Keep Google review stats (`src/components/GoogleReviewsSection.tsx`) in sync with the Google Business Profile.
+
 ## Content backlog (non-code)
 
 The dedicated SEO pages now exist for each service category. Remaining work is content-level:

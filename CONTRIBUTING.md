@@ -123,6 +123,7 @@ Where to enter the Pixel ID:
 - Keep `strict: true`.
 - Don’t introduce `any`.
 - Prefer `unknown` + refinement or proper types.
+- Avoid `@ts-expect-error` for styling. For CSS custom properties on `style`, cast the object to `CSSProperties` instead.
 
 ## SEO / metadata
 
