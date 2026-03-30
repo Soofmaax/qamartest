@@ -194,24 +194,27 @@ export default function MariagePage() {
       index: "001",
       couple: "Ninon & Alexandre",
       meta: "Château de Vaux-le-Vicomte · Juin 2025 · Photo + Vidéo",
-      story: "Une journée d'été dans l'un des plus beaux châteaux d'Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n'avaient d'yeux que l'un pour l'autre.",
-      image: MARIAGE_PAGE_CONTENT.lastPrestations[0]?.cover,
+      story:
+        "Une journée d'été dans l'un des plus beaux châteaux d'Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n'avaient d'yeux que l'un pour l'autre.",
+      image: "/images/mariage/portfolio-01.jpg",
       tags: ["Château", "Été", "Cinématique"],
     },
     {
       index: "002",
       couple: "Sokona & Julien",
       meta: "Île-de-France · Automne 2024 · Photo + Vidéo",
-      story: "Deux cultures, une seule émotion. Un mariage d'une richesse visuelle rare — les tenues, les danses, les regards des familles réunies.",
-      image: MARIAGE_PAGE_CONTENT.lastPrestations[1]?.cover,
+      story:
+        "Deux cultures, une seule émotion. Un mariage d'une richesse visuelle rare — les tenues, les danses, les regards des familles réunies.",
+      image: "/images/mariage/portfolio-02.jpg",
       tags: ["Domaine", "Automne", "Multiculturel"],
     },
     {
       index: "003",
       couple: "Karim & Inès",
       meta: "Marrakech · Printemps 2024 · Destination",
-      story: "La lumière de Marrakech est incomparable — dorée, dense, presque palpable. Trois jours de célébration condensés en un film.",
-      image: MARIAGE_PAGE_CONTENT.lastPrestations[2]?.cover,
+      story:
+        "La lumière de Marrakech est incomparable — dorée, dense, presque palpable. Trois jours de célébration condensés en un film.",
+      image: "/images/mariage/portfolio-03.jpg",
       tags: ["Destination", "Maroc", "Long format"],
     },
   ];
@@ -348,15 +351,13 @@ export default function MariagePage() {
                 id="films"
                 className="relative mt-6 aspect-[16/6] overflow-hidden rounded-md border border-white/10 bg-black"
               >
-                {MARIAGE_PAGE_CONTENT.lastPrestations[0]?.cover ? (
-                  <Image
-                    src={MARIAGE_PAGE_CONTENT.lastPrestations[0]?.cover}
-                    alt="Aperçu film de mariage"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 809px) 100vw, 600px"
-                  />
-                ) : null}
+                <Image
+                  src="/images/mariage/film-preview.jpg"
+                  alt="Aperçu film de mariage"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 809px) 100vw, 600px"
+                />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-black/30 backdrop-blur">
@@ -545,18 +546,16 @@ export default function MariagePage() {
 
                 <div className="border-white/10 p-6 md:border-r md:p-8">
                   <div className="flex flex-col gap-5 md:flex-row md:items-start">
-                    {p.image ? (
-                      <div className="relative h-[120px] w-full overflow-hidden rounded-md border border-white/10 md:h-[120px] md:w-[180px]">
-                        <Image
-                          src={p.image}
-                          alt={p.couple}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 809px) 100vw, 180px"
-                        />
-                        <div className="absolute inset-0 bg-black/20" />
-                      </div>
-                    ) : null}
+                    <div className="relative h-[120px] w-full overflow-hidden rounded-md border border-white/10 md:h-[120px] md:w-[180px]">
+                      <Image
+                        src={p.image}
+                        alt={p.couple}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 809px) 100vw, 180px"
+                      />
+                      <div className="absolute inset-0 bg-black/20" />
+                    </div>
 
                     <div>
                       <p className="font-serif text-2xl text-white italic">
