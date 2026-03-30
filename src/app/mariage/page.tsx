@@ -41,6 +41,27 @@ const discoveryCallUrl =
 const heroVideo = getPrimaryVideoForPage(seo.path);
 const filmUrl = heroVideo ? youTubeWatchUrl(heroVideo.youtubeId) : "#films";
 
+const mariageImages = [
+  "/images/mariage/DSC09144.jpg",
+  "/images/mariage/DSC09050.jpg",
+  "/images/mariage/DSC08990.jpg",
+  "/images/mariage/DSC08980.jpg",
+  "/images/mariage/DSC05810.jpg",
+  "/images/mariage/DSC04960.jpg",
+  "/images/mariage/DSC02626.jpg",
+  "/images/mariage/DSC02221.jpg",
+  "/images/mariage/DSC02159.jpg",
+  "/images/mariage/DSC02158.jpg",
+  "/images/mariage/DSC02139.jpg",
+  "/images/mariage/DSC01706.jpg",
+  "/images/mariage/DSC00152-Enhanced-NR.jpg",
+  "/images/mariage/DSC00135-Enhanced-NR.jpg",
+  "/images/mariage/DSC00119-Enhanced-NR.jpg",
+  "/images/mariage/BLT05150.jpg",
+  "/images/mariage/BLT04884.jpg",
+  "/images/mariage/DSC02845-2.jpg",
+];
+
 const url = absoluteUrl(seo.path);
 const webpageId = `${url}#webpage`;
 const serviceId = `${url}#service`;
@@ -201,7 +222,7 @@ export default function MariagePage() {
       meta: "Château de Vaux-le-Vicomte · Juin 2025 · Photo + Vidéo",
       story:
         "Une journée d’été dans l’un des plus beaux châteaux d’Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n’avaient d’yeux que l’un pour l’autre.",
-      image: "/images/mariage/portfolio-01.jpg",
+      image: mariageImages[2],
       tags: ["Château", "Été", "Cinématique"],
     },
     {
@@ -210,7 +231,7 @@ export default function MariagePage() {
       meta: "Île-de-France · Automne 2024 · Photo + Vidéo",
       story:
         "Deux cultures, une seule émotion. Un mariage d’une richesse visuelle rare — les tenues, les danses, les regards des familles réunies.",
-      image: "/images/mariage/portfolio-02.jpg",
+      image: mariageImages[6],
       tags: ["Domaine", "Automne", "Multiculturel"],
     },
     {
@@ -219,7 +240,7 @@ export default function MariagePage() {
       meta: "Marrakech · Printemps 2024 · Destination",
       story:
         "La lumière de Marrakech est incomparable — dorée, dense, presque palpable. Trois jours de célébration condensés en un film.",
-      image: "/images/mariage/portfolio-03.jpg",
+      image: mariageImages[10],
       tags: ["Destination", "Maroc", "Long format"],
     },
   ];
@@ -367,7 +388,7 @@ export default function MariagePage() {
                 className="relative mt-6 block aspect-[16/6] overflow-hidden rounded-md border border-white/10 bg-black"
               >
                 <Image
-                  src="/images/mariage/film-preview.jpg"
+                  src={mariageImages[0]}
                   alt="Aperçu film de mariage"
                   fill
                   className="object-cover"
