@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Testimonials } from "@/components/Testimonials";
+import Script from "next/script";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 
 export function GoogleReviewsSection() {
@@ -42,7 +42,14 @@ export function GoogleReviewsSection() {
         </div>
 
         <div className="w-full pt-2 md:pt-0">
-          <Testimonials />
+          <Script
+            src="https://elfsightcdn.com/platform.js"
+            strategy="lazyOnload"
+          />
+          <div
+            className="elfsight-app-a80967ce-6c37-4265-a5ce-9526acf89407"
+            data-elfsight-app-lazy
+          />
         </div>
       </div>
     </section>
