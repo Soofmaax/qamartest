@@ -93,7 +93,8 @@ export function SiteFooter() {
           <p className="text-right text-lg text-zinc-200">
             Copyright © 2025 -{" "}
             <a
-              href="https://smartelogicweb.com"
+              href="https://www.smarterlogicweb.com/"
+
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white"
