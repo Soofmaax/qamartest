@@ -478,7 +478,7 @@ export default function MariagePage() {
               </h2>
             </div>
             <p className="max-w-[320px] text-right text-[12px] font-light leading-relaxed text-white/45">
-              Devis personnalisé selon lieu, temps de présence et livrables.
+              Devis personnalisé selon lieu, temps de présence et livrables. Frais de déplacement hors Île-de-France.
             </p>
           </div>
 
