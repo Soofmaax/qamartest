@@ -3,10 +3,12 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
+type RevealTag = "div" | "section";
+
 type Props = {
   children: ReactNode;
   className?: string;
-  as?: string;
+  as?: RevealTag;
   once?: boolean;
   threshold?: number;
 };
@@ -18,7 +20,7 @@ export function RevealOnScroll({
   once = true,
   threshold = 0.15,
 }: Props) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -42,12 +44,9 @@ export function RevealOnScroll({
     return () => observer.disconnect();
   }, [once, threshold]);
 
-  const Tag = as as keyof HTMLElementTagNameMap;
   return (
-    <Tag
-      ref={(el: HTMLElement | null) => {
-        ref.current = el;
-      }}
+    <div
+      ref={ref}
       className={[
         "transition-all duration-700 ease-out will-change-transform",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
@@ -56,7 +55,7 @@ export function RevealOnScroll({
         .filter(Boolean)
         .join(" ")}
     >
-      {children}
-    </Tag>
+      {as === "section" ? <section>{children}</section> : children}
+    </div>
   );
 }
