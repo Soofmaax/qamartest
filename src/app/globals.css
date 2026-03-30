@@ -86,8 +86,21 @@ body {
   animation: ticker-left var(--ticker-duration, 25s) linear infinite;
 }
 
+.ticker-marquee {
+  width: max-content;
+  animation: ticker-left var(--ticker-duration, 25s) linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: 43px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track {
+  .ticker-track,
+  .ticker-marquee {
     animation: none;
   }
 }
