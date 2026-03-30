@@ -55,7 +55,7 @@ export function SiteHeader() {
                 key={item.label}
                 href={item.href}
                 className="text-[20px] font-light leading-[23px] text-[#e5e5e5] hover:text-white"
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                style={{ fontFamily: "var(--font-nav), var(--font-arimo), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" }}
               >
                 {item.label}
               </Link>
@@ -118,7 +118,7 @@ export function SiteHeader() {
                   key={item.label}
                   href={item.href}
                   className="text-[20px] font-light leading-[23px] text-[#e5e5e5]"
-                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  style={{ fontFamily: "var(--font-nav), var(--font-arimo), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" }}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
