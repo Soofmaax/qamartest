@@ -54,8 +54,8 @@ export function SiteHeader() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[20px] font-light leading-[23px] text-[#e5e5e5] hover:text-white"
-                style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                className="text-[18px] font-normal uppercase leading-[20px] tracking-[0.22em] text-[#e5e5e5] transition-colors duration-200 hover:text-white"
+                style={{ fontFamily: "var(--font-nav), var(--font-arimo), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" }}
               >
                 {item.label}
               </Link>
@@ -65,7 +65,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <Link
               href={ROUTES.contact}
-              className="hidden rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:inline-block"
+              className="hidden rounded-lg bg-black px-5 py-2.5 font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black md:inline-block"
             >
               Me contacter
             </Link>
@@ -117,8 +117,8 @@ export function SiteHeader() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-[20px] font-light leading-[23px] text-[#e5e5e5]"
-                  style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+                  className="text-[18px] font-normal uppercase leading-[20px] tracking-[0.22em] text-[#e5e5e5] transition-colors duration-200 hover:text-white"
+                  style={{ fontFamily: "var(--font-nav), var(--font-arimo), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" }}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
@@ -126,7 +126,7 @@ export function SiteHeader() {
               ))}
               <Link
                 href={ROUTES.contact}
-                className="mt-2 rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)]"
+                className="mt-2 rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[20px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black"
                 onClick={() => setOpen(false)}
               >
                 Me contacter

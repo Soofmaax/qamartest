@@ -91,3 +91,58 @@ body {
     animation: none;
   }
 }
+
+/* --- text cycler --- */
+.text-cycler {
+  display: block;
+  width: 100%;
+  height: 1.1em;
+  overflow: hidden;
+  position: relative;
+}
+
+.text-cycler-item {
+  white-space: nowrap;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(110%);
+  opacity: 0;
+  animation: cycler-word var(--cycler-duration, 9s) infinite;
+  animation-delay: var(--cycler-delay, 0s);
+}
+
+@keyframes cycler-word {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  10%,
+  45% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  56%,
+  100% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-cycler-item {
+    animation: none;
+    transform: none;
+    opacity: 1;
+    position: static;
+  }
+
+  .text-cycler-item:not(:first-child) {
+    display: none;
+  }
+}

@@ -28,7 +28,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "",
+    href: "https://www.linkedin.com/in/hamidou-gabri-821207360/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     icon: (
       <svg viewBox="0 0 256 256" width="24" height="24" aria-hidden>
         <path
@@ -65,7 +65,7 @@ export function SiteFooter() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition hover:opacity-80"
+                  className="transition-opacity duration-200 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black"
                   aria-label={s.label}
                   title={s.label}
                 >
@@ -77,24 +77,35 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-start justify-end gap-4 md:items-end">
           <div className="flex flex-wrap gap-6 text-lg text-zinc-200">
-            <span>Mentions légales</span>
-            <span>CGV</span>
+            <Link
+              href={ROUTES.mentionsLegales}
+              className="underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white"
+            >
+              Mentions légales
+            </Link>
+            <Link
+              href={ROUTES.cgv}
+              className="underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white"
+            >
+              CGV
+            </Link>
           </div>
           <p className="text-right text-lg text-zinc-200">
             Copyright © 2025 -{" "}
             <a
-              href="https://kermorweb.fr"
+              href="https://www.smarterlogicweb.com/"
+
               target="_blank"
               rel="noopener noreferrer"
-              className="underline"
+              className="underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white"
             >
-              KermorWeb
+              SmartElogicWeb
             </a>{" "}
             - Tous droits réservés.
           </p>
           <Link
             href={ROUTES.contact}
-            className="mt-2 rounded-lg border border-white/15 bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition hover:bg-white/5"
+            className="mt-2 rounded-lg border border-white/15 bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] transition duration-200 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black"
           >
             Me contacter
           </Link>
