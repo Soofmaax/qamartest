@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type Props = {
   children: ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof HTMLElementTagNameMap;
   once?: boolean;
   threshold?: number;
 };

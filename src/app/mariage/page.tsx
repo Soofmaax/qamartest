@@ -32,8 +32,6 @@ const seo = MARIAGE_PAGE_CONTENT.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
-/* eslint-disable react/no-unescaped-entities */
-
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const discoveryCallUrl =
   process.env.NEXT_PUBLIC_DISCOVERY_CALL_URL ||
