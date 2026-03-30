@@ -77,18 +77,18 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-start justify-end gap-4 md:items-end">
           <div className="flex flex-wrap gap-6 text-lg text-zinc-200">
-            <a
-              href="#"
+            <Link
+              href={ROUTES.mentionsLegales}
               className="underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white"
             >
               Mentions légales
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href={ROUTES.cgv}
               className="underline underline-offset-4 decoration-white/40 transition-colors duration-200 hover:text-white"
             >
               CGV
-            </a>
+            </Link>
           </div>
           <p className="text-right text-lg text-zinc-200">
             Copyright © 2025 -{" "}

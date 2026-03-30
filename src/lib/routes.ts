@@ -20,6 +20,9 @@ export const ROUTES = {
   publiciteCreationPremium: "/publicite-digitale/creation-photo-video-premium/",
   publiciteAdaptationFormats: "/publicite-digitale/adaptation-formats-social-media/",
   publiciteOptimisation: "/publicite-digitale/optimisation-conversions-branding/",
+
+  mentionsLegales: "/mentions-legales/",
+  cgv: "/cgv/",
 } as const;
 
 export const LEGACY_ROUTES = {

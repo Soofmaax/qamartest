@@ -71,9 +71,7 @@ See:
 
 ## TODO (before/after next PRs)
 
-- Add real links/pages for footer items:
-  - "Mentions légales"
-  - "CGV"
+- Provide final copy for "Mentions légales" and "CGV" pages (currently placeholders), then remove `noindex` and add them to the sitemap.
 - Add the LinkedIn URL in `src/components/SiteFooter.tsx` (currently empty).
 - Keep Google review stats (`src/components/GoogleReviewsSection.tsx`) in sync with the Google Business Profile.
 
