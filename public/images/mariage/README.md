@@ -8,24 +8,7 @@ La page `/mariage/` utilise directement les photos présentes dans ce dossier.
 
 ### Utilisés (démo)
 
-- `DSC09144.jpg` (image SEO + aperçu film)
-- `DSC09050.jpg`
-- `DSC08990.jpg`
-- `DSC08980.jpg`
-- `DSC05810.jpg`
-- `DSC04960.jpg`
-- `DSC02626.jpg`
-- `DSC02221.jpg`
-- `DSC02159.jpg`
-- `DSC02158.jpg`
-- `DSC02139.jpg`
-- `DSC01706.jpg`
-- `DSC00152-Enhanced-NR.jpg`
-- `DSC00135-Enhanced-NR.jpg`
-- `DSC00119-Enhanced-NR.jpg`
-- `BLT05150.jpg`
-- `BLT04884.jpg`
-- `DSC02845-2.jpg`
+- `mariage-01.jpg` … `mariage-18.jpg`
 
 ## Notes
 
