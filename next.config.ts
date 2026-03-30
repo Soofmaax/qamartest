@@ -65,56 +65,55 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async headers() {
-    // Next.js static export (used for preview/GitHub Pages) cannot enforce runtime headers.
-    if (isPreview) return [];
+  ...(isPreview
+    ? {}
+    : {
+        async headers() {
+          return [
+            {
+              source: "/:path*",
+              headers: securityHeaders,
+            },
+          ];
+        },
 
-    return [
-      {
-        source: "/:path*",
-        headers: securityHeaders,
-      },
-    ];
-  },
+        async redirects() {
+          return [
+            // Redirect legacy non-ASCII slugs to ASCII-only URLs.
+            {
+              source: "/événementiel",
+              destination: "/evenementiel",
+              permanent: true,
+            },
+            {
+              source: "/événementiel/",
+              destination: "/evenementiel/",
+              permanent: true,
+            },
+            {
+              source: "/%C3%A9v%C3%A9nementiel",
+              destination: "/evenementiel",
+              permanent: true,
+            },
+            {
+              source: "/%C3%A9v%C3%A9nementiel/",
+              destination: "/evenementiel/",
+              permanent: true,
+            },
 
-  async redirects() {
-    if (isPreview) return [];
-
-    return [
-      // Redirect legacy non-ASCII slugs to ASCII-only URLs.
-      {
-        source: "/événementiel",
-        destination: "/evenementiel",
-        permanent: true,
-      },
-      {
-        source: "/événementiel/",
-        destination: "/evenementiel/",
-        permanent: true,
-      },
-      {
-        source: "/%C3%A9v%C3%A9nementiel",
-        destination: "/evenementiel",
-        permanent: true,
-      },
-      {
-        source: "/%C3%A9v%C3%A9nementiel/",
-        destination: "/evenementiel/",
-        permanent: true,
-      },
-
-      {
-        source: "/publicité-digitale/:path*",
-        destination: "/publicite-digitale/:path*",
-        permanent: true,
-      },
-      {
-        source: "/publicit%C3%A9-digitale/:path*",
-        destination: "/publicite-digitale/:path*",
-        permanent: true,
-      },
-    ];
-  },
+            {
+              source: "/publicité-digitale/:path*",
+              destination: "/publicite-digitale/:path*",
+              permanent: true,
+            },
+            {
+              source: "/publicit%C3%A9-digitale/:path*",
+              destination: "/publicite-digitale/:path*",
+              permanent: true,
+            },
+          ];
+        },
+      }),
 };
 
 export default nextConfig;
