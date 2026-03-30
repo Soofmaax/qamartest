@@ -34,6 +34,9 @@ export const metadata: Metadata = createPageMetadata(seo);
 /* eslint-disable react/no-unescaped-entities */
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const discoveryCallUrl =
+  process.env.NEXT_PUBLIC_DISCOVERY_CALL_URL ||
+  "https://calendar.google.com/calendar/u/0/appointments/schedules/REPLACE_ME";
 
 const heroVideo = getPrimaryVideoForPage(seo.path);
 
@@ -283,13 +286,15 @@ export default function MariagePage() {
 
                 <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row">
                   <Link
-                    href={ROUTES.contact}
+                    href={discoveryCallUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     data-ga-event="cta_click"
                     data-ga-category="Lead"
                     data-ga-label="/mariage/:hero"
                     className="w-fit rounded-lg bg-black/70 px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
                   >
-                    Vérifier les disponibilités
+                    Appel découverte
                   </Link>
                   <Link
                     href="#films"
@@ -384,13 +389,15 @@ export default function MariagePage() {
                 Nos conseils pour obtenir les meilleures images — timing, tenue, lumière, moments clés à anticiper.
               </p>
               <Link
-                href={ROUTES.contact}
+                href={discoveryCallUrl}
+                target="_blank"
+                rel="noreferrer"
                 data-ga-event="cta_click"
                 data-ga-category="Lead"
                 data-ga-label="/mariage/:micro:guide"
                 className="mt-6 inline-flex w-fit text-[10px] font-light tracking-[0.16em] text-white uppercase hover:text-white/80"
               >
-                Télécharger le guide →
+                Appel découverte →
               </Link>
             </div>
 
@@ -406,13 +413,15 @@ export default function MariagePage() {
                 Dites-nous votre date, votre lieu et votre vision. Réponse sous 48h avec une proposition personnalisée.
               </p>
               <Link
-                href={ROUTES.contact}
+                href={discoveryCallUrl}
+                target="_blank"
+                rel="noreferrer"
                 data-ga-event="cta_click"
                 data-ga-category="Lead"
                 data-ga-label="/mariage/:micro:dispo"
                 className="mt-6 inline-flex w-fit text-[10px] font-light tracking-[0.16em] text-white uppercase hover:text-white/80"
               >
-                Commencer →
+                Appel découverte →
               </Link>
             </div>
           </div>
@@ -502,13 +511,15 @@ export default function MariagePage() {
                 </ul>
 
                 <Link
-                  href={f.href}
+                  href={discoveryCallUrl}
+                  target="_blank"
+                  rel="noreferrer"
                   data-ga-event="cta_click"
                   data-ga-category="Lead"
                   data-ga-label={`/mariage/:package:${f.title}`}
                   className="mt-8 inline-flex w-fit rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10"
                 >
-                  {f.cta} →
+                  Appel découverte →
                 </Link>
               </div>
             ))}
@@ -713,13 +724,15 @@ export default function MariagePage() {
               Réservations 2026 et 2027 ouvertes — quelques dates encore disponibles.
             </p>
             <Link
-              href={ROUTES.contact}
+              href={discoveryCallUrl}
+              target="_blank"
+              rel="noreferrer"
               data-ga-event="cta_click"
               data-ga-category="Lead"
               data-ga-label="/mariage/:bottom"
               className="mt-4 rounded-lg bg-black px-6 py-3 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
-              Vérifier les disponibilités →
+              Appel découverte →
             </Link>
           </div>
         </section>
