@@ -223,6 +223,7 @@ export default function MariagePage() {
         "Une journée d’été dans l’un des plus beaux châteaux d’Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n’avaient d’yeux que l’un pour l’autre.",
       image: mariageImages[2],
       tags: ["Château", "Été", "Cinématique"],
+      href: "/mariage/ninon-alexandre/",
     },
     {
       index: "002",
@@ -232,6 +233,7 @@ export default function MariagePage() {
         "Deux cultures, une seule émotion. Un mariage d’une richesse visuelle rare : les tenues, les danses, les regards des familles réunies.",
       image: mariageImages[6],
       tags: ["Domaine", "Automne", "Multiculturel"],
+      href: "/mariage/sokona-julien/",
     },
     {
       index: "003",
@@ -241,6 +243,7 @@ export default function MariagePage() {
         "La lumière de Marrakech est incomparable : dorée, dense, presque palpable. Trois jours de célébration condensés en un film.",
       image: mariageImages[10],
       tags: ["Destination", "Maroc", "Long format"],
+      href: "/mariage/karim-ines/",
     },
   ];
 
@@ -624,7 +627,7 @@ export default function MariagePage() {
                     ))}
                   </div>
                   <Link
-                    href={ROUTES.portfolio}
+                    href={p.href}
                     className="text-[10px] font-light tracking-[0.12em] text-white uppercase hover:text-white/80"
                   >
                     Voir ce mariage →

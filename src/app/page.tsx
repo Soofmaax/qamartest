@@ -55,29 +55,35 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black" />
 
           <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[34px] text-center">
-            <div className="flex w-full flex-col items-center gap-[5px]">
+            <div className="flex w-full flex-col items-center gap-[8px]">
+              <p className="text-[10px] font-light tracking-[0.22em] text-white/60 uppercase">
+                Studio photo & vidéo · Paris
+              </p>
               <h1 className="font-serif text-[42px] leading-none text-white sm:text-[54px] md:text-[64px]">
                 Directed by Qamar
               </h1>
-              <div className="mt-1 max-w-5xl text-[18px] leading-[23px] text-[#ededed] md:text-[20px]">
+              <div className="mt-2 max-w-3xl text-[18px] leading-[23px] text-white/70 md:text-[20px]">
                 <p>
-                  Directed by Qamar est un studio de création visuelle basé à
-                  Paris.
-                </p>
-                <p className="mt-6">
-                  Nous accompagnons marques et particuliers dans la conception de
-                  contenus sur-mesure, mêlant exigence esthétique et maîtrise
-                  technique.
+                  Une signature visuelle élégante, pensée pour les marques et les
+                  histoires d’exception.
                 </p>
               </div>
             </div>
 
-            <Link
-              href={ROUTES.portfolio}
-              className="rounded-lg bg-black px-5 py-2.5 fontf text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
-            >
-              Découvrir mon travail
-            </Link>
+            <div className="mt-2 flex flex-col items-center gap-3 sm:flex-row">
+              <Link
+                href={ROUTES.portfolio}
+                className="rounded-lg bg-black/70 px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] backdrop-blur ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
+              >
+                Voir le portfolio
+              </Link>
+              <Link
+                href={ROUTES.signature}
+                className="text-[11px] font-light tracking-[0.14em] text-white/55 uppercase hover:text-white/80"
+              >
+                Découvrir la signature →
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -87,8 +93,8 @@ export default function Home() {
               <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
                 Nos références
               </h2>
-              <p className="text-[18px] text-[#ededed] md:text-[20px]">
-                Des collaborations qui parlent d’elles-mêmes.
+              <p className="text-[18px] text-white/70 md:text-[20px]">
+                Marques, entreprises et expériences premium.
               </p>
             </div>
 
@@ -103,11 +109,14 @@ export default function Home() {
         <section id="services" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-10">
             <div className="text-center site-pad-x">
-              <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
-                Nos Prestations
+              <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
+                Services
+              </p>
+              <h2 className="mt-4 font-serif text-3xl font-semibold text-white md:text-[48px]">
+                Collections.
               </h2>
-              <p className="mt-4 text-[18px] text-[#ededed] md:text-[20px]">
-                Découvrez notre gamme de prestations.
+              <p className="mt-4 text-[18px] text-white/70 md:text-[20px]">
+                Photo et vidéo, pensées comme une signature.
               </p>
             </div>
 
@@ -169,13 +178,16 @@ export default function Home() {
         <section className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-[26px] text-center site-pad-x md:gap-[34px]">
             <h2 className="font-serif text-[40px] leading-none text-white md:text-[64px]">
-              Prêt à donner une nouvelle dimension à vos contenus ?
+              Parlez-nous de votre projet.
             </h2>
+            <p className="text-[18px] font-light text-white/70 md:text-[20px]">
+              Réponse sous 48h. Devis clair. Direction artistique sur-mesure.
+            </p>
             <Link
               href={ROUTES.contact}
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] md:text-[20px]"
+              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
             >
-              Me contacter
+              Demander une disponibilité
             </Link>
           </div>
         </section>

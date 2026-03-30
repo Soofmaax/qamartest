@@ -56,13 +56,13 @@ export default function ServicesPage() {
           <div className="relative z-10 flex h-full flex-col justify-end gap-6 pb-16 md:pb-20">
             <div className="max-w-2xl">
               <p className="text-[10px] font-light tracking-[0.22em] text-white/60 uppercase">
-                Photo & Vidéo
+                Studio · Photo & Vidéo
               </p>
               <h1 className="mt-4 font-serif text-[44px] leading-none text-white md:text-[64px]">
-                Prestations sur-mesure.
+                Collections.
               </h1>
               <p className="mt-6 text-[18px] leading-[23px] text-white/70 md:text-[20px]">
-                Mariage, corporate, événementiel, contenus digitaux : une approche cinématique, élégante et maîtrisée.
+                Des productions sobres, précises, et pensées pour durer.
               </p>
             </div>
 
@@ -129,7 +129,7 @@ export default function ServicesPage() {
 
               <div className="absolute inset-0 flex flex-col justify-center gap-[18px] site-pad-x md:gap-[22px]">
                 <p className="text-[10px] font-light tracking-[0.22em] text-white/50 uppercase">
-                  Service
+                  Collection
                 </p>
                 <h2 className="font-serif text-[28px] font-semibold text-white md:text-[36px]">
                   {s.title}
