@@ -39,6 +39,7 @@ const discoveryCallUrl =
   "https://calendar.google.com/calendar/u/0/appointments/schedules/REPLACE_ME";
 
 const heroVideo = getPrimaryVideoForPage(seo.path);
+const filmUrl = heroVideo ? youTubeWatchUrl(heroVideo.youtubeId) : "#films";
 
 const url = absoluteUrl(seo.path);
 const webpageId = `${url}#webpage`;
@@ -297,10 +298,12 @@ export default function MariagePage() {
                     Appel découverte
                   </Link>
                   <Link
-                    href="#films"
+                    href={filmUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="text-[11px] font-light tracking-[0.14em] text-white/55 uppercase hover:text-white/80"
                   >
-                    Voir nos films ↓
+                    Voir un film complet →
                   </Link>
                 </div>
               </div>
@@ -353,9 +356,15 @@ export default function MariagePage() {
                 Voir un film de mariage
               </p>
 
-              <div
+              <Link
                 id="films"
-                className="relative mt-6 aspect-[16/6] overflow-hidden rounded-md border border-white/10 bg-black"
+                href={filmUrl}
+                target="_blank"
+                rel="noreferrer"
+                data-ga-event="cta_click"
+                data-ga-category="Engagement"
+                data-ga-label="/mariage/:micro:film"
+                className="relative mt-6 block aspect-[16/6] overflow-hidden rounded-md border border-white/10 bg-black"
               >
                 <Image
                   src="/images/mariage/film-preview.jpg"
@@ -370,7 +379,7 @@ export default function MariagePage() {
                     <div className="ml-[2px] h-0 w-0 border-y-[8px] border-y-transparent border-l-[14px] border-l-white" />
                   </div>
                 </div>
-              </div>
+              </Link>
 
               <p className="mt-4 text-[10px] font-light tracking-[0.14em] text-white/40 uppercase">
                 Ninon & Alexandre · 2025
@@ -380,24 +389,24 @@ export default function MariagePage() {
             <div className="border-white/10 p-8 md:border-r md:p-10">
               <p className="font-serif text-5xl text-white/15">02</p>
               <p className="mt-4 text-[10px] font-light tracking-[0.2em] text-white/60 uppercase">
-                Guide PDF · Gratuit
+                Brochure · Gratuit
               </p>
               <p className="mt-3 text-[16px] font-medium text-white">
-                Préparer votre journée photo & vidéo
+                Recevoir la brochure
               </p>
               <p className="mt-4 text-[13px] font-light leading-relaxed text-white/55">
-                Nos conseils pour obtenir les meilleures images — timing, tenue, lumière, moments clés à anticiper.
+                Formules, déroulé, livrables, et notre façon de travailler — pour vous aider à vous projeter.
               </p>
               <Link
-                href={discoveryCallUrl}
+                href={filmUrl}
                 target="_blank"
                 rel="noreferrer"
                 data-ga-event="cta_click"
-                data-ga-category="Lead"
-                data-ga-label="/mariage/:micro:guide"
+                data-ga-category="Engagement"
+                data-ga-label="/mariage/:micro:brochure"
                 className="mt-6 inline-flex w-fit text-[10px] font-light tracking-[0.16em] text-white uppercase hover:text-white/80"
               >
-                Appel découverte →
+                Recevoir un exemple de film complet →
               </Link>
             </div>
 
@@ -737,7 +746,7 @@ export default function MariagePage() {
           </div>
         </section>
 
-        {/* PORTFOLIO CAROUSEL (inchangé) */}
+        {/* PORTFOLIO CAROUSEL (inchangée) */}
         <section className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
