@@ -32,6 +32,7 @@ NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 Notes:
 - `NEXT_PUBLIC_BASE_PATH` must match the GitHub Pages base path (usually `/<repo-name>`).
 - `NEXT_PUBLIC_IS_PREVIEW=1` enables `noindex/nofollow` (via metadata + `robots.txt`) for preview deployments.
+- In preview/static export mode, Next.js does not support runtime `headers()`/`redirects()`. This repo omits them entirely from `next.config.ts` when `NEXT_PUBLIC_IS_PREVIEW=1` to avoid build warnings.
 
 ## Production build (no basePath)
 
