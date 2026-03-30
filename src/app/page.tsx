@@ -7,6 +7,7 @@ import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { TextCycler } from "@/components/TextCycler";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { PORTFOLIO_PROJECTS, REFERENCE_LOGOS, SERVICES } from "@/lib/content";
@@ -57,7 +58,14 @@ export default function Home() {
           <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[34px] text-center">
             <div className="flex w-full flex-col items-center gap-[5px]">
               <h1 className="font-serif text-[42px] leading-none text-white sm:text-[54px] md:text-[64px]">
-                Directed by Qamar
+                <span className="block">Directed by Qamar</span>
+                <TextCycler
+                  items={["Photo.", "Vidéo.", "Corporate.", "Mariage.", "Événementiel."]}
+                  ariaLabel="Photo, vidéo, corporate, mariage, événementiel"
+                  className="mt-3"
+                  itemClassName="bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent"
+                  secondsPerItem={3}
+                />
               </h1>
               <div className="mt-1 max-w-5xl text-[18px] leading-[23px] text-[#ededed] md:text-[20px]">
                 <p>
