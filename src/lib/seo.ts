@@ -14,7 +14,7 @@ export const DEFAULT_OG_IMAGE = {
 type CreatePageMetadataInput = {
   title: string;
   description: string;
-  /** Prefer providing `path` ("/mariage/") — kept for backwards-compat. */
+  /** Prefer providing `path` ("/mariage/") · kept for backwards-compat. */
   canonical?: string;
   /** Route path with leading and trailing slash ("/mariage/"). */
   path?: string;

@@ -62,7 +62,7 @@ export default function ServicesPage() {
                 Prestations sur-mesure.
               </h1>
               <p className="mt-6 text-[18px] leading-[23px] text-white/70 md:text-[20px]">
-                Mariage, corporate, événementiel, contenus digitaux — une approche cinématique, élégante et maîtrisée.
+                Mariage, corporate, événementiel, contenus digitaux : une approche cinématique, élégante et maîtrisée.
               </p>
             </div>
 

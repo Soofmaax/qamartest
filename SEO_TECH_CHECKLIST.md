@@ -1,4 +1,4 @@
-# Checklist SEO Technique pour Migration — Next.js (Directed by Qamar)
+# Checklist SEO Technique pour Migration · Next.js (Directed by Qamar)
 
 Cette checklist est destinée au développeur en charge de la migration du site `directedbyqamar.com` vers Next.js.
 Elle couvre les points techniques essentiels pour assurer un référencement optimal et rapide sur Google, en particulier pour le marché parisien.

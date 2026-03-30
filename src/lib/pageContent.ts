@@ -139,7 +139,7 @@ export const CORPORATE_PORTRAITS_PAGE: ServiceDetailPageContent = {
   title: "Portraits professionnels",
   eyebrow: "Corporate",
   description:
-    "Des portraits premium et cohérents pour dirigeants et équipes. Un rendu naturel, soigné et fidèle à votre image de marque — idéal pour votre site, LinkedIn, dossiers de presse et supports internes.",
+    "Des portraits premium et cohérents pour dirigeants et équipes. Un rendu naturel, soigné et fidèle à votre image de marque : idéal pour votre site, LinkedIn, dossiers de presse et supports internes.",
   heroImage: "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
   gallery: [
     {
