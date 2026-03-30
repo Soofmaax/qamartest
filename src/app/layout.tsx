@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Arimo, Cormorant_SC } from "next/font/google";
+import { Arimo, Cormorant_SC, Syncopate } from "next/font/google";
 import "./globals.css";
 import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 import { JsonLd } from "@/components/JsonLd";
@@ -20,6 +20,13 @@ const cormorant = Cormorant_SC({
 
 const arimo = Arimo({
   variable: "--font-arimo",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
+const syncopate = Syncopate({
+  variable: "--font-nav",
   subsets: ["latin"],
   weight: ["400", "700"],
   display: "swap",
@@ -79,8 +86,15 @@ export default function RootLayout({
   const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   return (
-    <html lang="fr" dir="ltr" className={`${cormorant.variable} ${arimo.variable}`}>
+    <html
+      lang="fr"
+      dir="ltr"
+      className={`${cormorant.variable} ${arimo.variable} ${syncopate.variable}`}
+    >
       <head>
+        <link rel="preconnect" href="https://elfsightcdn.com" />
+        <link rel="dns-prefetch" href="https://elfsightcdn.com" />
+
         <JsonLd id="jsonld-site" data={siteStructuredData} />
 
         {!isPreview ? (
