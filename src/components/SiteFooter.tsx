@@ -28,7 +28,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "",
+    href: "https://www.linkedin.com/in/hamidou-gabri-821207360/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     icon: (
       <svg viewBox="0 0 256 256" width="24" height="24" aria-hidden>
         <path
