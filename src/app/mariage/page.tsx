@@ -6,6 +6,7 @@ import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
 import { JsonLd } from "@/components/JsonLd";
 import { ProjectsCarousel } from "@/components/ProjectsCarousel";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
@@ -333,7 +334,7 @@ export default function MariagePage() {
         </section>
 
         {/* STATS */}
-        <section className="w-full border-y border-white/10">
+        <RevealOnScroll as="section" className="w-full border-y border-white/10">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {stats.map((s) => (
               <div
@@ -349,10 +350,10 @@ export default function MariagePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* MICRO CONVERSIONS */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
@@ -455,10 +456,10 @@ export default function MariagePage() {
               </Link>
             </div>
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* PROCESS */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
@@ -494,10 +495,10 @@ export default function MariagePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* PACKAGES */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
@@ -554,10 +555,10 @@ export default function MariagePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* PORTFOLIO NARRATIF */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
@@ -634,10 +635,10 @@ export default function MariagePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* DESTINATIONS */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
@@ -675,10 +676,10 @@ export default function MariagePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* GUIDES */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
@@ -723,13 +724,15 @@ export default function MariagePage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* REVIEWS */}
-        <GoogleReviewsSection />
+        <RevealOnScroll as="div">
+          <GoogleReviewsSection />
+        </RevealOnScroll>
 
-        {/* GALERIE (inchangée) */}
-        <section className="w-full bg-black py-16 md:py-20">
+        {/* GALERIE */}
+        <RevealOnScroll as="section" className="w-full bg-black py-16 md:py-20">
           <div className="site-pad-x">
             <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
               Mes dernières prestations
@@ -739,10 +742,10 @@ export default function MariagePage() {
           <div className="mt-10 w-full">
             <ImageLightboxGallery items={MARIAGE_PAGE_CONTENT.lastPrestations} />
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* CTA FINAL */}
-        <section className="w-full bg-black py-16 md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 md:py-20">
           <div className="flex flex-col items-center gap-[26px] text-center site-pad-x md:gap-[34px]">
             <p className="text-[10px] font-light tracking-[0.22em] text-white/45 uppercase">
               Les disponibilités sont limitées
@@ -765,10 +768,10 @@ export default function MariagePage() {
               Appel découverte →
             </Link>
           </div>
-        </section>
+        </RevealOnScroll>
 
         {/* PORTFOLIO CAROUSEL (inchangée) */}
-        <section className="w-full bg-black py-16 site-pad-x md:py-20">
+        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
               Mon portfolio
@@ -787,7 +790,7 @@ export default function MariagePage() {
           <div className="mt-10">
             <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
-        </section>
+        </RevealOnScroll>
       </main>
 
       <SiteFooter />
