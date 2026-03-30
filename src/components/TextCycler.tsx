@@ -1,5 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
+
 type TextCyclerProps = {
   items: string[];
   className?: string;
@@ -22,11 +24,9 @@ export function TextCycler({
     <span
       className={className ? `text-cycler ${className}` : "text-cycler"}
       style={{
-        // @ts-expect-error CSS custom property
         "--cycler-duration": `${durationSeconds}s`,
-        // @ts-expect-error CSS custom property
         "--cycler-step": `${secondsPerItem}s`,
-      }}
+      } as CSSProperties}
       aria-label={ariaLabel}
     >
       {safeItems.map((text, index) => (
@@ -34,9 +34,8 @@ export function TextCycler({
           key={`${index}-${text}`}
           className={itemClassName ? `text-cycler-item ${itemClassName}` : "text-cycler-item"}
           style={{
-            // @ts-expect-error CSS custom property
             "--cycler-delay": `${index * secondsPerItem}s`,
-          }}
+          } as CSSProperties}
         >
           {text}
         </span>
