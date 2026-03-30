@@ -31,6 +31,8 @@ const seo = MARIAGE_PAGE_CONTENT.seo;
 
 export const metadata: Metadata = createPageMetadata(seo);
 
+/* eslint-disable react/no-unescaped-entities */
+
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const heroVideo = getPrimaryVideoForPage(seo.path);
@@ -74,15 +76,14 @@ const structuredData = buildGraph([
           name: heroVideo.title,
           description: heroVideo.description ?? seo.description,
           contentUrl: youTubeWatchUrl(heroVideo.youtubeId),
-          thumbnailUrl: heroVideo.thumbnailUrl ?? youTubeThumbnailUrl(heroVideo.youtubeId),
+          thumbnailUrl:
+            heroVideo.thumbnailUrl ?? youTubeThumbnailUrl(heroVideo.youtubeId),
           uploadDate: heroVideo.uploadDate,
           duration: heroVideo.duration,
         }),
       ]
     : []),
 ]);
-
-
 
 export default function MariagePage() {
   const stats = [
@@ -136,12 +137,12 @@ export default function MariagePage() {
     {
       tier: "Tier 1 · Prioritaire",
       name: "Toscane",
-      desc: "Florence, Val d'Orcia, Sienne. Lumière incroyable et décors intemporels.",
+      desc: "Florence, Val d’Orcia, Sienne. Lumière incroyable et décors intemporels.",
       budget: "Sur devis · Dépl. inclus",
     },
     {
       tier: "Tier 1 · Prioritaire",
-      name: "Côte d'Azur",
+      name: "Côte d’Azur",
       desc: "Nice, Cannes, Èze. Mariages de luxe, ambiance méditerranéenne.",
       budget: "Sur devis · Dépl. inclus",
     },
@@ -195,7 +196,7 @@ export default function MariagePage() {
       couple: "Ninon & Alexandre",
       meta: "Château de Vaux-le-Vicomte · Juin 2025 · Photo + Vidéo",
       story:
-        "Une journée d'été dans l'un des plus beaux châteaux d'Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n'avaient d'yeux que l'un pour l'autre.",
+        "Une journée d’été dans l’un des plus beaux châteaux d’Île-de-France. La lumière dorée du soir, les fontaines, et deux personnes qui n’avaient d’yeux que l’un pour l’autre.",
       image: "/images/mariage/portfolio-01.jpg",
       tags: ["Château", "Été", "Cinématique"],
     },
@@ -204,7 +205,7 @@ export default function MariagePage() {
       couple: "Sokona & Julien",
       meta: "Île-de-France · Automne 2024 · Photo + Vidéo",
       story:
-        "Deux cultures, une seule émotion. Un mariage d'une richesse visuelle rare — les tenues, les danses, les regards des familles réunies.",
+        "Deux cultures, une seule émotion. Un mariage d’une richesse visuelle rare — les tenues, les danses, les regards des familles réunies.",
       image: "/images/mariage/portfolio-02.jpg",
       tags: ["Domaine", "Automne", "Multiculturel"],
     },
@@ -274,7 +275,7 @@ export default function MariagePage() {
                   Le film de votre vie.
                 </h1>
                 <p className="max-w-[680px] text-[18px] leading-relaxed text-white/75 md:text-[20px]">
-                  Vous avez passé des mois à préparer cette journée. Dans 20 ans, ce dont vous vous souviendrez — les regards, les larmes retenues, le moment où tout s'est arrêté — c'est notre travail de le rendre éternel.
+                  {"Vous avez passé des mois à préparer cette journée. Dans 20 ans, ce dont vous vous souviendrez — les regards, les larmes retenues, le moment où tout s’est arrêté — c’est notre travail de le rendre éternel."}
                 </p>
                 <p className="text-[12px] font-light tracking-wide text-white/40">
                   Réservations 2026 & 2027 ouvertes · Quelques dates disponibles
@@ -333,7 +334,7 @@ export default function MariagePage() {
               </h2>
             </div>
             <p className="max-w-[320px] text-right text-[12px] font-light leading-relaxed text-white/45">
-              Trois façons d'aller plus loin avant de prendre rendez-vous.
+              {"Trois façons d’aller plus loin avant de prendre rendez-vous."}
             </p>
           </div>
 
@@ -429,7 +430,7 @@ export default function MariagePage() {
               </h2>
             </div>
             <p className="max-w-[320px] text-right text-[12px] font-light leading-relaxed text-white/45">
-              De la prise de contact à la livraison, vous n'avez rien à gérer.
+              {"De la prise de contact à la livraison, vous n’avez rien à gérer."}
             </p>
           </div>
 
@@ -643,7 +644,7 @@ export default function MariagePage() {
                 Guides & conseils
               </p>
               <h2 className="mt-4 font-serif text-4xl text-white md:text-[48px]">
-                Tout ce qu'il faut savoir.
+                {"Tout ce qu’il faut savoir."}
               </h2>
             </div>
             <p className="max-w-[320px] text-right text-[12px] font-light leading-relaxed text-white/45">
@@ -706,7 +707,7 @@ export default function MariagePage() {
               Les disponibilités sont limitées
             </p>
             <h2 className="font-serif text-[40px] leading-none text-white md:text-[64px]">
-              Votre histoire mérite d'être immortalisée.
+              {"Votre histoire mérite d’être immortalisée."}
             </h2>
             <p className="text-[18px] font-light text-white/70 md:text-[20px]">
               Réservations 2026 et 2027 ouvertes — quelques dates encore disponibles.
