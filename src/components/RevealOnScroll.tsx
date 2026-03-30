@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type Props = {
   children: ReactNode;
   className?: string;
-  as?: keyof HTMLElementTagNameMap;
+  as?: string;
   once?: boolean;
   threshold?: number;
 };
@@ -14,7 +14,7 @@ type Props = {
 export function RevealOnScroll({
   children,
   className,
-  as: Tag = "div",
+  as = "div",
   once = true,
   threshold = 0.15,
 }: Props) {
@@ -42,9 +42,11 @@ export function RevealOnScroll({
     return () => observer.disconnect();
   }, [once, threshold]);
 
+  const Tag = as as any;
+
   return (
     <Tag
-      ref={(el) => {
+      ref={(el: HTMLElement | null) => {
         ref.current = el;
       }}
       className={[
