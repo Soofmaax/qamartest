@@ -9,12 +9,15 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'self'",
+  // Allow embedding YouTube (nocookie), GTM's <noscript> iframe, and the Elfsight reviews widget.
+  "frame-src 'self' https://www.youtube-nocookie.com https://www.googletagmanager.com https://apps.elfsight.com https://*.elfsight.com",
   "object-src 'none'",
-  "img-src 'self' data: blob: https://framerusercontent.com",
+  "img-src 'self' data: blob: https://framerusercontent.com https://i.ytimg.com",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://stats.g.doubleclick.net",
+  // Note: keep unsafe-inline for now (Next/third-party snippets). We can harden with nonces later.
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://elfsightcdn.com https://apps.elfsight.com https://*.elfsight.com",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://elfsightcdn.com https://*.elfsight.com",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -29,7 +32,7 @@ const securityHeaders = [
   {
     key: "Permissions-Policy",
     value:
-      "camera=(), microphone=(), geolocation=(), payment=(), usb=(), fullscreen=(self)",
+      "camera=(), microphone=(), geolocation=(), payment=(), usb=(), fullscreen=(self \"https://www.youtube-nocookie.com\")",
   },
   { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
   { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },

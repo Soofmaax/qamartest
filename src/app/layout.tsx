@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Arimo, Cormorant_SC, Syncopate } from "next/font/google";
 import "./globals.css";
-import { AnalyticsEvents } from "@/components/AnalyticsEvents";
+import { AnalyticsScripts } from "@/components/AnalyticsScripts";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { JsonLd } from "@/components/JsonLd";
 import {
   buildGraph,
@@ -92,72 +92,19 @@ export default function RootLayout({
       className={`${cormorant.variable} ${arimo.variable} ${syncopate.variable}`}
     >
       <head>
-        <link rel="preconnect" href="https://elfsightcdn.com" />
-        <link rel="dns-prefetch" href="https://elfsightcdn.com" />
-
         <JsonLd id="jsonld-site" data={siteStructuredData} />
-
-        {!isPreview ? (
-          <Script id="dataLayer-init" strategy="beforeInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              window.dataLayer.push({
-                event: "app_config",
-                gtm_id: ${gtmId ? `'${gtmId}'` : "undefined"},
-                ga4_id: ${gaId ? `'${gaId}'` : "undefined"},
-                meta_pixel_id: ${metaPixelId ? `'${metaPixelId}'` : "undefined"},
-              });
-            `}
-          </Script>
-        ) : null}
-
-        {!isPreview && gtmId ? (
-          <Script
-            id="gtm"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
- j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
- 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
- })(window,document,'script','dataLayer','${gtmId}');`,
-            }}
-          />
-        ) : null}
       </head>
       <body className="antialiased">
-        {!isPreview && gtmId ? (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-        ) : null}
-
-        {!isPreview && gaId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  anonymize_ip: true,
-                });
-              `}
-            </Script>
-            <AnalyticsEvents />
-          </>
-        ) : null}
+        <AnalyticsScripts
+          isPreview={isPreview}
+          gtmId={gtmId}
+          gaId={gaId}
+          metaPixelId={metaPixelId}
+        />
 
         {children}
+
+        {!isPreview ? <CookieConsentBanner /> : null}
       </body>
     </html>
   );

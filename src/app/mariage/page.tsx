@@ -35,7 +35,7 @@ export const metadata: Metadata = createPageMetadata(seo);
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const discoveryCallUrl =
   process.env.NEXT_PUBLIC_DISCOVERY_CALL_URL ||
-  "https://calendar.google.com/calendar/u/0/appointments/schedules/REPLACE_ME";
+  "/contact/";
 
 const heroVideo = getPrimaryVideoForPage(seo.path);
 const filmUrl = heroVideo ? youTubeWatchUrl(heroVideo.youtubeId) : "#films";
