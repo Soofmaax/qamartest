@@ -6,20 +6,28 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
+  // Only indexable routes should be listed here (no "merci" / legal placeholders, etc.).
   const routes = [
     "/",
     "/services/",
     "/portfolio/",
     "/contact/",
-    "/merci/",
+    "/signature/",
+
     "/mariage/",
+    "/mariage/karim-ines/",
+    "/mariage/ninon-alexandre/",
+    "/mariage/sokona-julien/",
+
     "/corporate/",
     "/corporate/portraits-professionnels/",
     "/corporate/reportages-entreprise/",
     "/corporate/presentation-marque/",
     "/corporate/films-institutionnels/",
     "/corporate/contenu-web-reseaux/",
+
     "/evenementiel/",
+
     "/publicite-digitale/",
     "/publicite-digitale/conception-brainstorming-marketing/",
     "/publicite-digitale/creation-photo-video-premium/",

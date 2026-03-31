@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SERVICES } from "@/lib/content";
+import { useCookieConsent } from "@/lib/cookieConsent";
 import { pushContactFormSubmitted, readAttributionFromUrl } from "@/lib/gtm";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -98,6 +99,7 @@ function validate(values: Values): Errors {
 
 export function ContactForm({ isPreview }: { isPreview: boolean }) {
   const router = useRouter();
+  const { consent } = useCookieConsent();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -190,11 +192,13 @@ export function ContactForm({ isPreview }: { isPreview: boolean }) {
         const service = values.service.trim() || undefined;
         const attribution = readAttributionFromUrl(new URL(window.location.href));
 
-        pushContactFormSubmitted({
-          page: "/contact/",
-          ...(service ? { service } : {}),
-          ...attribution,
-        });
+        if (consent === "accepted") {
+          pushContactFormSubmitted({
+            page: "/contact/",
+            ...(service ? { service } : {}),
+            ...attribution,
+          });
+        }
 
         const params = new URLSearchParams();
         if (service) params.set("service", service);

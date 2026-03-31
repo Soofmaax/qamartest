@@ -73,7 +73,7 @@ See:
 ## TODO (before/after next PRs)
 
 - Provide final copy for "Mentions légales" and "CGV" pages (currently placeholders), then remove `noindex` and add them to the sitemap.
-- Add the LinkedIn URL in `src/components/SiteFooter.tsx` (currently empty).
+- Keep the social URLs in `src/components/SiteFooter.tsx` up to date.
 - Keep Google review stats (`src/components/GoogleReviewsSection.tsx`) in sync with the Google Business Profile.
 
 ## Content backlog (non-code)

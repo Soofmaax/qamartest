@@ -2,12 +2,16 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { useCookieConsent } from "@/lib/cookieConsent";
 import { pushContactThankYouView, type UTMFields } from "@/lib/gtm";
 
 export function ThankYouTracker() {
   const searchParams = useSearchParams();
+  const { consent } = useCookieConsent();
 
   useEffect(() => {
+    if (consent !== "accepted") return;
+
     const service = searchParams.get("service") ?? undefined;
 
     const attribution: UTMFields = {
@@ -25,7 +29,7 @@ export function ThankYouTracker() {
       ...(service ? { service } : {}),
       ...attribution,
     });
-  }, [searchParams]);
+  }, [consent, searchParams]);
 
   return null;
 }
