@@ -3,12 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
-import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { CORPORATE_SERVICES, PORTFOLIO_PROJECTS, REFERENCE_LOGOS } from "@/lib/content";
+import { CORPORATE_SERVICES, REFERENCE_LOGOS } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -60,8 +59,6 @@ const structuredData = buildGraph([
     mainEntityOfPage: { "@id": webpageId },
   },
 ]);
-
-
 
 export default function CorporatePage() {
   return (
@@ -179,27 +176,6 @@ export default function CorporatePage() {
             <div className="relative">
               <ReferencesTicker logos={REFERENCE_LOGOS} durationSeconds={25} />
             </div>
-          </div>
-        </section>
-
-        <section className="w-full bg-black py-16 md:py-20">
-          <div className="flex flex-col gap-6 site-pad-x md:flex-row md:items-center md:justify-between">
-            <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
-              Mon portfolio
-            </h2>
-            <Link
-              href={ROUTES.portfolio}
-              data-ga-event="cta_click"
-              data-ga-category="Navigation"
-              data-ga-label="/corporate/:portfolio"
-              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
-            >
-              Découvrir mon travail
-            </Link>
-          </div>
-
-          <div className="mt-10 site-pad-x">
-            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
         </section>
 
