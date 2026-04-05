@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-
-type GtagFn = (command: string, eventName: string, params?: Record<string, unknown>) => void;
+import type { GtagFn } from "@/lib/analytics";
 
 declare global {
   interface Window {

@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useEffect, useMemo, useState } from "react";
 import { AnalyticsEvents } from "@/components/AnalyticsEvents";
+import type { GtagFn } from "@/lib/analytics";
 import { useCookieConsent } from "@/lib/cookieConsent";
 
 type Props = {
@@ -14,7 +15,7 @@ type Props = {
 
 declare global {
   interface Window {
-    gtag?: (...args: unknown[]) => void;
+    gtag?: GtagFn;
   }
 }
 
@@ -60,10 +61,10 @@ export function AnalyticsScripts({ isPreview, gtmId, gaId, metaPixelId }: Props)
 
     if (gaId) {
       // Match the standard gtag snippet behavior.
-      window.gtag = function gtag() {
-        // eslint-disable-next-line prefer-rest-params
-        window.dataLayer?.push(arguments);
-      };
+      const gtag: GtagFn = ((...args: unknown[]) => {
+        window.dataLayer?.push(args);
+      }) as GtagFn;
+      window.gtag = gtag;
 
       window.gtag("js", new Date());
       window.gtag("config", gaId, { anonymize_ip: true });
