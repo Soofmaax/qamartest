@@ -327,7 +327,7 @@ const FAQ_ITEMS = [
     q: "Qui détient les droits sur les vidéos produites ?",
     a: (
       <>
-        Vous détenez les droits d'utilisation sur{" "}
+        Vous détenez les droits d’utilisation sur{" "}
         <span className="text-[#e8e4dc]">
           tous les supports convenus dans le contrat, pour une durée illimitée,
           sans redevance annuelle.
@@ -354,7 +354,7 @@ const FAQ_ITEMS = [
         Oui. Nous émettons des factures avec TVA et nous intégrons sans difficulté
         dans les{" "}
         <span className="text-[#e8e4dc]">
-          processus d'achat des grandes entreprises
+          processus d’achat des grandes entreprises
         </span>{" "}
         — bon de commande, portail fournisseur, délai de paiement à 30 ou 60 jours.
       </>
@@ -366,7 +366,7 @@ const FAQ_ITEMS = [
       <>
         Oui, nous sommes couverts en{" "}
         <span className="text-[#e8e4dc]">responsabilité civile professionnelle</span>.
-        Le certificat d'assurance est disponible sur demande avant la signature du
+        Le certificat d’assurance est disponible sur demande avant la signature du
         contrat.
       </>
     ),
@@ -376,8 +376,8 @@ const FAQ_ITEMS = [
     a: (
       <>
         Un report sans frais est possible{" "}
-        <span className="text-[#e8e4dc]">jusqu'à 7 jours ouvrés avant le tournage</span>.
-        En deçà, des frais de déplacement et de préparation peuvent s'appliquer
+        <span className="text-[#e8e4dc]">jusqu’à 7 jours ouvrés avant le tournage</span>.
+        En deçà, des frais de déplacement et de préparation peuvent s’appliquer
         selon les conditions définies dans le contrat.
       </>
     ),
@@ -468,7 +468,7 @@ export default function CorporatePage() {
               </h2>
             </div>
             <p className="max-w-[240px] text-right text-[12px] font-normal leading-relaxed text-white/40">
-              Des données vérifiées sur l'impact de la vidéo professionnelle en B2B.
+              Des données vérifiées sur l’impact de la vidéo professionnelle en B2B.
             </p>
           </div>
 
@@ -652,7 +652,7 @@ export default function CorporatePage() {
                   Transformez une dépense en investissement.
                 </h3>
                 <p className="mt-4 text-[13px] leading-relaxed text-white/40">
-                  Une production vidéo n'est pas un coût — c'est un actif qui travaille
+                  Une production vidéo n’est pas un coût — c’est un actif qui travaille
                   pour vous 24h/24. Ce calculateur vous montre combien de nouveaux
                   clients il vous faut pour rentabiliser votre production.
                 </p>
@@ -661,7 +661,7 @@ export default function CorporatePage() {
                   <p className="text-[11px] leading-relaxed text-white/25">
                     Un film institutionnel utilisé pendant 3 ans représente{" "}
                     <span className="text-[#7b9cff]">moins de 3€ par jour</span> pour
-                    une production à 2 500€. Le coût d'un café, pour un outil qui vend
+                    une production à 2 500€. Le coût d’un café, pour un outil qui vend
                     à votre place.
                   </p>
                 </div>
@@ -752,7 +752,7 @@ export default function CorporatePage() {
               </h2>
             </div>
             <p className="max-w-[240px] text-right text-[12px] font-normal leading-relaxed text-white/40">
-              Chaque projet bénéficie d'une attention totale. Le nombre de productions
+              Chaque projet bénéficie d’une attention totale. Le nombre de productions
               mensuelles est volontairement limité.
             </p>
           </div>
