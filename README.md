@@ -76,6 +76,17 @@ See:
 - Keep the social URLs in `src/components/SiteFooter.tsx` up to date.
 - Keep Google review stats (`src/components/GoogleReviewsSection.tsx`) in sync with the Google Business Profile.
 
+### Agency-level minimum requirements (solo workflow)
+
+Use this as a strict Definition of Done for every PR:
+
+- [ ] CI green on PR (`npm ci`, `npm run lint`, `npm run build`, `npm run seo:qa`, `npm run media:qa`).
+- [ ] Static preview compatibility preserved (`NEXT_PUBLIC_IS_PREVIEW=1`, no server-only API usage in exported pages).
+- [ ] Metadata + JSON-LD updated for any new/changed page (`createPageMetadata`, `<JsonLd />`, canonical path with trailing slash).
+- [ ] `src/app/sitemap.ts` updated for every indexable route added/removed.
+- [ ] Tracking checked for CTA/contact changes (`data-ga-*`, GTM/GA4 events still firing as expected).
+- [ ] No dependency drift (`package.json` and `package-lock.json` in sync after any version change).
+
 ## Content backlog (non-code)
 
 The dedicated SEO pages now exist for each service category. Remaining work is content-level:
