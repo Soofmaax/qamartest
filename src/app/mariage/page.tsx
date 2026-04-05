@@ -5,12 +5,10 @@ import Link from "next/link";
 import { ImageLightboxGallery } from "@/components/ImageLightboxGallery";
 import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
 import { JsonLd } from "@/components/JsonLd";
-import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
-import { PORTFOLIO_PROJECTS } from "@/lib/content";
 import { MARIAGE_PAGE_CONTENT } from "@/lib/pageContent";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
@@ -768,28 +766,6 @@ export default function MariagePage() {
             >
               Appel découverte →
             </Link>
-          </div>
-        </RevealOnScroll>
-
-        {/* PORTFOLIO CAROUSEL (inchangée) */}
-        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
-              Mon portfolio
-            </h2>
-            <Link
-              href={ROUTES.portfolio}
-              data-ga-event="cta_click"
-              data-ga-category="Navigation"
-              data-ga-label="/mariage/:portfolio"
-              className="w-fit rounded-lg bg-black px-5 py-2.5 text-center font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
-            >
-              Découvrir mon travail
-            </Link>
-          </div>
-
-          <div className="mt-10">
-            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
           </div>
         </RevealOnScroll>
       </main>

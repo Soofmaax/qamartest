@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { GoogleReviewsSection } from "@/components/GoogleReviewsSection";
-import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 import { ReferencesTicker } from "@/components/ReferencesTicker";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -12,7 +11,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { TextCycler } from "@/components/TextCycler";
 import { createPageMetadata } from "@/lib/seo";
 import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
-import { PORTFOLIO_PROJECTS, REFERENCE_LOGOS, SERVICES } from "@/lib/content";
+import { REFERENCE_LOGOS, SERVICES } from "@/lib/content";
 import { ROUTES } from "@/lib/routes";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
@@ -33,8 +32,6 @@ const structuredData = buildWebPageGraph({
   imageUrl: seo.image,
   breadcrumbs: [{ name: "Accueil", path: ROUTES.home }],
 });
-
-
 
 export default function Home() {
   return (
@@ -208,24 +205,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <h2 className="font-serif text-3xl font-semibold text-white md:text-[48px]">
-              Portfolio
-            </h2>
-            <Link
-              href={ROUTES.portfolio}
-              className="rounded-lg bg-black px-5 py-2.5 font-serif text-[18px] font-bold text-white shadow-[0_4px_35.6px_-2px_rgba(255,255,255,1)] ring-1 ring-white/15 transition-colors duration-200 hover:bg-white/10 md:text-[20px]"
-            >
-              Voir la sélection
-            </Link>
-          </div>
-
-          <div className="mt-10">
-            <ProjectsCarousel projects={PORTFOLIO_PROJECTS} />
-          </div>
-        </RevealOnScroll>
 
         <RevealOnScroll as="section" className="w-full bg-black py-16 site-pad-x md:py-20">
           <div className="border border-white/10 p-8 md:p-12">
