@@ -82,7 +82,7 @@ async function isRateLimited(ip: string) {
     // Use Redis transaction for atomic operations
     const result = await redis.multi()
       .zremrangebyscore(key, 0, now - RATE_LIMIT_WINDOW_MS) // Remove old entries
-      .zadd(key, now, now.toString()) // Add current timestamp
+      .zadd(key, { score: now, member: now.toString() }) // Add current timestamp
       .zcard(key) // Count remaining entries
       .expire(key, RATE_LIMIT_WINDOW_MS) // Set expiration
       .exec();
