@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Redis } from "@upstash/redis";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Accepts: 06..., 07..., +33 6..., +33 7... (spaces/dots allowed)
@@ -17,7 +18,16 @@ const RESEND_FETCH_TIMEOUT_MS = 10_000;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 5;
 
-const rateLimitStore = new Map<string, number[]>();
+// Redis client for production rate limiting
+const redis = process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+  ? new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    })
+  : null;
+
+// Fallback in-memory store for development
+const devRateLimitStore = new Map<string, number[]>();
 
 function normalizeIp(raw: string | null) {
   const value = (raw ?? "").trim();
@@ -49,19 +59,41 @@ function getClientIp(req: Request) {
 
 function isRateLimitedInMemory(ip: string) {
   const now = Date.now();
-  const prev = rateLimitStore.get(ip) ?? [];
+  const prev = devRateLimitStore.get(ip) ?? [];
 
   const recent = prev.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
   recent.push(now);
-  rateLimitStore.set(ip, recent);
+  devRateLimitStore.set(ip, recent);
 
   return recent.length > RATE_LIMIT_MAX;
 }
 
 async function isRateLimited(ip: string) {
-  // TODO(rate-limit): replace this in-memory store with a shared/external limiter (e.g. Redis/KV)
-  // so the limits apply across instances/regions.
-  return isRateLimitedInMemory(ip);
+  // Use Redis for production rate limiting
+  if (!redis) {
+    // Development fallback
+    return isRateLimitedInMemory(ip);
+  }
+
+  try {
+    const key = `ratelimit:contact:${ip}`;
+    const now = Date.now();
+
+    // Use Redis transaction for atomic operations
+    const result = await redis.multi()
+      .zremrangebyscore(key, 0, now - RATE_LIMIT_WINDOW_MS) // Remove old entries
+      .zadd(key, { score: now, member: now.toString() }) // Add current timestamp
+      .zcard(key) // Count remaining entries
+      .expire(key, RATE_LIMIT_WINDOW_MS) // Set expiration
+      .exec();
+
+    const count = result[2] as number;
+    return count > RATE_LIMIT_MAX;
+  } catch (err) {
+    console.error("Redis rate limit error:", err);
+    // Fallback to in-memory if Redis fails
+    return isRateLimitedInMemory(ip);
+  }
 }
 
 function isAbortError(err: unknown) {

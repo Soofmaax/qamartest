@@ -46,7 +46,7 @@ export const MARIAGE_PAGE_CONTENT: MariagePageContent = {
   },
   lastPrestations: [
     {
-      title: "Mariage",
+      title: "Ninon & Alexandre · Vaux-le-Vicomte",
       cover: "/images/mariage/mariage-18.jpg",
       images: [
         "/images/mariage/mariage-18.jpg",
@@ -58,7 +58,7 @@ export const MARIAGE_PAGE_CONTENT: MariagePageContent = {
       ],
     },
     {
-      title: "Cérémonie",
+      title: "Sokona & Julien · Île-de-France",
       cover: "/images/mariage/mariage-10.jpg",
       images: [
         "/images/mariage/mariage-10.jpg",
@@ -69,7 +69,7 @@ export const MARIAGE_PAGE_CONTENT: MariagePageContent = {
       ],
     },
     {
-      title: "Portraits",
+      title: "Karim & Inès · Marrakech",
       cover: "/images/mariage/mariage-05.jpg",
       images: [
         "/images/mariage/mariage-05.jpg",
@@ -364,5 +364,4 @@ export const DIGITAL_ADS_OPTIMISATION_PAGE: ServiceDetailPageContent = {
     },
   ],
 };
-
 
