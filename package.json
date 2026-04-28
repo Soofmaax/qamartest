@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "media:optimize": "node scripts/optimize-images.mjs",
+    "media:report": "node scripts/media-report.mjs",
     "seo:qa": "node scripts/seo-qa.mjs out",
     "media:qa": "node scripts/media-qa.mjs out"
   },

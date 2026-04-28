@@ -2,6 +2,21 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const OUT_DIR = process.argv[2] ?? "out";
+const PUBLIC_DIR = path.resolve("public");
+const MEDIA_EXTENSIONS = new Set([
+  ".jpg",
+  ".jpeg",
+  ".png",
+  ".webp",
+  ".avif",
+  ".mp4",
+  ".mov",
+  ".webm",
+]);
+const PORTFOLIO_BUDGET_BYTES = 300 * 1024;
+const HERO_BUDGET_BYTES = 500 * 1024;
+const VIDEO_BUDGET_BYTES = 5 * 1024 * 1024;
+const ROOT_MEDIA_WARN_BYTES = 2 * 1024 * 1024;
 
 function fail(message) {
   const err = new Error(message);
@@ -84,6 +99,27 @@ function isWhitespaceOnly(value) {
   return value.trim().length === 0;
 }
 
+function isPortfolioMedia(filePath) {
+  return filePath.includes(`${path.sep}images${path.sep}portfolio${path.sep}`);
+}
+
+function isHeroCandidate(filePath) {
+  return (
+    filePath.includes(`${path.sep}images${path.sep}mariage${path.sep}`) ||
+    filePath.includes(`${path.sep}images${path.sep}portfolio${path.sep}`)
+  );
+}
+
+function isRawImport(filePath) {
+  return filePath.includes(`${path.sep}raw-import${path.sep}`);
+}
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 function checkHtml(html, relPath) {
   // Images must not have empty alt attributes.
   for (const tag of extractTags(html, "img")) {
@@ -106,6 +142,49 @@ function checkHtml(html, relPath) {
   }
 }
 
+async function checkPublicMedia() {
+  if (!(await fileExists(PUBLIC_DIR))) return;
+
+  const files = await listFilesRecursive(PUBLIC_DIR);
+
+  for (const fullPath of files) {
+    const ext = path.extname(fullPath).toLowerCase();
+
+    if (!MEDIA_EXTENSIONS.has(ext)) continue;
+    if (isRawImport(fullPath)) continue;
+
+    const relPath = path.relative(PUBLIC_DIR, fullPath);
+    const stat = await fs.stat(fullPath);
+
+    if (ext === ".mp4" || ext === ".mov" || ext === ".webm") {
+      if (stat.size > VIDEO_BUDGET_BYTES) {
+        fail(
+          `public/${relPath}: video is ${formatBytes(stat.size)} (limit ${formatBytes(VIDEO_BUDGET_BYTES)}). Compress it or replace with a lighter delivery format.`
+        );
+      }
+      continue;
+    }
+
+    if (isPortfolioMedia(fullPath) && stat.size > PORTFOLIO_BUDGET_BYTES) {
+      fail(
+        `public/${relPath}: portfolio image is ${formatBytes(stat.size)} (limit ${formatBytes(PORTFOLIO_BUDGET_BYTES)}). Export a web-sized WebP/AVIF asset.`
+      );
+    }
+
+    if (isHeroCandidate(fullPath) && stat.size > HERO_BUDGET_BYTES) {
+      fail(
+        `public/${relPath}: hero/gallery candidate is ${formatBytes(stat.size)} (limit ${formatBytes(HERO_BUDGET_BYTES)}). Resize and recompress it.`
+      );
+    }
+
+    if (ext === ".png" && stat.size > ROOT_MEDIA_WARN_BYTES) {
+      fail(
+        `public/${relPath}: large PNG photo detected at ${formatBytes(stat.size)}. Convert photo-like PNG assets to WebP or AVIF.`
+      );
+    }
+  }
+}
+
 async function main() {
   const outPrefix = await detectOutPrefix();
   const baseDir = path.join(OUT_DIR, outPrefix);
@@ -121,6 +200,8 @@ async function main() {
     const html = await fs.readFile(fullPath, "utf8");
     checkHtml(html, relPath);
   }
+
+  await checkPublicMedia();
 
   // eslint-disable-next-line no-console
   console.log(`Media QA passed for ${files.length} HTML files in ${baseDir}.`);

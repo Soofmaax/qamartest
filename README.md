@@ -51,6 +51,38 @@ NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 npm run seo:qa
 ```
 
+## Media P0 workflow
+
+This repo is image-heavy. To keep PageSpeed strong, treat media optimization as mandatory before commit.
+
+Budgets enforced by `npm run media:qa`:
+
+- portfolio image in `public/images/portfolio/**`: max **300 KB**
+- hero/gallery candidate image in `public/images/**`: max **500 KB**
+- video in `public/**`: max **5 MB**
+- large photo-like PNGs are rejected
+
+Recommended export targets:
+
+- hero: `1600-1920px` wide, WebP, roughly `250-500 KB`
+- gallery image: `1200-1600px` wide, WebP, roughly `120-300 KB`
+- thumbnail: `400-800px` wide, WebP, roughly `40-120 KB`
+
+Optimize files locally with:
+
+```bash
+npm install -D sharp
+npm run media:optimize -- public/images/portfolio/evenementiel/fashion-week-2026/fashion-week-2026-01.png
+```
+
+That command creates a sibling `.webp` file resized for the web. After checking the result visually, update references to the new file and remove the oversized original from site-facing folders.
+
+Generate a prioritized list of the heaviest site-facing images with:
+
+```bash
+npm run media:report
+```
+
 ## Video (YouTube)
 
 - `src/components/YouTubeEmbed.tsx`: lazy-loaded YouTube iframe (no iframe until click).
