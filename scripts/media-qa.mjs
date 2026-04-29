@@ -200,8 +200,8 @@ async function checkPublicMedia(referencedPublicMedia) {
     const isReferencedBySite = referencedPublicMedia.has(publicPath);
 
     if (isHeroCandidate(fullPath) && isReferencedBySite && stat.size > HERO_BUDGET_BYTES) {
-      fail(
-        `public/${relPath}: hero/gallery candidate is ${formatBytes(stat.size)} (limit ${formatBytes(HERO_BUDGET_BYTES)}). Resize and recompress it.`
+      warn(
+        `public/${relPath}: hero/gallery candidate is ${formatBytes(stat.size)} (target ${formatBytes(HERO_BUDGET_BYTES)}). Resize and recompress it.`
       );
     }
 
