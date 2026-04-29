@@ -57,10 +57,11 @@ This repo is image-heavy. To keep PageSpeed strong, treat media optimization as 
 
 Budgets enforced by `npm run media:qa`:
 
-- portfolio image in `public/images/portfolio/**`: max **300 KB**
-- hero/gallery candidate image in `public/images/**`: max **500 KB**
-- video in `public/**`: max **5 MB**
-- large photo-like PNGs are rejected
+- portfolio image in `public/images/portfolio/**`: target **300 KB** (warning when exceeded)
+- hero/gallery candidate image referenced by the exported site: target **500 KB** (warning when exceeded)
+- video in `public/**`: max **7 MB**
+- large photo-like PNGs referenced by the exported site are rejected
+- oversized portfolio PNGs not referenced by the exported site are warned and should be converted before use
 
 Recommended export targets:
 
