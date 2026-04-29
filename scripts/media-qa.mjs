@@ -206,6 +206,13 @@ async function checkPublicMedia(referencedPublicMedia) {
     }
 
     if (ext === ".png" && stat.size > ROOT_MEDIA_WARN_BYTES) {
+      if (isPortfolioMedia(fullPath) && !isReferencedBySite) {
+        warn(
+          `public/${relPath}: large portfolio PNG is ${formatBytes(stat.size)}. Convert photo-like PNG assets to WebP or AVIF before serving it on the site.`
+        );
+        continue;
+      }
+
       fail(
         `public/${relPath}: large PNG photo detected at ${formatBytes(stat.size)}. Convert photo-like PNG assets to WebP or AVIF.`
       );
