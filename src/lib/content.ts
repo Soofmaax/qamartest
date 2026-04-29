@@ -68,16 +68,14 @@ export const SERVICES: ServiceItem[] = [
     description:
       "Des images fortes, élégantes et intemporelles pour raconter l’un des plus beaux jours de votre vie.",
     href: ROUTES.mariage,
-    image:
-      "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+    image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
   },
   {
     title: "Corporate",
     description:
       "Mettre en valeur votre entreprise, votre ADN et vos équipes avec une production professionnelle sur-mesure.",
     href: ROUTES.corporate,
-    image:
-      "https://framerusercontent.com/images/qXcHje98qlsOMGT1CJEMgjZ7umM.jpg",
+    image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
   },
   {
     title: "Publicité digitale",
@@ -93,8 +91,7 @@ export const SERVICES: ServiceItem[] = [
     description:
       "Couverture photo/vidéo d’événements : conférences, lancements, soirées, festivals. Captation, contenus live et recap.",
     href: ROUTES.evenementiel,
-    image:
-      "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+    image: "/images/portfolio/evenementiel/beef-club/beef-club-03.jpg",
   },
 ];
 
