@@ -48,30 +48,30 @@ const FAQ_ITEMS = [
 
 const PORTFOLIO_ITEMS = [
   {
-    title: "Soirée d’entreprise",
-    meta: "Corporate · Grande salle · 200 personnes",
+    title: "Beef Club",
+    meta: "Soirée · Paris",
     src: "/images/portfolio/evenementiel/beef-club/beef-club-03.jpg",
     span: "md:col-span-2",
   },
   {
-    title: "Conférence & keynote",
-    meta: "Corporate · Prise de parole",
-    src: "/images/portfolio/evenementiel/seminaire-toulon/seminaire-toulon-02.jpg",
+    title: "Dali Club",
+    meta: "Soirée · Événement privé",
+    src: "/images/portfolio/evenementiel/dali-club/dali-club-03.jpg",
   },
   {
-    title: "Soirée gala",
-    meta: "Corporate · Remise de prix",
+    title: "Fashion Week 2026",
+    meta: "Mode · Backstage & runway",
+    src: "/images/portfolio/evenementiel/fashion-week-2026/fashion-week-2026-12.jpg",
+  },
+  {
+    title: "Gatsby Club",
+    meta: "Soirée · Ambiance & scénographie",
     src: "/images/portfolio/evenementiel/gatsby-club/gatsby-club-06.jpg",
   },
   {
-    title: "Séminaire d’équipe",
+    title: "Séminaire Toulon",
     meta: "Corporate · Team building",
-    src: "/images/portfolio/evenementiel/seminaire-toulon/seminaire-toulon-04.jpg",
-  },
-  {
-    title: "Événement privé",
-    meta: "Privé · Anniversaire",
-    src: "/images/portfolio/evenementiel/dali-club/dali-club-03.jpg",
+    src: "/images/portfolio/evenementiel/seminaire-toulon/seminaire-toulon-02.jpg",
   },
 ] as const;
 
