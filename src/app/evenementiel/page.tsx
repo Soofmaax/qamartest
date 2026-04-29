@@ -46,7 +46,14 @@ const FAQ_ITEMS = [
   },
 ] as const;
 
-const PORTFOLIO_ITEMS = [
+type EventPortfolioItem = {
+  title: string;
+  meta: string;
+  src: string;
+  span?: string;
+};
+
+const PORTFOLIO_ITEMS: EventPortfolioItem[] = [
   {
     title: "Beef Club",
     meta: "Soirée · Paris",
