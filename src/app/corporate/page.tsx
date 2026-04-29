@@ -21,7 +21,7 @@ const seo = {
   description:
     "Création de contenus photo et vidéo pour entreprises : image de marque, communication corporate, vidéos professionnelles et storytelling visuel.",
   path: "/corporate/",
-  image: "https://framerusercontent.com/images/9MhLc1R5WqXjf2kyVHnU1AmNhXs.jpg",
+  image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);

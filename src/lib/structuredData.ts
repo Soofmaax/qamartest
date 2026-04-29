@@ -79,7 +79,7 @@ export function buildPerson() {
     name: "Qamar",
     url: `${SITE_URL}/`,
     jobTitle: "Photographe & vidéaste",
-    image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    image: absoluteUrl("/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg"),
     worksFor: { "@id": ORGANIZATION_ID },
   } satisfies StructuredDataNode;
 }
@@ -90,8 +90,8 @@ export function buildOrganizationLocalBusiness() {
     "@id": ORGANIZATION_ID,
     name: SITE_NAME,
     url: `${SITE_URL}/`,
-    logo: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
-    image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+    logo: absoluteUrl("/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg"),
+    image: absoluteUrl("/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg"),
     founder: { "@id": PERSON_ID },
     address: {
       "@type": "PostalAddress",

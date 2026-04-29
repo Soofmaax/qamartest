@@ -20,7 +20,7 @@ const seo = {
   description:
     "Couverture photo/vidéo événementielle à Paris et en France : conférences, séminaires, soirées d’entreprise et événements privés.",
   path: "/evenementiel/",
-  image: "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
+  image: "/images/portfolio/evenementiel/beef-club/beef-club-03.jpg",
 };
 
 const FAQ_ITEMS = [

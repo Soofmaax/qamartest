@@ -18,7 +18,7 @@ const seo = {
   description:
     "Découvrez nos prestations photo & vidéo : mariage, corporate, événementiel et publicité digitale.",
   path: "/services/",
-  image: "https://framerusercontent.com/images/OjM8YyBBtICf6hfaMtgqLNfoVjs.jpg",
+  image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
