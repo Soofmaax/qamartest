@@ -272,7 +272,7 @@ export default function MariagePage() {
                   loop
                   playsInline
                   preload="metadata"
-                  poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+                  poster="/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg"
                 >
                   <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
                 </video>
@@ -283,7 +283,7 @@ export default function MariagePage() {
                   muted
                   playsInline
                   preload="metadata"
-                  poster="https://framerusercontent.com/images/6nk6lOJ0PhfmfG5ELflQRv3Mk.jpg"
+                  poster="/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg"
                 >
                   <source src={`${basePath}/videos/mariage.mp4`} type="video/mp4" />
                 </video>

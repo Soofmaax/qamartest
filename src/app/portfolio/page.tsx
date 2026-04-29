@@ -14,7 +14,7 @@ const seo = {
   description:
     "Découvrez une sélection de projets : corporate, mariage, événementiel et contenus digitaux.",
   path: "/portfolio/",
-  image: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+  image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -33,31 +33,31 @@ const structuredData = buildWebPageGraph({
 const items = [
   {
     category: "Corporate",
-    src: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+    src: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
   },
   {
     category: "Événementiel",
-    src: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+    src: "/images/portfolio/evenementiel/beef-club/beef-club-03.jpg",
   },
   {
     category: "Mariage",
-    src: "https://framerusercontent.com/images/4Op4n5HTAnrEevRwNm1IuxGFmmc.jpg",
+    src: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
   },
   {
     category: "Publicité digitale",
-    src: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    src: "/images/portfolio/shooting/sema-shooting/sema-shooting-01.jpg",
   },
   {
     category: "Corporate",
-    src: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+    src: "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
   },
   {
     category: "Publicité digitale",
-    src: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+    src: "/images/portfolio/shooting/afro-french-touch/afro-french-touch-01.jpg",
   },
   {
     category: "Corporate",
-    src: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+    src: "/images/portfolio/corporate/unesco/unesco-01.jpg",
   },
 ];
 
