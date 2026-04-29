@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -48,33 +50,28 @@ const PORTFOLIO_ITEMS = [
   {
     title: "Soirée d’entreprise",
     meta: "Corporate · Grande salle · 200 personnes",
-    tone: "from-[#0f0d08] via-[#1e1a0f] to-[#0f0d08]",
-    label: "Soirée corporate · Paris",
+    src: "/images/portfolio/evenementiel/beef-club/beef-club-03.jpg",
     span: "md:col-span-2",
   },
   {
     title: "Conférence & keynote",
     meta: "Corporate · Prise de parole",
-    tone: "from-[#080d10] via-[#101820] to-[#080d10]",
-    label: "Conférence",
+    src: "/images/portfolio/evenementiel/seminaire-toulon/seminaire-toulon-02.jpg",
   },
   {
     title: "Soirée gala",
     meta: "Corporate · Remise de prix",
-    tone: "from-[#100810] via-[#1e101e] to-[#100810]",
-    label: "Gala",
+    src: "/images/portfolio/evenementiel/gatsby-club/gatsby-club-06.jpg",
   },
   {
     title: "Séminaire d’équipe",
     meta: "Corporate · Team building",
-    tone: "from-[#0a0a0a] via-[#1a1510] to-[#0a0a0a]",
-    label: "Séminaire",
+    src: "/images/portfolio/evenementiel/seminaire-toulon/seminaire-toulon-04.jpg",
   },
   {
     title: "Événement privé",
     meta: "Privé · Anniversaire",
-    tone: "from-[#080f0a] via-[#10180e] to-[#080f0a]",
-    label: "Anniversaire",
+    src: "/images/portfolio/evenementiel/dali-club/dali-club-03.jpg",
   },
 ] as const;
 
@@ -414,15 +411,16 @@ export default function EvenementielPage() {
                   item.span ?? ""
                 } md:border-r md:last:border-r-0 ${idx >= 3 ? "md:border-b-0" : ""}`}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${item.tone} transition-transform duration-500 group-hover:scale-[1.03]`}
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  sizes={item.span ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
+                  placeholder="blur"
+                  blurDataURL={DARK_BLUR_DATA_URL}
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-serif text-[11px] uppercase tracking-[0.24em] text-white/15">
-                    {item.label}
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/10" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <p className="font-serif text-[22px] italic text-white">{item.title}</p>
                   <p className="mt-1 text-[10px] uppercase tracking-[0.14em] text-white/45">
