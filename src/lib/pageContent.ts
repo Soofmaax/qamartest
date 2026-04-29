@@ -36,48 +36,71 @@ export type MariagePageContent = {
   formulas: MariageFormula[];
 };
 
+const RAW_MARIAGE_BASE = "/images/portfolio/mariage/raw-import/ELHAD ET INASS";
+
+const RAW_MARIAGE_IMAGES = [
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-01.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-02.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-03.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-04.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-05.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-06.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-07.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-08.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-09.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-10.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-11.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-12.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-13.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-14.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-15.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-16.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-17.jpg`,
+  `${RAW_MARIAGE_BASE}/elhad-et-inass-18.jpg`,
+];
+
 export const MARIAGE_PAGE_CONTENT: MariagePageContent = {
   seo: {
     title: "Photographe & vidéaste de mariage | Directed by Qamar",
     description:
       "Vidéaste et photographe de mariage à Paris. Une approche cinématique et élégante pour créer des souvenirs intemporels.",
     path: "/mariage/",
-    image: "/images/mariage/mariage-18.jpg",
+    image: RAW_MARIAGE_IMAGES[17],
   },
   lastPrestations: [
     {
       title: "Ninon & Alexandre · Vaux-le-Vicomte",
-      cover: "/images/mariage/mariage-18.jpg",
+      cover: RAW_MARIAGE_IMAGES[17],
       images: [
-        "/images/mariage/mariage-18.jpg",
-        "/images/mariage/mariage-17.jpg",
-        "/images/mariage/mariage-16.jpg",
-        "/images/mariage/mariage-14.jpg",
-        "/images/mariage/mariage-13.jpg",
-        "/images/mariage/mariage-11.jpg",
+        RAW_MARIAGE_IMAGES[17],
+        RAW_MARIAGE_IMAGES[16],
+        RAW_MARIAGE_IMAGES[15],
+        RAW_MARIAGE_IMAGES[13],
+        RAW_MARIAGE_IMAGES[12],
+        RAW_MARIAGE_IMAGES[10],
       ],
     },
     {
       title: "Sokona & Julien · Île-de-France",
-      cover: "/images/mariage/mariage-10.jpg",
+      cover: RAW_MARIAGE_IMAGES[9],
       images: [
-        "/images/mariage/mariage-10.jpg",
-        "/images/mariage/mariage-09.jpg",
-        "/images/mariage/mariage-08.jpg",
-        "/images/mariage/mariage-07.jpg",
-        "/images/mariage/mariage-06.jpg",
+        RAW_MARIAGE_IMAGES[9],
+        RAW_MARIAGE_IMAGES[8],
+        RAW_MARIAGE_IMAGES[7],
+        RAW_MARIAGE_IMAGES[6],
+        RAW_MARIAGE_IMAGES[5],
       ],
     },
     {
       title: "Karim & Inès · Marrakech",
-      cover: "/images/mariage/mariage-05.jpg",
+      cover: RAW_MARIAGE_IMAGES[4],
       images: [
-        "/images/mariage/mariage-05.jpg",
-        "/images/mariage/mariage-04.jpg",
-        "/images/mariage/mariage-03.jpg",
-        "/images/mariage/mariage-02.jpg",
-        "/images/mariage/mariage-01.jpg",
-        "/images/mariage/mariage-12.jpg",
+        RAW_MARIAGE_IMAGES[4],
+        RAW_MARIAGE_IMAGES[3],
+        RAW_MARIAGE_IMAGES[2],
+        RAW_MARIAGE_IMAGES[1],
+        RAW_MARIAGE_IMAGES[0],
+        RAW_MARIAGE_IMAGES[11],
       ],
     },
   ],
@@ -364,4 +387,3 @@ export const DIGITAL_ADS_OPTIMISATION_PAGE: ServiceDetailPageContent = {
     },
   ],
 };
-

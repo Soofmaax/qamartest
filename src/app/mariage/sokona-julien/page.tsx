@@ -12,12 +12,14 @@ import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
+const rawMariageBase = "/images/portfolio/mariage/raw-import/ELHAD ET INASS";
+
 const seo = {
   title: "Sokona & Julien | Mariage | Directed by Qamar",
   description:
     "Un mariage en Île-de-France : élégance, émotion, et un reportage à la direction artistique discrète.",
   path: "/mariage/sokona-julien/",
-  image: "/images/mariage/mariage-11.jpg",
+  image: `${rawMariageBase}/elhad-et-inass-11.jpg`,
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -37,14 +39,14 @@ const structuredData = buildWebPageGraph({
 const gallery = [
   {
     title: "Sokona & Julien",
-    cover: "/images/mariage/mariage-11.jpg",
+    cover: `${rawMariageBase}/elhad-et-inass-11.jpg`,
     images: [
-      "/images/mariage/mariage-11.jpg",
-      "/images/mariage/mariage-10.jpg",
-      "/images/mariage/mariage-09.jpg",
-      "/images/mariage/mariage-08.jpg",
-      "/images/mariage/mariage-07.jpg",
-      "/images/mariage/mariage-06.jpg",
+      `${rawMariageBase}/elhad-et-inass-11.jpg`,
+      `${rawMariageBase}/elhad-et-inass-10.jpg`,
+      `${rawMariageBase}/elhad-et-inass-09.jpg`,
+      `${rawMariageBase}/elhad-et-inass-08.jpg`,
+      `${rawMariageBase}/elhad-et-inass-07.jpg`,
+      `${rawMariageBase}/elhad-et-inass-06.jpg`,
     ],
   },
 ];

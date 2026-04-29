@@ -12,12 +12,14 @@ import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
+const rawMariageBase = "/images/portfolio/mariage/raw-import/ELHAD ET INASS";
+
 const seo = {
   title: "Ninon & Alexandre | Mariage | Directed by Qamar",
   description:
     "Un récit de mariage au Château de Vaux-le-Vicomte. Une esthétique cinématique, lumineuse et intemporelle.",
   path: "/mariage/ninon-alexandre/",
-  image: "/images/mariage/mariage-18.jpg",
+  image: `${rawMariageBase}/elhad-et-inass-18.jpg`,
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -37,14 +39,14 @@ const structuredData = buildWebPageGraph({
 const gallery = [
   {
     title: "Ninon & Alexandre",
-    cover: "/images/mariage/mariage-18.jpg",
+    cover: `${rawMariageBase}/elhad-et-inass-18.jpg`,
     images: [
-      "/images/mariage/mariage-18.jpg",
-      "/images/mariage/mariage-17.jpg",
-      "/images/mariage/mariage-16.jpg",
-      "/images/mariage/mariage-14.jpg",
-      "/images/mariage/mariage-13.jpg",
-      "/images/mariage/mariage-11.jpg",
+      `${rawMariageBase}/elhad-et-inass-18.jpg`,
+      `${rawMariageBase}/elhad-et-inass-17.jpg`,
+      `${rawMariageBase}/elhad-et-inass-16.jpg`,
+      `${rawMariageBase}/elhad-et-inass-14.jpg`,
+      `${rawMariageBase}/elhad-et-inass-13.jpg`,
+      `${rawMariageBase}/elhad-et-inass-11.jpg`,
     ],
   },
 ];

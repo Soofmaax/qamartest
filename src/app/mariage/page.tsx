@@ -37,26 +37,27 @@ const discoveryCallUrl =
 
 const heroVideo = getPrimaryVideoForPage(seo.path);
 const filmUrl = heroVideo ? youTubeWatchUrl(heroVideo.youtubeId) : "#films";
+const rawMariageBase = "/images/portfolio/mariage/raw-import/ELHAD ET INASS";
 
 const mariageImages = [
-  "/images/mariage/mariage-01.jpg",
-  "/images/mariage/mariage-02.jpg",
-  "/images/mariage/mariage-03.jpg",
-  "/images/mariage/mariage-04.jpg",
-  "/images/mariage/mariage-05.jpg",
-  "/images/mariage/mariage-06.jpg",
-  "/images/mariage/mariage-07.jpg",
-  "/images/mariage/mariage-08.jpg",
-  "/images/mariage/mariage-09.jpg",
-  "/images/mariage/mariage-10.jpg",
-  "/images/mariage/mariage-11.jpg",
-  "/images/mariage/mariage-12.jpg",
-  "/images/mariage/mariage-13.jpg",
-  "/images/mariage/mariage-14.jpg",
-  "/images/mariage/mariage-15.jpg",
-  "/images/mariage/mariage-16.jpg",
-  "/images/mariage/mariage-17.jpg",
-  "/images/mariage/mariage-18.jpg",
+  `${rawMariageBase}/elhad-et-inass-01.jpg`,
+  `${rawMariageBase}/elhad-et-inass-02.jpg`,
+  `${rawMariageBase}/elhad-et-inass-03.jpg`,
+  `${rawMariageBase}/elhad-et-inass-04.jpg`,
+  `${rawMariageBase}/elhad-et-inass-05.jpg`,
+  `${rawMariageBase}/elhad-et-inass-06.jpg`,
+  `${rawMariageBase}/elhad-et-inass-07.jpg`,
+  `${rawMariageBase}/elhad-et-inass-08.jpg`,
+  `${rawMariageBase}/elhad-et-inass-09.jpg`,
+  `${rawMariageBase}/elhad-et-inass-10.jpg`,
+  `${rawMariageBase}/elhad-et-inass-11.jpg`,
+  `${rawMariageBase}/elhad-et-inass-12.jpg`,
+  `${rawMariageBase}/elhad-et-inass-13.jpg`,
+  `${rawMariageBase}/elhad-et-inass-14.jpg`,
+  `${rawMariageBase}/elhad-et-inass-15.jpg`,
+  `${rawMariageBase}/elhad-et-inass-16.jpg`,
+  `${rawMariageBase}/elhad-et-inass-17.jpg`,
+  `${rawMariageBase}/elhad-et-inass-18.jpg`,
 ];
 
 const url = absoluteUrl(seo.path);
