@@ -11,7 +11,7 @@ const seo = {
   title: "Mentions légales | Directed by Qamar",
   description: "Consultez les mentions légales de Directed by Qamar.",
   path: ROUTES.mentionsLegales,
-  image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+  image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata({

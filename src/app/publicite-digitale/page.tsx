@@ -18,7 +18,7 @@ const seo = {
   description:
     "Contenu photo/vidéo pour marques et créateurs : shootings, Reels, formats social media et assets publicitaires prêts à performer.",
   path: "/publicite-digitale/",
-  image: "https://framerusercontent.com/images/7S1BnqSduvVOo0AYIdVmWm1oi4E.png",
+  image: "/images/portfolio/shooting/sema-shooting/sema-shooting-01.jpg",
 };
 
 const FAQ_ITEMS = [
