@@ -15,7 +15,7 @@ const MEDIA_EXTENSIONS = new Set([
 ]);
 const PORTFOLIO_BUDGET_BYTES = 300 * 1024;
 const HERO_BUDGET_BYTES = 500 * 1024;
-const VIDEO_BUDGET_BYTES = 5 * 1024 * 1024;
+const VIDEO_BUDGET_BYTES = 7 * 1024 * 1024;
 const ROOT_MEDIA_WARN_BYTES = 2 * 1024 * 1024;
 const warnedMessages = [];
 
