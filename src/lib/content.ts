@@ -103,32 +103,28 @@ export const CORPORATE_SERVICES: ServiceItem[] = [
     title: "Portraits professionnels",
     description:
       "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
+    image: "/images/portfolio/corporate/prefet/prefet-01.jpg",
     href: ROUTES.corporatePortraits,
   },
   {
     title: "Reportages d’entreprise",
     description:
       "Immortalisez votre savoir-faire, vos processus et la vie de votre structure avec un regard authentique et esthétique. Idéal pour valoriser vos équipes, vos coulisses ou vos événements internes.",
-    image:
-      "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
+    image: "/images/portfolio/corporate/unesco/unesco-01.jpg",
     href: ROUTES.corporateReportages,
   },
   {
     title: "Présentation de marque",
     description:
       "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage. Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
+    image: "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
     href: ROUTES.corporatePresentationMarque,
   },
   {
     title: "Films institutionnels",
     description:
       "Une réalisation maîtrisée de A à Z : conception, tournage, direction artistique, montage et versionnage. Des contenus conçus pour vos campagnes internes, vos partenaires, vos investisseurs ou vos prises de parole officielles.",
-    image:
-      "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
+    image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
     href: ROUTES.corporateFilmsInstitutionnels,
   },
   {
@@ -136,7 +132,7 @@ export const CORPORATE_SERVICES: ServiceItem[] = [
     description:
       "Des productions régulières pour alimenter vos plateformes avec du contenu professionnel, dynamique et cohérent. Vous bénéficiez d’une stratégie visuelle complète, pensée pour renforcer votre présence digitale.",
     image:
-      "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
+      "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-01.jpg",
     href: ROUTES.corporateContenuWebReseaux,
   },
 ];

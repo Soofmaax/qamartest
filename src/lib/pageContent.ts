@@ -157,21 +157,21 @@ export const CORPORATE_PORTRAITS_PAGE: ServiceDetailPageContent = {
     description:
       "Portraits corporate pour dirigeants et équipes. Une image cohérente et premium pour votre marque, votre site et LinkedIn.",
     path: "/corporate/portraits-professionnels/",
-    image: "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
+    image: "/images/portfolio/corporate/prefet/prefet-01.jpg",
   },
   title: "Portraits professionnels",
   eyebrow: "Corporate",
   description:
     "Des portraits premium et cohérents pour dirigeants et équipes. Un rendu naturel, soigné et fidèle à votre image de marque : idéal pour votre site, LinkedIn, dossiers de presse et supports internes.",
-  heroImage: "https://framerusercontent.com/images/pCVT5Vo2hlSZzsO08dLr6cO0ZY.png",
+  heroImage: "/images/portfolio/corporate/prefet/prefet-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+      cover: "/images/portfolio/corporate/prefet/prefet-01.jpg",
       images: [
-        "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-        "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-        "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+        "/images/portfolio/corporate/prefet/prefet-01.jpg",
+        "/images/portfolio/corporate/prefet/prefet-02.jpg",
+        "/images/portfolio/corporate/prefet/prefet-03.jpg",
       ],
     },
   ],
@@ -183,21 +183,21 @@ export const CORPORATE_REPORTAGES_PAGE: ServiceDetailPageContent = {
     description:
       "Reportage photo et vidéo en entreprise : équipes, locaux, savoir-faire, événements internes. Un storytelling authentique et premium.",
     path: "/corporate/reportages-entreprise/",
-    image: "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
+    image: "/images/portfolio/corporate/unesco/unesco-01.jpg",
   },
   title: "Reportages d’entreprise",
   eyebrow: "Corporate",
   description:
     "Montrez votre entreprise “en action” : équipes, locaux, savoir-faire, temps forts et événements internes. Un reportage authentique, esthétique et prêt à être utilisé sur votre site, vos réseaux et vos présentations.",
-  heroImage: "https://framerusercontent.com/images/DpaeyEJu9sJ7uvyF30lYwFOalYA.png",
+  heroImage: "/images/portfolio/corporate/unesco/unesco-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
+      cover: "/images/portfolio/corporate/unesco/unesco-01.jpg",
       images: [
-        "https://framerusercontent.com/images/d0P58uREIotgwIjkIMBQA12roNQ.jpg",
-        "https://framerusercontent.com/images/NEZCIhRhhHIfJxK8M1026G5arOY.jpg",
-        "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+        "/images/portfolio/corporate/unesco/unesco-01.jpg",
+        "/images/portfolio/corporate/unesco/unesco-02.jpg",
+        "/images/portfolio/corporate/unesco/unesco-03.jpg",
       ],
     },
   ],
@@ -209,21 +209,21 @@ export const CORPORATE_PRESENTATION_PAGE: ServiceDetailPageContent = {
     description:
       "Présenter votre marque avec une réalisation maîtrisée : direction artistique, tournage, montage, versionnage. Pour campagnes, investisseurs et prises de parole.",
     path: "/corporate/presentation-marque/",
-    image: "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
+    image: "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
   },
   title: "Présentation de marque",
   eyebrow: "Corporate",
   description:
     "Présentez votre marque avec des contenus à forte valeur : direction artistique, storytelling, tournage et montage. Idéal pour vos campagnes, pages “À propos”, decks partenaires/investisseurs et prises de parole officielles.",
-  heroImage: "https://framerusercontent.com/images/nut3VC3ToDuZY0i7oI2dVrJVfZY.png",
+  heroImage: "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
+      cover: "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
       images: [
-        "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-        "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-        "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+        "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
+        "/images/portfolio/corporate/la-pommeraie/la-pommeraie-02.jpg",
+        "/images/portfolio/corporate/la-pommeraie/la-pommeraie-03.jpg",
       ],
     },
   ],
@@ -235,21 +235,21 @@ export const CORPORATE_FILMS_PAGE: ServiceDetailPageContent = {
     description:
       "Films institutionnels et vidéos corporate : conception, tournage, direction artistique, montage, versionnage. Pour votre site, LinkedIn et campagnes.",
     path: "/corporate/films-institutionnels/",
-    image: "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
+    image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
   },
   title: "Films institutionnels",
   eyebrow: "Corporate",
   description:
     "Un film corporate clair et premium pour raconter votre entreprise : message, valeurs, équipes, produit/service. Conçu pour votre site, LinkedIn, salons, campagnes et communication interne.",
-  heroImage: "https://framerusercontent.com/images/20KvRVeMRpOdaABugVRinkkRuSY.png",
+  heroImage: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+      cover: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
       images: [
-        "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-        "https://framerusercontent.com/images/33qcKaPGRIZCfNxpzNJDV7qNpGc.jpg",
-        "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+        "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
+        "/images/portfolio/corporate/hotel-dali/hotel-dali-02.jpg",
+        "/images/portfolio/corporate/hotel-dali/hotel-dali-03.jpg",
       ],
     },
   ],
@@ -261,21 +261,24 @@ export const CORPORATE_WEB_CONTENT_PAGE: ServiceDetailPageContent = {
     description:
       "Contenu régulier pour site web & réseaux : formats courts, photos, vidéos, déclinaisons. Une stratégie visuelle cohérente pour votre présence digitale.",
     path: "/corporate/contenu-web-reseaux/",
-    image: "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
+    image:
+      "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-01.jpg",
   },
   title: "Contenu pour site web & réseaux",
   eyebrow: "Corporate",
   description:
     "Produisez du contenu régulier, dynamique et cohérent : photos, vidéos, formats courts et déclinaisons. Objectif : alimenter votre site et vos réseaux avec une identité visuelle forte et constante.",
-  heroImage: "https://framerusercontent.com/images/M0SeRW6OeuB11wv5Lb9k4tyIc.png",
+  heroImage:
+    "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+      cover:
+        "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-01.jpg",
       images: [
-        "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-        "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-        "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+        "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-01.jpg",
+        "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-02.jpg",
+        "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-03.jpg",
       ],
     },
   ],
