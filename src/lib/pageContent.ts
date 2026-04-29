@@ -291,21 +291,21 @@ export const DIGITAL_ADS_CONCEPTION_PAGE: ServiceDetailPageContent = {
     description:
       "Conception d’angles publicitaires, hooks et scripts. Une phase stratégique pour transformer votre message en contenus performants.",
     path: "/publicite-digitale/conception-brainstorming-marketing/",
-    image: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+    image: "/images/portfolio/shooting/sema-shooting/sema-shooting-01.jpg",
   },
   title: "Conception & brainstorming marketing",
   eyebrow: "Publicité digitale",
   description:
     "On pose les fondations de la performance : angles, messages, promesses, structure et rythme. L’objectif est de produire des contenus qui captent l’attention et rendent votre offre évidente.",
-  heroImage: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+  heroImage: "/images/portfolio/shooting/sema-shooting/sema-shooting-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+      cover: "/images/portfolio/shooting/sema-shooting/sema-shooting-01.jpg",
       images: [
-        "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-        "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-        "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+        "/images/portfolio/shooting/sema-shooting/sema-shooting-01.jpg",
+        "/images/portfolio/shooting/sema-shooting/sema-shooting-02.jpg",
+        "/images/portfolio/shooting/sema-shooting/sema-shooting-03.jpg",
       ],
     },
   ],
@@ -317,21 +317,21 @@ export const DIGITAL_ADS_PREMIUM_PAGE: ServiceDetailPageContent = {
     description:
       "Production photo et vidéo premium pour la publicité : direction artistique, cadrage, esthétique moderne, mise en valeur produit/service.",
     path: "/publicite-digitale/creation-photo-video-premium/",
-    image: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+    image: "/images/portfolio/shooting/afro-french-touch/afro-french-touch-01.jpg",
   },
   title: "Création photo & vidéo premium",
   eyebrow: "Publicité digitale",
   description:
     "Des visuels soigneusement réalisés, avec une direction artistique claire, un cadrage précis, et une esthétique moderne qui valorise votre produit ou service. Notre objectif : produire des assets capables de rivaliser avec les codes des marques leaders.",
-  heroImage: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+  heroImage: "/images/portfolio/shooting/afro-french-touch/afro-french-touch-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+      cover: "/images/portfolio/shooting/afro-french-touch/afro-french-touch-01.jpg",
       images: [
-        "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-        "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-        "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+        "/images/portfolio/shooting/afro-french-touch/afro-french-touch-01.jpg",
+        "/images/portfolio/shooting/afro-french-touch/afro-french-touch-02.jpg",
+        "/images/portfolio/shooting/afro-french-touch/afro-french-touch-03.jpg",
       ],
     },
   ],
@@ -344,21 +344,21 @@ export const DIGITAL_ADS_FORMATS_PAGE: ServiceDetailPageContent = {
     description:
       "Déclinaisons et optimisations pour Reels, TikTok, YouTube, Facebook Ads, LinkedIn : rythme, storytelling, durée, accroche visuelle.",
     path: "/publicite-digitale/adaptation-formats-social-media/",
-    image: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+    image: "/images/portfolio/shooting/shining-sister/shining-sister-01.jpg",
   },
   title: "Adaptation aux formats social media",
   eyebrow: "Publicité digitale",
   description:
     "Reels, TikTok, YouTube, Facebook Ads, LinkedIn… Chaque format est optimisé pour respecter les codes de la plateforme tout en maximisant l’impact : rythme, storytelling, durée, accroche visuelle.",
-  heroImage: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+  heroImage: "/images/portfolio/shooting/shining-sister/shining-sister-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
+      cover: "/images/portfolio/shooting/shining-sister/shining-sister-01.jpg",
       images: [
-        "https://framerusercontent.com/images/1Vf4Hth54m61EkbYu2Bce5xkK9A.jpg",
-        "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
-        "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
+        "/images/portfolio/shooting/shining-sister/shining-sister-01.jpg",
+        "/images/portfolio/shooting/shining-sister/shining-sister-02.jpg",
+        "/images/portfolio/shooting/shining-sister/shining-sister-03.jpg",
       ],
     },
   ],
@@ -371,21 +371,21 @@ export const DIGITAL_ADS_OPTIMISATION_PAGE: ServiceDetailPageContent = {
     description:
       "Des contenus publicitaires orientés performance : ventes, taux de clic, engagement et notoriété. L’esthétique au service de l’efficacité.",
     path: "/publicite-digitale/optimisation-conversions-branding/",
-    image: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+    image: "/images/portfolio/shooting/que-pour-elle-saint-valentin/que-pour-elle-saint-valentin-01.jpg",
   },
   title: "Optimisation pour conversions & branding",
   eyebrow: "Publicité digitale",
   description:
     "Nous produisons des contenus capables de générer de vrais résultats concrets : une hausse mesurable des ventes, une amélioration des taux de clic, une augmentation de l’engagement ainsi qu’un renforcement durable de votre notoriété. Chaque visuel est pensé comme un levier de performance, conçu pour capter l’attention, transmettre votre valeur et inciter votre audience à passer à l’action.",
-  heroImage: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+  heroImage: "/images/portfolio/shooting/que-pour-elle-saint-valentin/que-pour-elle-saint-valentin-01.jpg",
   gallery: [
     {
       title: "Exemples",
-      cover: "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
+      cover: "/images/portfolio/shooting/que-pour-elle-saint-valentin/que-pour-elle-saint-valentin-01.jpg",
       images: [
-        "https://framerusercontent.com/images/Y18neada0CIq3XzGJDAFYWWBIk.jpg",
-        "https://framerusercontent.com/images/XGepEs2I4284GXSGDiChPPj5dNg.jpg",
-        "https://framerusercontent.com/images/kG2k29DgSSRPzEhDQRQZRd8KoTY.jpg",
+        "/images/portfolio/shooting/que-pour-elle-saint-valentin/que-pour-elle-saint-valentin-01.jpg",
+        "/images/portfolio/shooting/que-pour-elle-saint-valentin/que-pour-elle-saint-valentin-02.jpg",
+        "/images/portfolio/shooting/que-pour-elle-saint-valentin/que-pour-elle-saint-valentin-03.jpg",
       ],
     },
   ],
