@@ -147,7 +147,27 @@ function checkHtml(html, relPath) {
   }
 }
 
-async function checkPublicMedia() {
+async function collectReferencedPublicMedia(baseDir) {
+  const htmlFiles = (await listFilesRecursive(baseDir)).filter((f) => f.endsWith(".html"));
+  const referenced = new Set();
+
+  for (const fullPath of htmlFiles) {
+    const html = await fs.readFile(fullPath, "utf8");
+    const attrRe = /\b(?:src|href|poster)=["']([^"']+)["']/gi;
+    let match;
+
+    while ((match = attrRe.exec(html)) !== null) {
+      const value = match[1];
+      if (!value.startsWith("/")) continue;
+      if (value.startsWith("/_next/")) continue;
+      referenced.add(value.split("?")[0]);
+    }
+  }
+
+  return referenced;
+}
+
+async function checkPublicMedia(referencedPublicMedia) {
   if (!(await fileExists(PUBLIC_DIR))) return;
 
   const files = await listFilesRecursive(PUBLIC_DIR);
@@ -176,7 +196,10 @@ async function checkPublicMedia() {
       );
     }
 
-    if (isHeroCandidate(fullPath) && stat.size > HERO_BUDGET_BYTES) {
+    const publicPath = `/${relPath.split(path.sep).join("/")}`;
+    const isReferencedBySite = referencedPublicMedia.has(publicPath);
+
+    if (isHeroCandidate(fullPath) && isReferencedBySite && stat.size > HERO_BUDGET_BYTES) {
       fail(
         `public/${relPath}: hero/gallery candidate is ${formatBytes(stat.size)} (limit ${formatBytes(HERO_BUDGET_BYTES)}). Resize and recompress it.`
       );
@@ -193,6 +216,7 @@ async function checkPublicMedia() {
 async function main() {
   const outPrefix = await detectOutPrefix();
   const baseDir = path.join(OUT_DIR, outPrefix);
+  const referencedPublicMedia = await collectReferencedPublicMedia(baseDir);
 
   const files = (await listFilesRecursive(baseDir)).filter((f) => f.endsWith(".html"));
 
@@ -206,7 +230,7 @@ async function main() {
     checkHtml(html, relPath);
   }
 
-  await checkPublicMedia();
+  await checkPublicMedia(referencedPublicMedia);
 
   for (const message of warnedMessages) {
     // eslint-disable-next-line no-console
