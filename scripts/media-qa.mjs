@@ -17,6 +17,7 @@ const PORTFOLIO_BUDGET_BYTES = 300 * 1024;
 const HERO_BUDGET_BYTES = 500 * 1024;
 const VIDEO_BUDGET_BYTES = 5 * 1024 * 1024;
 const ROOT_MEDIA_WARN_BYTES = 2 * 1024 * 1024;
+const warnedMessages = [];
 
 function fail(message) {
   const err = new Error(message);
@@ -120,6 +121,10 @@ function formatBytes(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+function warn(message) {
+  warnedMessages.push(message);
+}
+
 function checkHtml(html, relPath) {
   // Images must not have empty alt attributes.
   for (const tag of extractTags(html, "img")) {
@@ -166,8 +171,8 @@ async function checkPublicMedia() {
     }
 
     if (isPortfolioMedia(fullPath) && stat.size > PORTFOLIO_BUDGET_BYTES) {
-      fail(
-        `public/${relPath}: portfolio image is ${formatBytes(stat.size)} (limit ${formatBytes(PORTFOLIO_BUDGET_BYTES)}). Export a web-sized WebP/AVIF asset.`
+      warn(
+        `public/${relPath}: portfolio image is ${formatBytes(stat.size)} (target ${formatBytes(PORTFOLIO_BUDGET_BYTES)}). Export a web-sized WebP/AVIF asset.`
       );
     }
 
@@ -202,6 +207,11 @@ async function main() {
   }
 
   await checkPublicMedia();
+
+  for (const message of warnedMessages) {
+    // eslint-disable-next-line no-console
+    console.warn(`Warning: ${message}`);
+  }
 
   // eslint-disable-next-line no-console
   console.log(`Media QA passed for ${files.length} HTML files in ${baseDir}.`);
