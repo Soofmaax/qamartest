@@ -109,6 +109,33 @@ See:
 - Keep the social URLs in `src/components/SiteFooter.tsx` up to date.
 - Keep Google review stats (`src/components/GoogleReviewsSection.tsx`) in sync with the Google Business Profile.
 
+## Delivery status (current repo state)
+
+The repo is now in a delivery-ready state for the current scope, with the following points completed:
+
+- Core visible pages (`/`, `/services/`, `/portfolio/`, `/corporate/`, `/evenementiel/`, `/publicite-digitale/`, `/mariage/`) have been cleaned so the main page imagery no longer depends on Framer-hosted photos.
+- Corporate and event portfolios are wired to real local project folders under `public/images/portfolio/**` (one project card per folder).
+- Corporate service detail pages and digital ads service detail pages now use local assets from `public/images/portfolio/**`.
+- Global SEO/Open Graph defaults now point to local assets.
+- Legal pages exist and are intentionally minimal until the client provides final legal copy.
+- `npm run media:qa` is aligned with the current migration phase:
+  - oversized portfolio assets warn
+  - critical served assets still fail when appropriate
+  - served video budget is currently capped at **7 MB**
+
+Known intentional exceptions at handoff time:
+
+- `src/components/SiteHeader.tsx` still uses the current Framer-hosted brand image in the header.
+- `src/lib/content.ts` still uses Framer-hosted partner/reference logos in `REFERENCE_LOGOS`.
+- Legal pages (`/mentions-legales/`, `/cgv/`) are placeholders by design until client-approved legal content is supplied.
+
+Recommended post-delivery follow-up:
+
+1. Replace the header logo with a real local brand asset when available.
+2. Replace `REFERENCE_LOGOS` with local files if brand usage rights/assets are available.
+3. Recompress `public/videos/mariage.mp4` below the current 7 MB ceiling if possible.
+4. Convert the heaviest site-facing images to web-sized WebP/AVIF assets and tighten `media:qa` again afterward.
+
 ### Agency-level minimum requirements (solo workflow)
 
 Use this as a strict Definition of Done for every PR:
