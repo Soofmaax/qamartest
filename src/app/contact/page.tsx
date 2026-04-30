@@ -14,7 +14,7 @@ const seo = {
   description:
     "Contactez Directed by Qamar : décrivez votre projet (date, lieu, contraintes, budget) et recevez un retour rapide.",
   path: "/contact/",
-  image: "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+  image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);

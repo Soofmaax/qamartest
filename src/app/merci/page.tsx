@@ -13,7 +13,7 @@ const seo = {
   title: "Merci | Directed by Qamar",
   description: "Merci pour votre message. Nous revenons vers vous rapidement.",
   path: "/merci/",
-  image: "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+  image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
   robots: { index: false, follow: false },
 };
 

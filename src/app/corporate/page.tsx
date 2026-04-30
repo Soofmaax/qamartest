@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { DARK_BLUR_DATA_URL } from "@/lib/blurDataUrl";
 import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import {
@@ -19,7 +21,7 @@ const seo = {
   description:
     "Création de contenus photo et vidéo pour entreprises : image de marque, communication corporate, vidéos professionnelles et storytelling visuel.",
   path: "/corporate/",
-  image: "https://framerusercontent.com/images/9MhLc1R5WqXjf2kyVHnU1AmNhXs.jpg",
+  image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -213,13 +215,14 @@ const PRESTATIONS = [
 const CASES = [
   {
     idx: "001",
-    brand: "Quechua",
-    sector: "Outdoor · Grande marque",
-    type: "Publicité digitale · Contenu réseaux",
+    brand: "Hôtel Dali",
+    sector: "Hospitality · Paris",
+    type: "Image d’établissement · Lifestyle",
     desc:
-      "Production d'un contenu publicitaire pour Quechua, marque outdoor de référence du groupe Decathlon. Tournage en conditions réelles, direction artistique complète, livraison multi-formats pour diffusion digitale sur les plateformes de la marque.",
-    resultLabel: "Diffusion",
-    resultVal: "Plateformes digitales Decathlon Group",
+      "Production de visuels premium pour valoriser les espaces, l’atmosphère du lieu et l’expérience client. Une bibliothèque pensée pour le site, les OTA, la presse et les réseaux sociaux.",
+    resultLabel: "Dossier",
+    resultVal: "hotel-dali",
+    image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
   },
   {
     idx: "002",
@@ -228,18 +231,43 @@ const CASES = [
     type: "Film institutionnel · Image de marque",
     desc:
       "Film de présentation pour ce restaurant premium parisien. Captation de l'univers gastronomique, des équipes en cuisine, de l'expérience client. Un film pensé pour le site web, les réseaux sociaux et les relations presse.",
-    resultLabel: "Utilisation",
-    resultVal: "Site web · Réseaux · Relations presse",
+    resultLabel: "Dossier",
+    resultVal: "la-pommeraie",
+    image: "/images/portfolio/corporate/la-pommeraie/la-pommeraie-01.jpg",
   },
   {
     idx: "003",
-    brand: "Fashion Week",
-    sector: "Luxe & Mode · Paris",
-    type: "Reportage · Contenu événementiel",
+    brand: "Préfecture",
+    sector: "Institutionnel · Service public",
+    type: "Reportage officiel · Prises de parole",
     desc:
-      "Couverture photo et vidéo d'un défilé lors de la Fashion Week de Paris. Captation backstage, défilé, réactions et ambiance. Livraison rapide pour diffusion immédiate sur les réseaux de la marque dans les heures suivant l'événement.",
-    resultLabel: "Contrainte",
-    resultVal: "Livraison sous 24h · Diffusion immédiate",
+      "Couverture d’un événement institutionnel avec captation des temps forts, des échanges protocolaires et des prises de parole. Un rendu sobre, clair et exploitable pour la communication officielle.",
+    resultLabel: "Dossier",
+    resultVal: "prefet",
+    image: "/images/portfolio/corporate/prefet/prefet-01.jpg",
+  },
+  {
+    idx: "004",
+    brand: "Restaurant Le Jumeyrah",
+    sector: "Restauration · Expérience de marque",
+    type: "Contenu web & réseaux · Social first",
+    desc:
+      "Création de contenus photo destinés à présenter le lieu, les détails de service et l’expérience proposée. Des assets pensés pour le site, Instagram et les supports de présentation.",
+    resultLabel: "Dossier",
+    resultVal: "restaurant-le-jumeyrah",
+    image:
+      "/images/portfolio/corporate/restaurant-le-jumeyrah/restaurant-le-jumeyrah-01.jpg",
+  },
+  {
+    idx: "005",
+    brand: "UNESCO",
+    sector: "Institution · International",
+    type: "Couverture corporate · Reportage",
+    desc:
+      "Production de visuels corporate dans un cadre institutionnel à forte exigence. Focus sur le contexte, les intervenants et la valeur documentaire des images pour diffusion interne et externe.",
+    resultLabel: "Dossier",
+    resultVal: "unesco",
+    image: "/images/portfolio/corporate/unesco/unesco-01.jpg",
   },
 ] as const;
 
@@ -583,6 +611,19 @@ export default function CorporatePage() {
                     <p className="font-serif text-[13px] text-white/15">{c.idx}</p>
                   </div>
 
+                  <div className="relative min-h-[220px] border-b border-[#1e1e1e] md:col-span-3 md:border-b-0 md:border-r">
+                    <Image
+                      src={c.image}
+                      alt={c.brand}
+                      fill
+                      sizes="(min-width: 768px) 25vw, 100vw"
+                      placeholder="blur"
+                      blurDataURL={DARK_BLUR_DATA_URL}
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/10" />
+                  </div>
+
                   <div className="border-b border-[#1e1e1e] p-8 md:col-span-3 md:border-b-0 md:border-r">
                     <p className="font-serif text-2xl italic text-[#e8e4dc]">
                       {c.brand}
@@ -595,7 +636,7 @@ export default function CorporatePage() {
                     </p>
                   </div>
 
-                  <div className="border-b border-[#1e1e1e] p-8 md:col-span-6 md:border-b-0 md:border-r">
+                  <div className="border-b border-[#1e1e1e] p-8 md:col-span-4 md:border-b-0 md:border-r">
                     <p className="text-[11px] uppercase tracking-[0.1em] text-white/20">
                       Le projet
                     </p>
@@ -604,7 +645,7 @@ export default function CorporatePage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col justify-between p-8 md:col-span-2">
+                  <div className="flex flex-col justify-between p-8 md:col-span-1">
                     <div>
                       <p className="text-[9px] uppercase tracking-[0.18em] text-white/20">
                         {c.resultLabel}

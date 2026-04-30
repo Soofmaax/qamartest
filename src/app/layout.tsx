@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     url: "https://www.directedbyqamar.com/",
     images: [
       {
-        url: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+        url: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
         width: 1200,
         height: 630,
         alt: "Directed by Qamar",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     title: "Photographe & vidéaste professionnel | Directed by Qamar",
     description:
       "Photographe et vidéaste professionnel pour projets corporate, mariages et contenus digitaux. Images fortes, storytelling et accompagnement sur mesure.",
-    images: ["https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png"],
+    images: ["/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg"],
   },
 };
 

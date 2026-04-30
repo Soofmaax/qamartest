@@ -20,7 +20,7 @@ const seo = {
   description:
     "Directed by Qamar est un studio de création visuelle basé à Paris. Photo & vidéo corporate, mariage, événementiel et contenus digitaux.",
   path: "/",
-  image: "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+  image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -42,7 +42,7 @@ export default function Home() {
       <main className="mx-auto site-width">
         <section className="relative hero-height w-full overflow-hidden site-pad-x">
           <Image
-            src="https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg"
+            src="/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg"
             alt="Directed by Qamar"
             fill
             priority

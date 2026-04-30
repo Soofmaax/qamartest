@@ -51,6 +51,39 @@ NEXT_PUBLIC_IS_PREVIEW=1 NEXT_PUBLIC_BASE_PATH="/<repo-name>" npm run build
 npm run seo:qa
 ```
 
+## Media P0 workflow
+
+This repo is image-heavy. To keep PageSpeed strong, treat media optimization as mandatory before commit.
+
+Budgets enforced by `npm run media:qa`:
+
+- portfolio image in `public/images/portfolio/**`: target **300 KB** (warning when exceeded)
+- hero/gallery candidate image referenced by the exported site: target **500 KB** (warning when exceeded)
+- video in `public/**`: max **7 MB**
+- large photo-like PNGs referenced by the exported site are rejected
+- oversized portfolio PNGs not referenced by the exported site are warned and should be converted before use
+
+Recommended export targets:
+
+- hero: `1600-1920px` wide, WebP, roughly `250-500 KB`
+- gallery image: `1200-1600px` wide, WebP, roughly `120-300 KB`
+- thumbnail: `400-800px` wide, WebP, roughly `40-120 KB`
+
+Optimize files locally with:
+
+```bash
+npm install -D sharp
+npm run media:optimize -- public/images/portfolio/evenementiel/fashion-week-2026/fashion-week-2026-01.png
+```
+
+That command creates a sibling `.webp` file resized for the web. After checking the result visually, update references to the new file and remove the oversized original from site-facing folders.
+
+Generate a prioritized list of the heaviest site-facing images with:
+
+```bash
+npm run media:report
+```
+
 ## Video (YouTube)
 
 - `src/components/YouTubeEmbed.tsx`: lazy-loaded YouTube iframe (no iframe until click).
@@ -75,6 +108,33 @@ See:
 - Provide final copy for "Mentions légales" and "CGV" pages (currently placeholders), then remove `noindex` and add them to the sitemap.
 - Keep the social URLs in `src/components/SiteFooter.tsx` up to date.
 - Keep Google review stats (`src/components/GoogleReviewsSection.tsx`) in sync with the Google Business Profile.
+
+## Delivery status (current repo state)
+
+The repo is now in a delivery-ready state for the current scope, with the following points completed:
+
+- Core visible pages (`/`, `/services/`, `/portfolio/`, `/corporate/`, `/evenementiel/`, `/publicite-digitale/`, `/mariage/`) have been cleaned so the main page imagery no longer depends on Framer-hosted photos.
+- Corporate and event portfolios are wired to real local project folders under `public/images/portfolio/**` (one project card per folder).
+- Corporate service detail pages and digital ads service detail pages now use local assets from `public/images/portfolio/**`.
+- Global SEO/Open Graph defaults now point to local assets.
+- Legal pages exist and are intentionally minimal until the client provides final legal copy.
+- `npm run media:qa` is aligned with the current migration phase:
+  - oversized portfolio assets warn
+  - critical served assets still fail when appropriate
+  - served video budget is currently capped at **7 MB**
+
+Known intentional exceptions at handoff time:
+
+- `src/components/SiteHeader.tsx` still uses the current Framer-hosted brand image in the header.
+- `src/lib/content.ts` still uses Framer-hosted partner/reference logos in `REFERENCE_LOGOS`.
+- Legal pages (`/mentions-legales/`, `/cgv/`) are placeholders by design until client-approved legal content is supplied.
+
+Recommended post-delivery follow-up:
+
+1. Replace the header logo with a real local brand asset when available.
+2. Replace `REFERENCE_LOGOS` with local files if brand usage rights/assets are available.
+3. Recompress `public/videos/mariage.mp4` below the current 7 MB ceiling if possible.
+4. Convert the heaviest site-facing images to web-sized WebP/AVIF assets and tighten `media:qa` again afterward.
 
 ### Agency-level minimum requirements (solo workflow)
 

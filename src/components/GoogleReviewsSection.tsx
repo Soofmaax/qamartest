@@ -24,7 +24,7 @@ export function GoogleReviewsSection() {
         <div className="flex w-full flex-col items-center gap-6 md:w-auto md:flex-row md:items-center md:gap-[35px]">
           <div className="relative h-[141px] w-[141px] overflow-hidden rounded-full">
             <Image
-              src="https://framerusercontent.com/images/QxF9UbJN82KVe5FkW9EhFNwUWQw.jpg"
+              src="/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-02.jpg"
               alt="Avis"
               fill
               sizes="141px"

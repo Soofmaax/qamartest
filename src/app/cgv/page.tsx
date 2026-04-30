@@ -12,7 +12,7 @@ const seo = {
   description:
     "Consultez les Conditions Générales de Vente (CGV) de Directed by Qamar.",
   path: ROUTES.cgv,
-  image: "https://framerusercontent.com/images/yRve70fy1dkrL8wzTIRucXzC1o.png",
+  image: "/images/portfolio/corporate/hotel-dali/hotel-dali-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata({

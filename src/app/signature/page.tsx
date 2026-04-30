@@ -18,7 +18,7 @@ const seo = {
   description:
     "Une approche photo et vidéo pensée pour le luxe : discrétion, direction artistique, cohérence, et livrables irréprochables.",
   path: "/signature/",
-  image: "https://framerusercontent.com/images/2oNUAYoY9jIvH6aPlVFBUnPc62M.jpg",
+  image: "/images/portfolio/mariage/raw-import/ELHAD ET INASS/elhad-et-inass-01.jpg",
 };
 
 export const metadata: Metadata = createPageMetadata(seo);

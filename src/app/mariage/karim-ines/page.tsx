@@ -12,12 +12,14 @@ import { ROUTES } from "@/lib/routes";
 import { createPageMetadata } from "@/lib/seo";
 import { buildWebPageGraph } from "@/lib/structuredData";
 
+const rawMariageBase = "/images/portfolio/mariage/raw-import/ELHAD ET INASS";
+
 const seo = {
   title: "Karim & Inès | Mariage destination | Directed by Qamar",
   description:
     "Un mariage destination à Marrakech : une lumière chaude, des textures et une narration cinématique.",
   path: "/mariage/karim-ines/",
-  image: "/images/mariage/mariage-15.jpg",
+  image: `${rawMariageBase}/elhad-et-inass-15.jpg`,
 };
 
 export const metadata: Metadata = createPageMetadata(seo);
@@ -37,14 +39,14 @@ const structuredData = buildWebPageGraph({
 const gallery = [
   {
     title: "Karim & Inès",
-    cover: "/images/mariage/mariage-15.jpg",
+    cover: `${rawMariageBase}/elhad-et-inass-15.jpg`,
     images: [
-      "/images/mariage/mariage-15.jpg",
-      "/images/mariage/mariage-14.jpg",
-      "/images/mariage/mariage-13.jpg",
-      "/images/mariage/mariage-12.jpg",
-      "/images/mariage/mariage-11.jpg",
-      "/images/mariage/mariage-10.jpg",
+      `${rawMariageBase}/elhad-et-inass-15.jpg`,
+      `${rawMariageBase}/elhad-et-inass-14.jpg`,
+      `${rawMariageBase}/elhad-et-inass-13.jpg`,
+      `${rawMariageBase}/elhad-et-inass-12.jpg`,
+      `${rawMariageBase}/elhad-et-inass-11.jpg`,
+      `${rawMariageBase}/elhad-et-inass-10.jpg`,
     ],
   },
 ];
